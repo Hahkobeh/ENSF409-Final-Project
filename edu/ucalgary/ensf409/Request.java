@@ -1,29 +1,22 @@
 package edu.ucalgary.ensf409;
 
+import java.util.*;
+
 public class Request {
-    private String category;
-    private String type;
-    private int numberOfItems;
+    private List<Object> items;
+    private int size;
 
-    public int getNumberOfItems() {
-        return numberOfItems;
-    }
-    public String getCategory() {
-        return category;
-    }
-    public void setCategory(String category) {
-        this.category = category;
-    }
-    public String getType() {
-        return type;
-    }
-    public void setType(String type) {
-        this.type = type;
-    }
-    public void setNumberOfItems(int numberOfItems) {
-        this.numberOfItems = numberOfItems;
-    }
-    public boolean checkRequests(){
+    public Request(String category, String type){
+        setSize(category);
+        items = new ArrayList<>(size);
 
     }
-}
+
+    public void setSize(String category) {
+        switch (category) {
+            case "Chair" -> this.size = 4;
+            case "Desk" -> this.size = 3;
+            case "Lamp" -> this.size = 2;
+            case "Filing" -> this.size = 3;
+            default -> System.err.println("Invalid Category");
+        }
