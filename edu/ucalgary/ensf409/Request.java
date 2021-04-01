@@ -4,11 +4,17 @@ import java.util.*;
 
 public class Request {
     private List<Object> items;
+    private String category;
+    private String type;
     private int size;
 
-    public Request(String category, String type){
+    public Request(String category, String type) {
         setSize(category);
+        this.category = category;
+        this.type = type;
         items = new ArrayList<>(size);
+        getLowestPrice();
+
 
     }
 
@@ -20,3 +26,12 @@ public class Request {
             case "Filing" -> this.size = 3;
             default -> System.err.println("Invalid Category");
         }
+    }
+
+    public void getLowestPrice(){
+
+
+
+
+    }
+}
