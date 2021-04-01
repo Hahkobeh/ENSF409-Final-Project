@@ -23,7 +23,7 @@ public class Filing extends FurnitureItem {
     public void setDrawers(char drawers){
       this.drawers = drawers;
     }
-    public void getCabinet(char cabinet){
+    public void setCabinet(char cabinet){
          this.cabinet = cabinet;
     }
    
