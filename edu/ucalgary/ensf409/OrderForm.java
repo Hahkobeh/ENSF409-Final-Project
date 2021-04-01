@@ -1,5 +1,9 @@
 package edu.ucalgary.ensf409;
-
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedWriter;
 import java.io.File;
 
 public class OrderForm {
@@ -20,7 +24,36 @@ public class OrderForm {
     private int getTotalPrice(){
         return 5;
     }
-    public File generateOrderFormat(){
+    public void generateOrderFormat(){
+
+        StringBuilder order = new StringBuilder();
+        order.append("Furniture Order Form\n\nFaculty Name:\nContact:\nDate:\n\nOriginal Request:");
+        order.append(originalRequest.getType() +" "+ originalRequest.getCategory() +", " + originalRequest.getNumberOfItems());
+        order.append("\n\nItems Ordered\n");
+       
+        for(int i = 0 ; i < originalRequest.getNumberOfItems(); i++){
+            order.append("ID: " + this.itemsOrdered[i].getIDNumber()+ "\n");
+            
+        }
+        order.append("\nTotalPrice: $" + getTotalPrice());
         
+        try{
+            File obj = new File("orderForm.txt");
+            FileWriter fw = new FileWriter(obj);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(order.toString());
+            bw.flush();
+            bw.close();
+        }
+           
+        catch(FileNotFoundException ex){
+            System.out.print("unable to open file");
+
+        }
+        catch(IOException ex){
+            System.out.print("error reading file");
+        }   
+
+
     }
 }
