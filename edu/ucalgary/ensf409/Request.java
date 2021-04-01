@@ -20,5 +20,3 @@ public class Request {
             case "Filing" -> this.size = 3;
             default -> System.err.println("Invalid Category");
         }
-    }
-}
