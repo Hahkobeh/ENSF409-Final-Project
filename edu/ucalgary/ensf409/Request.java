@@ -19,6 +19,7 @@ public class Request {
     private int numberOfitemsDemanded;
     private int possibleNumberOfItems;
     private int [][] chosenOptions;
+    private int [] chosenOptionsPrice;
 
 
     public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) {
@@ -32,8 +33,36 @@ public class Request {
         storeData();
         totalItemsThatCanBeMade();
 
-        searchForLowest();
 
+        if(possibleNumberOfItems == 0){
+            System.out.println("failed");
+        }else if(possibleNumberOfItems < numberOfitemsDemanded){
+            chosenOptions = new int[possibleNumberOfItems][size];
+            chosenOptionsPrice = new int[numberOfitemsDemanded];
+            System.out.println("not enough components only "+ possibleNumberOfItems + "could be made");
+            for(int z = 0; z < possibleNumberOfItems; z++){
+                searchForLowest(z);
+            }
+        }else if(possibleNumberOfItems >= numberOfitemsDemanded){
+            chosenOptions = new int[numberOfitemsDemanded][size];
+            chosenOptionsPrice = new int[numberOfitemsDemanded];
+            System.out.println("order passed using ");
+            for(int z = 0; z < numberOfitemsDemanded; z++){
+                searchForLowest(z);
+            }
+
+        }
+        System.out.println("order passed");
+
+
+    }
+
+    public int[] getChosenOptionsPrice() {
+        return chosenOptionsPrice;
+    }
+
+    public int[][] getChosenOptions() {
+        return chosenOptions;
     }
 
     public void getDatabase() {
@@ -152,7 +181,7 @@ public class Request {
         this.possibleNumberOfItems = possibleNumberOfItems;
     }
 
-    public void searchForLowest(){
+    public void searchForLowest(int itemNumber){
         int [] chosenOption = new int[numberOfEntries];
         int [] options = new int[numberOfEntries];
         for(int i = 0; i < options.length; i++){
@@ -172,16 +201,19 @@ public class Request {
 
         //need a function that will be called at the end to remove all used database members
 
+
+
+
         //I need to find cheapest combination (make note of which
         //furniture items have been used), then set used parts to N and set price of the furniture item
         //that has been used to 0 then find next cheapest again.
 
 
-        int price = findPrice(allPossible, numberOfPossibleCombinations, chosenOption);
-        System.out.println("hi");
+        chosenOptionsPrice[itemNumber] = findPrice(allPossible, numberOfPossibleCombinations, chosenOption, itemNumber);
+
     }
 
-    public int findPrice(int  [][] allPossible, int numberOfPossibleCombinations, int [] chosenOption ){
+    public int findPrice(int  [][] allPossible, int numberOfPossibleCombinations, int [] chosenOption, int itemNumber ){
         int price = 99999;
         for(int m = 0; m < numberOfPossibleCombinations; m++){
             if(possibleChoice(allPossible[m])){
@@ -192,9 +224,35 @@ public class Request {
                 }
             }
         }
+        chosenOptions[itemNumber] = chosenOption;
+
+        removePriceFromUsed(chosenOption);
+        removeTakenComponents(chosenOption);
 
         return price;
 
+    }
+
+    public void removeTakenComponents(int [] array){
+        for(int u = 0; u < size; u++){
+            int q = 0;
+            while(q < array.length && array[q] != 0){
+                if(data[array[q] - 1][u] == 'Y'){
+                    data[array[q] - 1][u] = 'N';
+                    break;
+                }
+                q++;
+            }
+        }
+
+    }
+
+    public void removePriceFromUsed(int [] array){
+        int q = 0;
+        while(q < array.length && array[q] != 0){
+            priceData[array[q] - 1] = 0;
+            q++;
+        }
     }
 
     public boolean possibleChoice(int [] array){
