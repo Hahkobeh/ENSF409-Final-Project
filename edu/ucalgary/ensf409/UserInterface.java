@@ -60,14 +60,7 @@ public class UserInterface {
        JButton requestButton = new JButton("Request");
        requestButton.setBounds(215, 245, 160, 50);
        panel.add(requestButton);
-
-       /*
-       JButton addBtn = new JButton("+");
-       addBtn.setBounds(x_pos, y_pos, 30, 25);
-       addBtn.setBorder(new RoundedBorder(10)); //10 is the radius
-       addBtn.setForeground(Color.BLUE);
-       */
-
+       
        requestButton.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
             Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()));
