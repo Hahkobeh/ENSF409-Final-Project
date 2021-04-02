@@ -10,6 +10,7 @@ public class Request {
     private String category;
     private String type;
     private int size;
+    private int numberOfEntries = 0;
     private String usernameMySQL;
     private String passwordMySQL;
     private char [][] data;
@@ -17,6 +18,7 @@ public class Request {
     private String [] dataID;
     private int numberOfitemsDemanded;
     private int possibleNumberOfItems;
+
 
     public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) {
         this.category = category;
@@ -28,6 +30,7 @@ public class Request {
         getDatabase();
         storeData();
         totalItemsThatCanBeMade();
+        searchForLowest();
 
     }
 
@@ -54,7 +57,6 @@ public class Request {
     }
 
     public void storeData(){
-        int numberOfEntries = 0;
         String query1 = "SELECT COUNT(*) FROM " + category + " WHERE type = '" + type + "';";
 
         try{
@@ -147,6 +149,77 @@ public class Request {
         }
         this.possibleNumberOfItems = possibleNumberOfItems;
     }
+
+    public void searchForLowest(){
+        int price;
+        int [] chosenOptions = new int[numberOfEntries];
+        int [] options = new int[numberOfEntries];
+        for(int i = 0; i < options.length; i++){
+            options[i] = i + 1;
+        }
+
+        int numberOfPossibleCombinations = 0;
+        for(int temp = numberOfEntries; temp > 0; temp--){
+            numberOfPossibleCombinations += ( factorial(numberOfEntries) )/( factorial(temp)*factorial(numberOfEntries - temp));
+        }
+
+
+
+        int [][] allPossible = new int[numberOfPossibleCombinations][numberOfEntries];
+        fillCombinationArray(allPossible, options);
+        System.out.println("hi");
+
+
+    }
+
+    public void fillCombinationArray(int [][] allPossible, int [] options){
+        int position = 0;
+        for(int r = 1; r <= size; r++){
+            int data [] = new int[r];
+            position = combinationGenerator(allPossible, options,data, 0, options.length - 1 , 0, r, position);
+        }
+
+    }
+
+    public int combinationGenerator(int [][] allPossible, int [] options, int [] toAdd, int first, int last, int index, int r, int position) {
+        if (index == r) {
+            for (int j = 0; j < r; j++) {
+                allPossible[position][j] = toAdd[j];
+
+            }
+            position++;
+            return position;
+
+        }
+        for (int i = first; i <= last && last - i + 1 >= r-index; i++) {
+            toAdd[index] = options[i];
+            position = combinationGenerator(allPossible, options, toAdd, i+1, last, index+1, r, position);
+        }
+        return position;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public int factorial(int n){
+        int temp = 1;
+        for (int i = 2; i <= n; i++) {
+            temp = temp * i;
+        }
+        return temp;
+    }
+
+
+
 
 
 
