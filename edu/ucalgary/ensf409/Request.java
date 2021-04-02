@@ -13,21 +13,28 @@ public class Request {
     private String passwordMySQL;
 
     public Request(String category, String type, int numberOfItems, String usernameMySQL, String passwordMySQL) {
-        setSize(category);
         this.category = category;
         this.type = type;
+
+        this.usernameMySQL = usernameMySQL;
+        this.passwordMySQL = passwordMySQL;
+
         items = new List[numberOfItems];
+
+
+        setSize(category);
+
         for(int i = 0; i < items.length; i++){
             items[i] = new ArrayList<>(size);
         }
-        getLowestPrice();
 
+        getDatabase();
 
     }
 
     public void getDatabase() {
         try{
-            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/inventory", "User1", "ensf409");
+            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/inventory", usernameMySQL, passwordMySQL);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -44,6 +51,5 @@ public class Request {
     }
 
     public void getLowestPrice(){
-
     }
 }
