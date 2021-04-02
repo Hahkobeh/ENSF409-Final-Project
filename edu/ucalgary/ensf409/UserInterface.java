@@ -45,9 +45,15 @@ public class UserInterface {
        numberText.setBounds(130,80,60,25);
        panel.add(numberText);
 
-       JButton loginButton = new JButton("Request");
-       loginButton.setBounds(115, 130, 100, 25);
-       panel.add(loginButton);
+       JButton requestButton = new JButton("Request");
+       requestButton.setBounds(115, 130, 100, 25);
+       panel.add(requestButton);
+
+       requestButton.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e) {
+            Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()));
+        }
+       });
    }
 
 }
