@@ -19,17 +19,19 @@ public class Request {
             items[i] = new ArrayList<>(size);
         }
         getLowestPrice();
-
-
     }
 
     public void setSize(String category) {
         switch (category) {
-            case "Chair" -> this.size = 4;
-            case "Desk" -> this.size = 3;
-            case "Lamp" -> this.size = 2;
-            case "Filing" -> this.size = 3;
-            default -> System.err.println("Invalid Category");
+            case "Chair": this.size = 4;
+            break;
+            case "Desk": this.size = 3;
+            break;
+            case "Lamp": this.size = 2;
+            break;
+            case "Filing": this.size = 3;
+            break;
+            default: System.err.println("Invalid Category");
         }
     }
 
