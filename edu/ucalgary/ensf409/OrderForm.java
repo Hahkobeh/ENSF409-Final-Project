@@ -24,6 +24,7 @@ public class OrderForm {
     private int getTotalPrice(){
         return 5;
     }
+    /*
     public void generateOrderFormat(){
 
         StringBuilder order = new StringBuilder();
@@ -56,4 +57,6 @@ public class OrderForm {
 
 
     }
+    */
+
 }
