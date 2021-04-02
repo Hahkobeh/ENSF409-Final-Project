@@ -18,6 +18,7 @@ public class Request {
     private String [] dataID;
     private int numberOfitemsDemanded;
     private int possibleNumberOfItems;
+    private int [][] chosenOptions;
 
 
     public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) {
@@ -30,6 +31,7 @@ public class Request {
         getDatabase();
         storeData();
         totalItemsThatCanBeMade();
+
         searchForLowest();
 
     }
@@ -151,8 +153,7 @@ public class Request {
     }
 
     public void searchForLowest(){
-        int price;
-        int [] chosenOptions = new int[numberOfEntries];
+        int [] chosenOption = new int[numberOfEntries];
         int [] options = new int[numberOfEntries];
         for(int i = 0; i < options.length; i++){
             options[i] = i + 1;
@@ -167,10 +168,73 @@ public class Request {
 
         int [][] allPossible = new int[numberOfPossibleCombinations][numberOfEntries];
         fillCombinationArray(allPossible, options);
-        System.out.println("hi");
 
+
+        //need a function that will be called at the end to remove all used database members
+
+        //I need to find cheapest combination (make note of which
+        //furniture items have been used), then set used parts to N and set price of the furniture item
+        //that has been used to 0 then find next cheapest again.
+
+
+        int price = findPrice(allPossible, numberOfPossibleCombinations, chosenOption);
+        System.out.println("hi");
+    }
+
+    public int findPrice(int  [][] allPossible, int numberOfPossibleCombinations, int [] chosenOption ){
+        int price = 99999;
+        for(int m = 0; m < numberOfPossibleCombinations; m++){
+            if(possibleChoice(allPossible[m])){
+                int e = priceOfCombination(allPossible[m]);
+                if(e < price){
+                    price = e;
+                    chosenOption = allPossible[m];
+                }
+            }
+        }
+
+        return price;
 
     }
+
+    public boolean possibleChoice(int [] array){
+        boolean [] test = new boolean[size];
+        int q = 0;
+
+
+
+        while(q < array.length && array[q] != 0) {
+            for(int l = 0; l < size; l++){
+                if(data[array[q] - 1][l] == 'Y'){
+                    test[l] = true;
+                }
+            }
+
+
+            q++;
+
+        }
+        for(int y = 0; y < size; y++){
+            if(test[y] == false){
+                return false;
+            }
+        }
+        return true;
+
+    }
+    public int priceOfCombination(int [] array){
+        int price = 0;
+        int q = 0;
+        while(q < array.length && array[q] != 0){
+            price += priceData[array[q] - 1];
+            q++;
+        }
+        return price;
+    }
+
+
+
+
 
     public void fillCombinationArray(int [][] allPossible, int [] options){
         int position = 0;
@@ -198,18 +262,6 @@ public class Request {
         return position;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     public int factorial(int n){
         int temp = 1;
         for (int i = 2; i <= n; i++) {
@@ -218,12 +270,6 @@ public class Request {
         return temp;
     }
 
-
-
-
-
-
-
     //need a function that will be called at the end to remove all used database members
 
     //I need to find cheapest combination (make note of which
@@ -231,3 +277,4 @@ public class Request {
     //that has been used to 0 then find next cheapest again.
 
 }
+
