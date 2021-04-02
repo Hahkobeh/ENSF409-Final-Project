@@ -1,18 +1,23 @@
 package edu.ucalgary.ensf409;
 
 import java.util.*;
+import java.sql.*;
 
 public class Request {
-    private List<Object> items;
+    private Connection database;
+    private List<Object> [] items;
     private String category;
     private String type;
     private int size;
 
-    public Request(String category, String type) {
+    public Request(String category, String type, int numberOfItems) {
         setSize(category);
         this.category = category;
         this.type = type;
-        items = new ArrayList<>(size);
+        items = new List[numberOfItems];
+        for(int i = 0; i < items.length; i++){
+            items[i] = new ArrayList<>(size);
+        }
         getLowestPrice();
 
 
@@ -29,7 +34,6 @@ public class Request {
     }
 
     public void getLowestPrice(){
-
 
 
 
