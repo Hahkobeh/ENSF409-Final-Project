@@ -54,6 +54,8 @@ public class Request {
         }
         System.out.println("order passed");
 
+        //NEED TO ADD A REMOVE FUNCTION THAT TAKES ALL THE USED ITEMS AND GETS RID OF THEM
+
 
     }
 
@@ -313,7 +315,7 @@ public class Request {
             return position;
 
         }
-        for (int i = first; i <= last && last - i + 1 >= r-index; i++) {
+        for (int i = first; i <= last && last - i + 1 >= r - index; i++) {
             toAdd[index] = options[i];
             position = combinationGenerator(allPossible, options, toAdd, i+1, last, index+1, r, position);
         }
