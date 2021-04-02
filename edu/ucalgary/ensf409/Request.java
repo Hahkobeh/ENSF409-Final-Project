@@ -4,13 +4,15 @@ import java.util.*;
 import java.sql.*;
 
 public class Request {
-    private Connection database;
+    private Connection dbConnect;
     private List<Object> [] items;
     private String category;
     private String type;
     private int size;
+    private String usernameMySQL;
+    private String passwordMySQL;
 
-    public Request(String category, String type, int numberOfItems) {
+    public Request(String category, String type, int numberOfItems, String usernameMySQL, String passwordMySQL) {
         setSize(category);
         this.category = category;
         this.type = type;
@@ -21,6 +23,14 @@ public class Request {
         getLowestPrice();
 
 
+    }
+
+    public void getDatabase() {
+        try{
+            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/inventory", "User1", "ensf409");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setSize(String category) {
@@ -34,8 +44,6 @@ public class Request {
     }
 
     public void getLowestPrice(){
-
-
 
     }
 }
