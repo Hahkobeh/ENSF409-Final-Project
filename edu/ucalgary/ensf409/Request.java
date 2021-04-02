@@ -55,7 +55,7 @@ public class Request {
 
     public void storeData(){
         int numberOfEntries = 0;
-        String query1 = "SELECT COUNT(*) FROM " + category + " WHERE Type = '" + type + "';";
+        String query1 = "SELECT COUNT(*) FROM " + category + " WHERE type = '" + type + "';";
 
         try{
             Statement statement = dbConnect.createStatement();
@@ -74,44 +74,44 @@ public class Request {
         dataID = new String[numberOfEntries];
 
 
-        String query2 = "SELECT * FROM " + category + " WHERE Type = '" + type + "';";
+        String query2 = "SELECT * FROM " + category + " WHERE type = '" + type + "';";
 
         try{
             Statement statement = dbConnect.createStatement();
             ResultSet results = statement.executeQuery(query2);
             int row = 0;
-
             while(results.next()){
                 switch (category) {
-                    case "Chair" -> {
+                    case "Chair":
                         data[row][0] = results.getString("Legs").charAt(0);
                         data[row][1] = results.getString("Arms").charAt(0);
                         data[row][2] = results.getString("Seat").charAt(0);
                         data[row][3] = results.getString("Cushion").charAt(0);
                         priceData[row] = results.getInt("Price");
                         dataID[row] = results.getString("ID");
-                    }
-                    case "Desk" -> {
+                        break;
+                    case "Desk":
                         data[row][0] = results.getString("Legs").charAt(0);
                         data[row][1] = results.getString("Top").charAt(0);
                         data[row][2] = results.getString("Drawer").charAt(0);
                         priceData[row] = results.getInt("Price");
                         dataID[row] = results.getString("ID");
-                    }
-                    case "Filing" -> {
+                        break;
+                    case "Filing":
                         data[row][0] = results.getString("Rails").charAt(0);
                         data[row][1] = results.getString("Drawers").charAt(0);
                         data[row][2] = results.getString("Cabinet").charAt(0);
                         priceData[row] = results.getInt("Price");
                         dataID[row] = results.getString("ID");
-                    }
-                    case "Lamp" -> {
+                        break;
+                    case "Lamp":
                         data[row][0] = results.getString("Base").charAt(0);
                         data[row][1] = results.getString("Bulb").charAt(0);
                         priceData[row] = results.getInt("Price");
                         dataID[row] = results.getString("ID");
-                    }
-                    default -> throw new IllegalStateException("Unexpected value: " + category);
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + category);
                 }
                 row++;
             }
