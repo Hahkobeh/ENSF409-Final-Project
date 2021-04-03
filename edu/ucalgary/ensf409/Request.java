@@ -20,7 +20,7 @@ public class Request {
     private int possibleNumberOfItems;
     private int [][] chosenOptions;
     private int [] chosenOptionsPrice;
-
+	private String [] chosenID;
 
     public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) {
         this.category = category;
@@ -55,7 +55,40 @@ public class Request {
 
         }
         System.out.println("order passed");
+		
+		int countItems = 0;
+		
+		for(int i = 0;i<chosenOptions.length;i++){
+			for(int j=0;j<chosenOptions[i].length;j++){
+				if(chosenOptions[i][j] != 0){
+					countItems++;
+				}
+			}
+		}
+		
+		int [] itemList = new int[countItems];
+		chosenID = new String[countItems];
+		countItems = 0;
+		for(int i = 0;i<chosenOptions.length;i++){
+			for(int j=0;j<chosenOptions[i].length;j++){
+				if(chosenOptions[i][j] != 0){
+					itemList[countItems] = chosenOptions[i][j]-1;
+					countItems++;
+				}
+			}
+		}	
 
+		
+		for(int i = 0;i<itemList.length;i++){
+			chosenID[i] = itemList[i]; 
+			
+			
+			
+				}
+				
+			
+	}
+		
         //NEED TO ADD A REMOVE FUNCTION THAT TAKES ALL THE USED ITEMS AND GETS RID OF THEM
         //CHANGE CHOSENOPTIONS TO A STRING ARRAY THAT HOLDS THE USED DATAIDS
 
@@ -69,10 +102,11 @@ public class Request {
     public int[][] getChosenOptions() {
         return chosenOptions;
     }
-
+	
     public String getCategory() {
         return category;
     }
+	
 
     public String getType() {
         return type;
@@ -89,6 +123,11 @@ public class Request {
     public int getPossibleNumberOfItems() {
         return possibleNumberOfItems;
     }
+	
+	
+	
+	public String [] getChosenID{
+	}
 
 
     public void getDatabase() {
