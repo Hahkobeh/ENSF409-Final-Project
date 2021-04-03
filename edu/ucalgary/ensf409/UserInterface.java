@@ -1,4 +1,5 @@
 package edu.ucalgary.ensf409;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,8 +9,8 @@ import javax.swing.*;
  */
 
 public class UserInterface {
-    private static String USERNAME="";
-    private static String PASSWORD="";
+    private static String USERNAME="User1";
+    private static String PASSWORD="password";
     private JFrame frame;
 
    public UserInterface(){
@@ -74,6 +75,7 @@ public class UserInterface {
         public void actionPerformed(ActionEvent e) {
             //JOptionPane.showMessageDialog(new JFrame("Something went wrong"), "Shittt u cant do that");            
             Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), USERNAME,PASSWORD);
+            OrderForm newOrderForm = new OrderForm(newRequest);
         }
        });
    }
