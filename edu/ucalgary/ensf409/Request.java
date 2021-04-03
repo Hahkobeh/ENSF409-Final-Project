@@ -78,6 +78,27 @@ public class Request {
         return chosenOptions;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getNumberOfitemsDemanded() {
+        return numberOfitemsDemanded;
+    }
+
+    public int getPossibleNumberOfItems() {
+        return possibleNumberOfItems;
+    }
+
+
     public void getDatabase() {
         try{
             dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/inventory", usernameMySQL, passwordMySQL);
