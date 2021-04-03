@@ -73,7 +73,6 @@ public class UserInterface {
        
        requestButton.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
-            //JOptionPane.showMessageDialog(new JFrame("Something went wrong"), "Shittt u cant do that");            
             Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), USERNAME,PASSWORD);
             OrderForm newOrderForm = new OrderForm(newRequest);
         }
