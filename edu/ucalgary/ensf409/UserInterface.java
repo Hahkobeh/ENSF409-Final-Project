@@ -4,56 +4,69 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class UserInterface {
-   public static void main(String[] args) {    
-       JFrame frame = new JFrame("Inventory Manager");
-       frame.setSize(350, 220);
-       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Inventory Manager");
+        frame.setSize(600, 350);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-       JPanel panel = new JPanel();    
+        JPanel panel = new JPanel();
 
-       frame.add(panel);
+        frame.add(panel);
 
-       placeComponents(panel);
+        placeComponents(panel);
 
-       frame.setVisible(true);
-   }
+        frame.setVisible(true);
+    }
 
-   private static void placeComponents(JPanel panel) {
-       panel.setLayout(null);
+    private static void placeComponents(JPanel panel) {
+        panel.setLayout(null);
 
-       JLabel catLabel = new JLabel("Category");
-       catLabel.setBounds(10,20,80,25);
-       panel.add(catLabel);
+        JLabel header = new JLabel("IKEA INVENTORY", JLabel.CENTER);
+        header.setForeground(Color.BLUE);
+        header.setBounds(125,20,340,40);
+        header.setFont(new Font("Courier", Font.PLAIN, 40));
+        panel.add(header);
 
-       JTextField catText = new JTextField(20);
-       catText.setBounds(130,20,165,25);
-       panel.add(catText);
+        JLabel catLabel = new JLabel("Category");
+        catLabel.setBounds(10,80,160,40);
+        catLabel.setFont(new Font("Courier", Font.PLAIN, 30));
+        panel.add(catLabel);
 
-       JLabel typeLabel = new JLabel("Type");
-       typeLabel.setBounds(10,50,80,25);
-       panel.add(typeLabel);
+        JTextField catText = new JTextField(20);
+        catText.setBounds(260,80,165,40);
+        catText.setFont(new Font("Courier", Font.PLAIN, 22));
+        panel.add(catText);
 
-       JTextField typeText = new JTextField(20);
-       typeText.setBounds(130,50,165,25);
-       panel.add(typeText);
+        JLabel typeLabel = new JLabel("Type");
+        typeLabel.setBounds(10,135,80,40);
+        typeLabel.setFont(new Font("Courier", Font.PLAIN, 30));
+        panel.add(typeLabel);
 
-       JLabel numberLabel = new JLabel("Number of Items");
-       numberLabel.setBounds(10,80,120,25);
-       panel.add(numberLabel);
+        JTextField typeText = new JTextField(20);
+        typeText.setBounds(260,135,165,40);
+        panel.add(typeText);
+        typeText.setFont(new Font("Courier", Font.PLAIN, 22));
 
-       JTextField numberText = new JTextField(20);
-       numberText.setBounds(130,80,60,25);
-       panel.add(numberText);
+        JLabel numberLabel = new JLabel("Number of Items");
+        numberLabel.setFont(new Font("Courier", Font.PLAIN, 30));
+        numberLabel.setBounds(10,190,230,40);
+        panel.add(numberLabel);
 
-       JButton requestButton = new JButton("Request");
-       requestButton.setBounds(115, 130, 100, 25);
-       panel.add(requestButton);
+        JTextField numberText = new JTextField(20);
+        numberText.setBounds(260,190,60,40);
+        numberText.setFont(new Font("Courier", Font.PLAIN, 22));
+        panel.add(numberText);
 
-       requestButton.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e) {
-            Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), "User1","password");
-        }
-       });
-   }
+        JButton requestButton = new JButton("Request");
+        requestButton.setFont(new Font("Courier", Font.PLAIN, 22));
+        requestButton.setBounds(215, 245, 160, 50);
+        panel.add(requestButton);
+
+        requestButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), "User1","password");
+            }
+        });
+    }
 
 }
