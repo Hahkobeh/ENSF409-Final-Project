@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.File;
 
+
+/**
+ * Code written by: Jacob Artuso, Colin Christophe, Nicholas Knapton, and Brian Kramer
+ */
 public class OrderForm {
     private Request originalRequest;
     private FurnitureItem[] itemsOrdered;
