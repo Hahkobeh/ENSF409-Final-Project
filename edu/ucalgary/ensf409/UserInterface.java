@@ -58,6 +58,7 @@ public class UserInterface {
        panel.add(numberText);
 
        JButton requestButton = new JButton("Request");
+       requestButton.setFont(new Font("Courier", Font.PLAIN, 22));
        requestButton.setBounds(215, 245, 160, 50);
        panel.add(requestButton);
        
