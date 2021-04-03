@@ -12,38 +12,30 @@ import java.io.File;
 
 public class OrderForm {
     private Request originalRequest;
-    private  FurnitureItem[] itemsOrdered;
-    public FurnitureItem[] getItemsOrdered() {
-        return itemsOrdered;
-    }
-    public Request getOriginalRequest() {
-        return originalRequest;
-    }
-    public void setOriginalRequest(Request originalRequest) {
-        this.originalRequest = originalRequest;
-    }
-    public void setItemsOrdered(FurnitureItem[] itemsOrdered) {
-        this.itemsOrdered = itemsOrdered;
-    }
-    private int getTotalPrice(){
-        return 5;
-    }
-    /*
+    
     public void generateOrderFormat(){
 
         StringBuilder order = new StringBuilder();
         order.append("Furniture Order Form\n\nFaculty Name:\nContact:\nDate:\n\nOriginal Request:");
-        order.append(originalRequest.getType() +" "+ originalRequest.getCategory() +", " + originalRequest.getNumberOfItems());
+        order.append(originalRequest.getType() +" "+ originalRequest.getCategory() +", " + originalRequest.getNumberOfitemsDemanded());
         order.append("\n\nItems Ordered\n");
        
-        for(int i = 0 ; i < originalRequest.getNumberOfItems(); i++){
-            order.append("ID: " + this.itemsOrdered[i].getIDNumber()+ "\n");
+        String[] tempID = originalRequest.getChosenID();
+
+        for(int i = 0 ; i < tempID.length; i++){
+            order.append("ID: " + tempID[i] + "\n");
             
         }
-        order.append("\nTotalPrice: $" + getTotalPrice());
+        int[] temp = originalRequest.getChosenOptionsPrice();
+        int b = 0;
+        for(int i =0; i < temp.length; i++){
+            b = b + temp[i];
+        }
+
+        order.append("\nTotalPrice: $" + b);
         
         try{
-            File obj = new File("orderForm.txt");
+            File obj = new File("orderform.txt");
             FileWriter fw = new FileWriter(obj);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(order.toString());
@@ -61,7 +53,7 @@ public class OrderForm {
 
 
     }
-    */
-/*
+    
+
 }
-*/
+
