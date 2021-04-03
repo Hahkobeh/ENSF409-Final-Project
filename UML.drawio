@@ -1,76 +1,74 @@
 <mxfile>
     <diagram id="2HQJwIc4DXmZJdzYK_6-" name="Page-1">
-        <mxGraphModel dx="838" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1054" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#182E3E" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="Request" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                <mxCell id="2" value="Request" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#EEEEEE;strokeColor=#FFFFFF;fontColor=#1A1A1A;" parent="1" vertex="1">
                     <mxGeometry x="30" y="30" width="310" height="690" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="- dbConnect: Connection&#10;- category: String&#10;- type: String&#10;- size: int&#10;- numberOfEntries: int  = 0&#10;- usernameMySQL: String&#10;- passwordMySQL: String&#10;- data: char [ ] [ ]&#10;- priceData: int [ ]&#10;- dataID: String [ ] &#10;- numberOfitemsDemanded: int&#10;- possibleNumberOfItems: int&#10;- chosenOptions: int [ ] [ ]&#10;- chosenOptionsPrice: int [ ] &#10;- chosenID: String [ ]" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#2a2a2a;" vertex="1" parent="2">
+                <mxCell id="3" value="- dbConnect: Connection&#10;- category: String&#10;- type: String&#10;- size: int&#10;- numberOfEntries: int  = 0&#10;- usernameMySQL: String&#10;- passwordMySQL: String&#10;- data: char [ ] [ ]&#10;- priceData: int [ ]&#10;- dataID: String [ ] &#10;- numberOfitemsDemanded: int&#10;- possibleNumberOfItems: int&#10;- chosenOptions: int [ ] [ ]&#10;- chosenOptionsPrice: int [ ] &#10;- chosenID: String [ ]" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#EEEEEE;fontColor=#1A1A1A;" parent="2" vertex="1">
                     <mxGeometry y="26" width="310" height="224" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="2">
+                <mxCell id="4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;labelBackgroundColor=#182E3E;strokeColor=#FFFFFF;fontColor=#1A1A1A;" parent="2" vertex="1">
                     <mxGeometry y="250" width="310" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="+ Request(String category, String type, &#10;               int numberOfitemsDemanded, &#10;               String usernameMySQL, &#10;               String passwordMySQL)&#10;+ getChosenOptionsPrice(): int [ ]&#10;+ getChosenOptions(): int [ ] [ ]&#10;+ getCategory(): String&#10;+ getType(): String&#10;+ getSize(): int &#10;+ getNumberofItemsDemanded(): int&#10;+ getPossibleNumberOfItems: int&#10;+ getChosenID: String [ ]&#10;+ getDatabase(): void&#10;+ setSize(String category): void&#10;+ storeData(): void&#10;+ totalItemsThatCanBeMade(): void&#10;+ searchForLowest(int itemNumber): void&#10;+ findPrice(int [ ] [ ] allPossible, &#10;                  int numberOfPossibleCombinations,&#10;                  int [ ] chosenOption, int itemNumber): int&#10;+ removeTakenComponents(int [ ] array): void&#10;+ removePriceFromUsed(int [ ] array): void&#10;+ possibleChoice(int [] array): boolean&#10;+ priceOfCombination(int [ ] array): int&#10;+ fillCombinationArray(int [] [] allPossible, &#10;                                    int [] options): void&#10;+ combinationGenerator(int [][] allPossible, int [] options,&#10;                                        int [] toAdd, int first, int last,&#10;                                        int index, int r, int position): int&#10;+ factorial(int n): int&#10;" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#2a2a2a;" vertex="1" parent="2">
+                <mxCell id="5" value="+ Request(String category, String type, &#10;               int numberOfitemsDemanded, &#10;               String usernameMySQL, &#10;               String passwordMySQL)&#10;+ getChosenOptionsPrice(): int [ ]&#10;+ getChosenOptions(): int [ ] [ ]&#10;+ getCategory(): String&#10;+ getType(): String&#10;+ getSize(): int &#10;+ getNumberofItemsDemanded(): int&#10;+ getPossibleNumberOfItems: int&#10;+ getChosenID: String [ ]&#10;+ getDatabase(): void&#10;+ setSize(String category): void&#10;+ storeData(): void&#10;+ totalItemsThatCanBeMade(): void&#10;+ searchForLowest(int itemNumber): void&#10;+ findPrice(int [ ] [ ] allPossible, &#10;                  int numberOfPossibleCombinations,&#10;                  int [ ] chosenOption, int itemNumber): int&#10;+ removeTakenComponents(int [ ] array): void&#10;+ removePriceFromUsed(int [ ] array): void&#10;+ possibleChoice(int [] array): boolean&#10;+ priceOfCombination(int [ ] array): int&#10;+ fillCombinationArray(int [] [] allPossible, &#10;                                    int [] options): void&#10;+ combinationGenerator(int [][] allPossible, int [] options,&#10;                                        int [] toAdd, int first, int last,&#10;                                        int index, int r, int position): int&#10;+ factorial(int n): int&#10;" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#EEEEEE;fontColor=#1A1A1A;" parent="2" vertex="1">
                     <mxGeometry y="258" width="310" height="432" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="OrderForm" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                <mxCell id="6" value="OrderForm" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#EEEEEE;strokeColor=#FFFFFF;fontColor=#1A1A1A;" parent="1" vertex="1">
                     <mxGeometry x="580" y="110" width="200" height="110" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="- originalRequest: Request" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#2a2a2a;" vertex="1" parent="6">
+                <mxCell id="7" value="- originalRequest: Request" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#EEEEEE;fontColor=#1A1A1A;" parent="6" vertex="1">
                     <mxGeometry y="26" width="200" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="6">
+                <mxCell id="8" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;labelBackgroundColor=#182E3E;strokeColor=#FFFFFF;fontColor=#1A1A1A;" parent="6" vertex="1">
                     <mxGeometry y="52" width="200" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="+ OrderForm(Request request)&#10;+ generateOrderForm(): void&#10;" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#2a2a2a;" vertex="1" parent="6">
+                <mxCell id="9" value="+ OrderForm(Request request)&#10;+ generateOrderForm(): void&#10;" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#EEEEEE;fontColor=#1A1A1A;" parent="6" vertex="1">
                     <mxGeometry y="60" width="200" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="14" value="UserInterface" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="550" y="370" width="230" height="114" as="geometry"/>
+                <mxCell id="14" value="UserInterface" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#EEEEEE;strokeColor=#FFFFFF;fontColor=#1A1A1A;" parent="1" vertex="1">
+                    <mxGeometry x="470" y="370" width="230" height="114" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" value="- USERNAME:String&#10;- PASSWORD: String&#10;- frame: JFrame&#10;" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#2a2a2a;" vertex="1" parent="14">
+                <mxCell id="15" value="- USERNAME:String&#10;- PASSWORD: String&#10;- frame: JFrame&#10;" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#EEEEEE;fontColor=#1A1A1A;" parent="14" vertex="1">
                     <mxGeometry y="26" width="230" height="54" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="14">
+                <mxCell id="16" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;labelBackgroundColor=#182E3E;strokeColor=#FFFFFF;fontColor=#1A1A1A;" parent="14" vertex="1">
                     <mxGeometry y="80" width="230" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="- placeComponents(JPanel panel): void" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#2a2a2a;" vertex="1" parent="14">
+                <mxCell id="17" value="- placeComponents(JPanel panel): void" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fillColor=#EEEEEE;fontColor=#1A1A1A;" parent="14" vertex="1">
                     <mxGeometry y="88" width="230" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.018;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7" target="2">
+                <mxCell id="21" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.018;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=#182E3E;strokeColor=#FFFFFF;fontColor=#FFFFFF;" parent="1" source="7" target="2" edge="1">
                     <mxGeometry x="-1" y="3" relative="1" as="geometry">
                         <mxPoint x="390" y="370" as="sourcePoint"/>
                         <mxPoint x="550" y="370" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="22" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;exitX=0.343;exitY=-0.027;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="14" target="3">
-                    <mxGeometry x="-1" relative="1" as="geometry">
-                        <mxPoint x="370" y="380" as="sourcePoint"/>
-                        <mxPoint x="530" y="380" as="targetPoint"/>
+                <mxCell id="25" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;entryX=0.997;entryY=0.023;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.217;exitY=-0.009;exitDx=0;exitDy=0;exitPerimeter=0;labelBackgroundColor=#182E3E;strokeColor=#FFFFFF;fontColor=#FFFFFF;" edge="1" parent="1" source="14" target="2">
+                    <mxGeometry x="0.0263" y="-5" width="160" relative="1" as="geometry">
+                        <mxPoint x="530" y="410" as="sourcePoint"/>
+                        <mxPoint x="690" y="410" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="629" y="260"/>
+                            <mxPoint x="520" y="250"/>
+                            <mxPoint x="440" y="250"/>
+                            <mxPoint x="430" y="240"/>
+                            <mxPoint x="430" y="50"/>
                         </Array>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="23" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="22">
-                    <mxGeometry x="-1" relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="24" value="name" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;entryX=1.025;entryY=0.12;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="14" target="6">
-                    <mxGeometry x="-1" relative="1" as="geometry">
-                        <mxPoint x="550" y="310" as="sourcePoint"/>
-                        <mxPoint x="710" y="310" as="targetPoint"/>
+                <mxCell id="26" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1.02;entryY=0.1;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=#182E3E;strokeColor=#FFFFFF;fontColor=#FFFFFF;" edge="1" parent="1" source="14" target="6">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="530" y="410" as="sourcePoint"/>
+                        <mxPoint x="820" y="120" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="722" y="310"/>
-                            <mxPoint x="810" y="310"/>
-                            <mxPoint x="810" y="123"/>
+                            <mxPoint x="585" y="320"/>
+                            <mxPoint x="820" y="320"/>
+                            <mxPoint x="820" y="121"/>
                         </Array>
                     </mxGeometry>
-                </mxCell>
-                <mxCell id="25" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="24">
-                    <mxGeometry x="-1" relative="1" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
