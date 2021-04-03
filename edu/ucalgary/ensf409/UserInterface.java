@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  *  TODODOODODODODODO
  * 
- *  Add catch for if user trys to input without any values
+ *  Add catch for if user trys to input without any values or illegal values
  * 
  *  Figure out how to make sure if an order cannot be made we dont make an order form.
  * 
