@@ -62,7 +62,7 @@ public class Request {
             }
 
         }
-        System.out.println("order passed");
+
 		
 		int countItems = 0;
 		
@@ -88,11 +88,12 @@ public class Request {
 
 		
 		for(int i = 0;i<itemList.length;i++){
-			chosenID[i] = itemList[i]; 
+			chosenID[i] = dataID[itemList[i]];
 			
 			
 			
 				}
+
 				
 			
 	}
@@ -101,7 +102,7 @@ public class Request {
         //CHANGE CHOSENOPTIONS TO A STRING ARRAY THAT HOLDS THE USED DATAIDS
 
 
-    }
+
 
     public int[] getChosenOptionsPrice() {
         return chosenOptionsPrice;
@@ -131,12 +132,11 @@ public class Request {
     public int getPossibleNumberOfItems() {
         return possibleNumberOfItems;
     }
-	
-	
-	
-	public String [] getChosenID{
-	}
 
+
+    public String[] getChosenID() {
+        return chosenID;
+    }
 
     public void getDatabase() {
         try{
