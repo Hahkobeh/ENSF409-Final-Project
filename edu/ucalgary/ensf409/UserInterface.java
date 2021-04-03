@@ -3,19 +3,27 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * Code written by: Jacob Artuso, Colin Christophe, Nicholas Knapton, and Brian Kramer
+ */
+
 public class UserInterface {
-   public static void main(String[] args) {    
-       JFrame frame = new JFrame("Inventory Manager");
-       frame.setSize(600, 350);
-       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    private static String USERNAME="";
+    private static String PASSWORD="";
+    private JFrame frame;
 
-       JPanel panel = new JPanel();    
+   public UserInterface(){
+    this.frame = new JFrame("Inventory Manager");
+    frame.setSize(600, 350);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-       frame.add(panel);
+    JPanel panel = new JPanel();    
 
-       placeComponents(panel);
+    frame.add(panel);
 
-       frame.setVisible(true);
+    placeComponents(panel);
+
+    frame.setVisible(true);
    }
 
    private static void placeComponents(JPanel panel) {
@@ -64,9 +72,9 @@ public class UserInterface {
        
        requestButton.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
-            Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), "User1","password");
+            //JOptionPane.showMessageDialog(new JFrame("Something went wrong"), "Shittt u cant do that");            
+            Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), USERNAME,PASSWORD);
         }
        });
    }
-
 }

@@ -1,8 +1,16 @@
 package edu.ucalgary.ensf409;
 
+/**
+ * Code written by: Jacob Artuso, Colin Christophe, Nicholas Knapton, and Brian Kramer
+ */
+
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 
 import java.util.*;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import java.sql.*;
 
 public class Request {
@@ -41,7 +49,7 @@ public class Request {
         }else if(possibleNumberOfItems < numberOfitemsDemanded){
             chosenOptions = new int[possibleNumberOfItems][size];
             chosenOptionsPrice = new int[numberOfitemsDemanded];
-            System.out.println("not enough components only "+ possibleNumberOfItems + "could be made");
+            JOptionPane.showMessageDialog(new JFrame(), "Not enough components only "+ possibleNumberOfItems + "could be made");
             for(int z = 0; z < possibleNumberOfItems; z++){
                 searchForLowest(z);
             }
