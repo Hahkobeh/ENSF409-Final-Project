@@ -10,9 +10,10 @@ import javax.swing.*;
 public class UserInterface {
     private static String USERNAME="";
     private static String PASSWORD="";
+    private JFrame frame;
 
    public UserInterface(){
-    JFrame frame = new JFrame("Inventory Manager");
+    this.frame = new JFrame("Inventory Manager");
     frame.setSize(600, 350);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -71,9 +72,9 @@ public class UserInterface {
        
        requestButton.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
+            //JOptionPane.showMessageDialog(new JFrame("Something went wrong"), "Shittt u cant do that");            
             Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), USERNAME,PASSWORD);
         }
        });
    }
-
 }
