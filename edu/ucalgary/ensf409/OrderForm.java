@@ -12,7 +12,11 @@ import java.io.File;
 
 public class OrderForm {
     private Request originalRequest;
-    
+
+    public OrderForm(Request request){
+        this.originalRequest = request;
+    }
+
     public void generateOrderFormat(){
 
         StringBuilder order = new StringBuilder();
