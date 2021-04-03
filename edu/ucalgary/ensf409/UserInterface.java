@@ -5,10 +5,27 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * Code written by: Jacob Artuso, Colin Christophe, Nicholas Knapton, and Brian Kramer
+ *  TODODOODODODODODO
+ * 
+ *  Add catch for if user trys to input without any values
+ * 
+ *  Figure out how to make sure if an order cannot be made we dont make an order form.
+ * 
+ * 
  */
 
+/**
+ * Code written by: Jacob Artuso, Colin Christophe, Nicholas Knapton, and Brian Kramer
+*/
+
+/**
+ *  UserInterface creates a UI using java swing with three text boxes to input information for Category, Type and Number of items wanted. It then creates a
+ *  Request object which trys to complete this request and if successful it hands it to OrderForm to have a order form created. If not successful then it
+ *  opens small dialog box with suggested manufacturers to order from.
+ */
 public class UserInterface {
+
+    // Username and password for the database to be connected to.
     private static String USERNAME="User1";
     private static String PASSWORD="password";
     private JFrame frame;

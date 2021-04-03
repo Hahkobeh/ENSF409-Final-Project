@@ -5,8 +5,13 @@ Document as you go so we dont need to go back and do it.
 <br>
 After creating every class write a unit test in the UnitTests.java file.
 
-## To Do:
-View all items to do or in progress on the Projects tab on github repo.
+## LOOK AT BEFORE SUBMITTING:
+https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1339806/View?filters=unread
+https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1337111/View
+https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1336397/View
+https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1336998/View
+https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1333416/View
+
 <br>
 
 ## Folder Structure:
