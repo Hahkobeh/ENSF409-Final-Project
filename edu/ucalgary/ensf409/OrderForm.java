@@ -20,7 +20,7 @@ public class OrderForm {
     public void generateOrderFormat(){
 
         StringBuilder order = new StringBuilder();
-        order.append("Furniture Order Form\n\nFaculty Name:\nContact:\nDate:\n\nOriginal Request:");
+        order.append("Furniture Order Form\n\nFaculty Name:\nContact:\nDate:\n\nOriginal Request: ");
         order.append(originalRequest.getType() +" "+ originalRequest.getCategory() +", " + originalRequest.getNumberOfitemsDemanded());
         order.append("\n\nItems Ordered\n");
        
@@ -36,7 +36,7 @@ public class OrderForm {
             b = b + temp[i];
         }
 
-        order.append("\nTotalPrice: $" + b);
+        order.append("\nTotal Price: $" + b);
         
         try{
             File obj = new File("orderform.txt");
