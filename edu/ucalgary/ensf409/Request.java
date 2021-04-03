@@ -36,6 +36,8 @@ public class Request {
 
         if(possibleNumberOfItems == 0){
             System.out.println("failed");
+
+            //FIX THIS
         }else if(possibleNumberOfItems < numberOfitemsDemanded){
             chosenOptions = new int[possibleNumberOfItems][size];
             chosenOptionsPrice = new int[numberOfitemsDemanded];
@@ -55,6 +57,7 @@ public class Request {
         System.out.println("order passed");
 
         //NEED TO ADD A REMOVE FUNCTION THAT TAKES ALL THE USED ITEMS AND GETS RID OF THEM
+        //CHANGE CHOSENOPTIONS TO A STRING ARRAY THAT HOLDS THE USED DATAIDS
 
 
     }

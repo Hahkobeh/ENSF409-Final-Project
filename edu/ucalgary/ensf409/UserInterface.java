@@ -51,7 +51,7 @@ public class UserInterface {
 
        requestButton.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
-            //Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()));
+            Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), "User1","password");
         }
        });
    }
