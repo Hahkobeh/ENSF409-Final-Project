@@ -1,6 +1,5 @@
 package edu.ucalgary.ensf409;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedWriter;
@@ -45,8 +44,7 @@ public class OrderForm {
             bw.write(order.toString());
             bw.flush();
             bw.close();
-        }
-           
+        }    
         catch(FileNotFoundException ex){
             System.out.print("unable to open file");
 
@@ -54,10 +52,5 @@ public class OrderForm {
         catch(IOException ex){
             System.out.print("error reading file");
         }   
-
-
     }
-    
-
 }
-
