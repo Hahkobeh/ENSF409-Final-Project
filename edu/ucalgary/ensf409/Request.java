@@ -5,6 +5,7 @@ package edu.ucalgary.ensf409;
  */
 
 
+
 import java.util.*;
 
 import javax.swing.JFrame;
@@ -12,7 +13,12 @@ import javax.swing.JOptionPane;
 
 import java.sql.*;
 
+/**
+ *
+ */
 public class Request{
+
+
     private Connection dbConnect;
     private String category;
     private String type;
@@ -28,6 +34,17 @@ public class Request{
     private int [][] chosenOptions;
     private int [] chosenOptionsPrice;
 	private String [] chosenID;
+
+    /**
+     *
+     * @param category Category is the type of object being requested. (e.g. chair, lamp, etc...)
+     * @param type Type is the type of furniture item that is being requested. (e.g. mesh)
+     * @param numberOfitemsDemanded Number of items that are being demanded.
+     * @param usernameMySQL
+     * @param passwordMySQL
+     * @throws Exception
+     */
+
 
     public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) throws Exception {
         this.category = category;
@@ -136,6 +153,9 @@ public class Request{
         return chosenID;
     }
 
+    /**
+     * Connects to database
+     */
     public void getDatabase() {
         try{
             dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/inventory", usernameMySQL, passwordMySQL);
@@ -144,7 +164,11 @@ public class Request{
         }
     }
 
+    /**
+     * Sets size, which is the number of parts that an item will need. (e.g. 4 parts for a chair)
+     */
     public void setSize(String category) {
+
         switch (category) {
             case "Chair": this.size = 4;
             break;
@@ -158,6 +182,9 @@ public class Request{
         }
     }
 
+    /**
+     * Reads from the database and stores the Y/N values into a 2D array for the item that is being ordered.
+     */
     public void storeData(){
         String query1 = "SELECT COUNT(*) FROM " + category + " WHERE type = '" + type + "';";
 
@@ -229,8 +256,9 @@ public class Request{
 
     }
 
-    //need a function that checks if possible (enough Y-s in each column)
-
+    /**
+     * Calculates the total amount of items that can be made by checking the amount of Y's in each column.
+     */
     public void totalItemsThatCanBeMade(){
         int possibleNumberOfItems = 10000;
         int temp;
@@ -252,6 +280,10 @@ public class Request{
         this.possibleNumberOfItems = possibleNumberOfItems;
     }
 
+    /**
+     * Searches for the lowest possible price to make one item.
+     * @param itemNumber itemNumber is the number of item of the item that is currently being made.
+     */
     public void searchForLowest(int itemNumber){
         int [] chosenOption = new int[numberOfEntries];
         int [] options = new int[numberOfEntries];
@@ -264,25 +296,21 @@ public class Request{
             numberOfPossibleCombinations += ( factorial(numberOfEntries) )/( factorial(temp)*factorial(numberOfEntries - temp));
         }
 
-
-
         int [][] allPossible = new int[numberOfPossibleCombinations][numberOfEntries];
         fillCombinationArray(allPossible, options);
-
-
-        //need a function that will be called at the end to remove all used database members
-
-
-
-
-        //I need to find cheapest combination (make note of which
-        //furniture items have been used), then set used parts to N and set price of the furniture item
-        //that has been used to 0 then find next cheapest again.
-
 
         chosenOptionsPrice[itemNumber] = findPrice(allPossible, numberOfPossibleCombinations, chosenOption, itemNumber);
 
     }
+
+    /**
+     * findPrice contains the algorithm which finds the lowest possible price for a given amount of combinations.
+     * @param allPossible 2D array of all the possible combinations.
+     * @param numberOfPossibleCombinations The number of possible combinations, how many rows in the allPossible array.
+     * @param chosenOption The chosen choice for one item that the order will fulfill.
+     * @param itemNumber itemNumber is the number of item of the item that is currently being made.
+     * @return Returns the price of the item.
+     */
 
     public int findPrice(int  [][] allPossible, int numberOfPossibleCombinations, int [] chosenOption, int itemNumber ){
         int price = 99999;
@@ -304,6 +332,11 @@ public class Request{
 
     }
 
+    /**
+     * Removes the used components from the 2D array (used when multiple items are being produced).
+     * @param array An array which contains the furniture items that will be used.
+     */
+
     public void removeTakenComponents(int [] array){
         for(int u = 0; u < size; u++){
             int q = 0;
@@ -318,6 +351,11 @@ public class Request{
 
     }
 
+    /**
+     * Sets the price of the used items to zero. (used when multiple items are being produced).
+     * @param array An array which contains the furniture items that will be used.
+     */
+
     public void removePriceFromUsed(int [] array){
         int q = 0;
         while(q < array.length && array[q] != 0){
@@ -325,6 +363,12 @@ public class Request{
             q++;
         }
     }
+
+    /**
+     * Determines whether the chosen combination can produce a furniture item.
+     * @param array An array which contains a combination of furniture items.
+     * @return returns true if an item can be more, false otherwise
+     */
 
     public boolean possibleChoice(int [] array){
         boolean [] test = new boolean[size];
@@ -351,6 +395,12 @@ public class Request{
         return true;
 
     }
+
+    /**
+     * Determines the price of a specific combination.
+     * @param array An array which contains a combination of furniture items.
+     * @return Returns price of that item.
+     */
     public int priceOfCombination(int [] array){
         int price = 0;
         int q = 0;
@@ -361,10 +411,11 @@ public class Request{
         return price;
     }
 
-
-
-
-
+    /**
+     * Creates the 2D array containing all possible combinations of furniture items.
+     * @param allPossible A 2D array of all the possible combinations.
+     * @param options A list of the furniture items that can be used.
+     */
     public void fillCombinationArray(int [][] allPossible, int [] options){
         int position = 0;
         for(int r = 1; r <= size; r++){
@@ -374,6 +425,18 @@ public class Request{
 
     }
 
+    /**
+     * Fill the 2D array allPossible with all the possible combinations listed in options.
+     * @param allPossible A 2D array of all the possible combinations.
+     * @param options A list of the furniture items that can be used.
+     * @param toAdd Option that will be added next to the array.
+     * @param first Option that will added first.
+     * @param last The last option that will be added
+     * @param index Where the toAdd option will be added.
+     * @param r r is the size of the combination that is currently being made.
+     * @param position position is the position that is being used in the 2D array.
+     * @return Returns the position value so that it can be reused for higher r levels.
+     */
     public int combinationGenerator(int [][] allPossible, int [] options, int [] toAdd, int first, int last, int index, int r, int position) {
         if (index == r) {
             for (int j = 0; j < r; j++) {
@@ -390,6 +453,12 @@ public class Request{
         }
         return position;
     }
+
+    /**
+     * Calculates the factorial of a given number n.
+     * @param n n is the number that the factorial is being calculated from
+     * @return Returns the value of the factorial.
+     */
 
     public int factorial(int n){
         int temp = 1;
@@ -417,11 +486,7 @@ public class Request{
         
     }
 
-    //need a function that will be called at the end to remove all used database members
 
-    //I need to find cheapest combination (make note of which
-    //furniture items have been used), then set used parts to N and set price of the furniture item
-    //that has been used to 0 then find next cheapest again.
     public String ManuSuggest(){
         String out = "Order cannot be fulfilled with current inventory. Suggested Manufacturers for "+ category+"s are: \n";
         String query2 = "SELECT DISTINCT ManuID FROM " + category;
