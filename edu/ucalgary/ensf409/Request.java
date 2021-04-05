@@ -529,5 +529,5 @@ public String ManuSuggest(){
          
         }
     }
-}
+}//end of class declaration
 
