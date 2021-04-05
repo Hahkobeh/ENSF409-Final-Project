@@ -400,6 +400,12 @@ public class Request{
         return temp;
     }
 
+ /**
+ * this function removes the purchased  entries from
+ * the sql inventory
+ * 
+ * 
+ */
     public void Remove(){
         
         for(int i=0;i < chosenID.length;i++){
