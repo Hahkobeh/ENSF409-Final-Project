@@ -407,11 +407,9 @@ public class Request {
          String query = "DELETE FROM " + category + " WHERE ID = '" + chosenID[i] + "';";
          
         try{
-            Statement statement = dbConnect.createStatement();
+            PreparedStatement statement = dbConnect.prepareStatement(query);
 
-            ResultSet result = statement.executeQuery(query);  
-            result.close();
-
+            int result = statement.executeUpdate(query);  
         }catch(SQLException e){
             e.printStackTrace();
         }
