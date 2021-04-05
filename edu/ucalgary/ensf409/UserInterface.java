@@ -26,8 +26,8 @@ import javax.swing.*;
 public class UserInterface {
 
     // Username and password for the database to be connected to.
-    private static String USERNAME= "root";
-    private static String PASSWORD="h8te45";
+    private static String USERNAME="User1";
+    private static String PASSWORD="password";
     private JFrame frame;
 
    public UserInterface(){
