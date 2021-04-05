@@ -18,6 +18,7 @@ public class Request{
     private String type;
     private int size;
     private int numberOfEntries = 0;
+    private Boolean partialOrder;
     private String usernameMySQL;
     private String passwordMySQL;
     private char [][] data;
@@ -29,10 +30,11 @@ public class Request{
     private int [] chosenOptionsPrice;
 	private String [] chosenID;
 
-    public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) throws Exception {
+    public Request(String category, String type, int numberOfitemsDemanded, Boolean partialOrder, String usernameMySQL, String passwordMySQL) throws Exception {
         this.category = category;
         this.type = type;
         this.numberOfitemsDemanded = numberOfitemsDemanded;
+        this.partialOrder = partialOrder;
         this.usernameMySQL = usernameMySQL;
         this.passwordMySQL = passwordMySQL;
         setSize(category);
@@ -364,7 +366,9 @@ public class Request{
 
 
 
-
+    /**
+     * 
+     */
     public void fillCombinationArray(int [][] allPossible, int [] options){
         int position = 0;
         for(int r = 1; r <= size; r++){
