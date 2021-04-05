@@ -4,7 +4,6 @@ package edu.ucalgary.ensf409;
  * Code written by: Jacob Artuso, Colin Christophe, Nicholas Knapton, and Brian Kramer
  */
 
-
 import java.util.*;
 
 import javax.swing.JFrame;

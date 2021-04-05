@@ -72,35 +72,42 @@ public class UserInterface {
        typeLabel.setFont(new Font("Courier", Font.PLAIN, 30));
        panel.add(typeLabel);
 
+       // Places Text Field for Type
        JTextField typeText = new JTextField(20);
        typeText.setBounds(270,135,165,40);
        panel.add(typeText);
        typeText.setFont(new Font("Courier", Font.PLAIN, 22));
 
+       // Label for number of items
        JLabel numberLabel = new JLabel("Number of Items");
        numberLabel.setFont(new Font("Courier", Font.PLAIN, 30));
        numberLabel.setBounds(10,190,230,40);
        panel.add(numberLabel);
 
+       // Text Field for number of items
        JTextField numberText = new JTextField(20);
        numberText.setBounds(270,190,60,40);
        numberText.setFont(new Font("Courier", Font.PLAIN, 22));
        panel.add(numberText);
 
+       // Label for Partial Orders
        JLabel fillLabel = new JLabel("Fill Partial Order?");
        fillLabel.setFont(new Font("Courier", Font.PLAIN, 30));
        fillLabel.setBounds(10,245,240,40);
        panel.add(fillLabel);
 
+       // Check Box for partial orders
        JCheckBox fillBox = new JCheckBox();
        fillBox.setBounds(270,245,40,40);
        panel.add(fillBox);
 
+       // Request Button
        JButton requestButton = new JButton("Request");
        requestButton.setFont(new Font("Courier", Font.PLAIN, 22));
        requestButton.setBounds(220, 295, 160, 50);
        panel.add(requestButton);
        
+       // Action listener for the Button where when pressed makes a request and decides to fill or not.
        requestButton.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
             if(Integer.parseInt(numberText.getText()) >= 0){
@@ -111,7 +118,6 @@ public class UserInterface {
                     }else{
                         newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), false, USERNAME,PASSWORD);
                     }
-                     
                     OrderForm newOrderForm = new OrderForm(newRequest);
                 }catch(Exception error){
 
