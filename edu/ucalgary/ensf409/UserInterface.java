@@ -1,12 +1,17 @@
+/**
+ @author Colin Christophe <a href="mailto:colin.christophe@ucalgary.ca">colin.christophe@ucalgary.ca</a>
+         Nick Knapton <a href="mailto:nick.knapton@ucalgary.ca">nick.knapton@ucalgary.ca</a>
+         Brian Kramer <a href="mailto:brian.kramer@ucalgary.ca">brian.kramer@ucalgary.ca</a>
+         tucan jake <a href="mailto:tucan.jake@ucalgary.ca">tucan.jake@ucalgary.ca</a>
+ @version       1.5
+ @since         1.0
+ */
 package edu.ucalgary.ensf409;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/**
- * Code written by: Jacob Artuso, Colin Christophe, Nicholas Knapton, and Brian Kramer
-*/
 
 /**
  *  UserInterface creates a UI using java swing with three text boxes to input information for Category, Type and Number of items wanted. It then creates a
