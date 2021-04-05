@@ -47,12 +47,8 @@ public class OrderForm {
             order.append("ID: " + tempID[i] + "\n");
             
         }
-        int[] price = originalRequest.getChosenOptionsPrice(); //creates an int[] that contains the price of each object of furniture it used to fufill the order.
-        int totalPrice = 0;
-        for(int i =0; i < price.length; i++){   //goes through the price array and adds all the prices together to get the total Price.
-            totalPrice = totalPrice + price[i];
-        }
-
+    
+        totalPrice = originalRequest.getPrice();
         order.append("\nTotal Price: $" + totalPrice);
         
         try{
