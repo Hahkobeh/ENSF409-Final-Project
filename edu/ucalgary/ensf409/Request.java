@@ -190,13 +190,13 @@ public class Request{
      */
     public void setSize(String category) {
         switch (category) {
-            case "Chair": this.size = 4;
+            case "chair": this.size = 4;
             break;
-            case "Desk": this.size = 3;
+            case "desk": this.size = 3;
             break;
-            case "Lamp": this.size = 2;
+            case "lamp": this.size = 2;
             break;
-            case "Filing": this.size = 3;
+            case "filing": this.size = 3;
             break;
             default: System.err.println("Invalid Category");
         }
@@ -233,7 +233,7 @@ public class Request{
             int row = 0;
             while(results.next()){
                 switch (category) {
-                    case "Chair":
+                    case "chair":
                         data[row][0] = results.getString("Legs").charAt(0);
                         data[row][1] = results.getString("Arms").charAt(0);
                         data[row][2] = results.getString("Seat").charAt(0);
@@ -241,21 +241,21 @@ public class Request{
                         priceData[row] = results.getInt("Price");
                         dataID[row] = results.getString("ID");
                         break;
-                    case "Desk":
+                    case "desk":
                         data[row][0] = results.getString("Legs").charAt(0);
                         data[row][1] = results.getString("Top").charAt(0);
                         data[row][2] = results.getString("Drawer").charAt(0);
                         priceData[row] = results.getInt("Price");
                         dataID[row] = results.getString("ID");
                         break;
-                    case "Filing":
+                    case "filing":
                         data[row][0] = results.getString("Rails").charAt(0);
                         data[row][1] = results.getString("Drawers").charAt(0);
                         data[row][2] = results.getString("Cabinet").charAt(0);
                         priceData[row] = results.getInt("Price");
                         dataID[row] = results.getString("ID");
                         break;
-                    case "Lamp":
+                    case "lamp":
                         data[row][0] = results.getString("Base").charAt(0);
                         data[row][1] = results.getString("Bulb").charAt(0);
                         priceData[row] = results.getInt("Price");
