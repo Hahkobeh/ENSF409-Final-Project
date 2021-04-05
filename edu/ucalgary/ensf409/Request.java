@@ -62,20 +62,21 @@ public class Request{
         }
 
 		
-		int countItems = 0;
+			
+		int countItems = 0; 
 		
-		for(int i = 0;i<chosenOptions.length;i++){
-			for(int j=0;j<chosenOptions[i].length;j++){
+		for(int i = 0;i<chosenOptions.length;i++){  // loop through the chosenOption array and count all the items
+			for(int j=0;j<chosenOptions[i].length;j++){ 
 				if(chosenOptions[i][j] != 0){
 					countItems++;
 				}
 			}
 		}
 		
-		int [] itemList = new int[countItems];
+		int [] itemList = new int[countItems]; 
 		chosenID = new String[countItems];
 		countItems = 0;
-		for(int i = 0;i<chosenOptions.length;i++){
+		for(int i = 0;i<chosenOptions.length;i++){                      //make an array of the positions chosen models
 			for(int j=0;j<chosenOptions[i].length;j++){
 				if(chosenOptions[i][j] != 0){
 					itemList[countItems] = chosenOptions[i][j]-1;
@@ -85,7 +86,7 @@ public class Request{
 		}	
 
 		
-		for(int i = 0;i<itemList.length;i++){
+		for(int i = 0;i<itemList.length;i++){             //Use position array to make an array containing used model numbers
 			chosenID[i] = dataID[itemList[i]];
 			
 			
