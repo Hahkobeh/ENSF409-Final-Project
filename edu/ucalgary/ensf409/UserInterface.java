@@ -21,8 +21,8 @@ import javax.swing.*;
 public class UserInterface {
 
     // Username and password for the database to be connected to.
-    private static String USERNAME="User1";
-    private static String PASSWORD="password";
+    private static String USERNAME="Nick";
+    private static String PASSWORD="Whicket1!";
     private JFrame frame;
 
     /**
@@ -119,8 +119,8 @@ public class UserInterface {
                 if(Integer.parseInt(numberText.getText()) >= 0){
                     try{
                         Request newRequest;
-                        String category = catText.getText();
-                        String type = typeText.getText();
+                        String category = catText.getText().toLowerCase();
+                        String type = typeText.getText().toLowerCase();
                         int numberOfItems = Integer.parseInt(numberText.getText());
 
                         if(category.equals("") || type.equals("")){
