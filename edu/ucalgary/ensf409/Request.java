@@ -43,12 +43,12 @@ public class Request{
 
 
         if(possibleNumberOfItems == 0){
-            JOptionPane.showMessageDialog(new JFrame(), "No items can be made");
+            JOptionPane.showMessageDialog(new JFrame(), ManuSuggest());
             throw new Exception(" ");
         }else if(possibleNumberOfItems < numberOfitemsDemanded){
             chosenOptions = new int[possibleNumberOfItems][size];
             chosenOptionsPrice = new int[numberOfitemsDemanded];
-            JOptionPane.showMessageDialog(new JFrame(), "Not enough components only "+ possibleNumberOfItems + " could be made");
+            JOptionPane.showMessageDialog(new JFrame(), ManuSuggest());
             for(int z = 0; z < possibleNumberOfItems; z++){
                 searchForLowest(z);
             }
@@ -423,6 +423,38 @@ public class Request{
     //I need to find cheapest combination (make note of which
     //furniture items have been used), then set used parts to N and set price of the furniture item
     //that has been used to 0 then find next cheapest again.
+    public String ManuSuggest(){
+        String out = "Order cannot be fulfilled with current inventory. Suggested Manufacturers for "+ category+"s are: \n";
+        String query2 = "SELECT DISTINCT ManuID FROM " + category;
+        String [] manuID = new String[200];
+        try{
+            Statement statement = dbConnect.createStatement();
+            ResultSet results = statement.executeQuery(query2);
+            int row = 0;
+            while(results.next()){
+                manuID[row] = results.getString("ManuID");
+                row++;
+            }
+            for(int i=0;i < row;i++){
+                String query = "SELECT * FROM MANUFACTURER WHERE ManuID = '" + manuID[i]+"';";
+                statement = dbConnect.createStatement();
+                results = statement.executeQuery(query);
+                results.next();
+                out += results.getString("Name");
+                out += "\n";
+            }
+            
+        results.close();
+    
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        
+        return out;
 
+        
+    }
+    
 }
 
