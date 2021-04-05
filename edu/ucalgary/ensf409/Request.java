@@ -483,39 +483,39 @@ public class Request{
  * @return return the formatted string containing suggested manufacturers
  */
 
-    public String ManuSuggest(){
+    public String ManuSuggest() {
 
-        String out = possibleNumberOfItems+" could be made. Order cannot be fulfilled with current inventory. Suggested Manufacturers for "+ category+"s are: \n";
+        String out = possibleNumberOfItems + " could be made. Order cannot be fulfilled with current inventory. Suggested Manufacturers for " + category + "s are: \n";
         String query2 = "SELECT DISTINCT ManuID FROM " + category;
-        String [] manuID = new String[200];
-        try{
+        String[] manuID = new String[200];
+        try {
             Statement statement = dbConnect.createStatement();
             ResultSet results = statement.executeQuery(query2);
             int row = 0;
-            while(results.next()){
+            while (results.next()) {
                 manuID[row] = results.getString("ManuID");              //get relevant ManuIDs from requested category
                 row++;
             }
-            for(int i=0;i < row;i++){                 					 //use ManuIDs to get manufacturer names
+            for (int i = 0; i < row; i++) {                                     //use ManuIDs to get manufacturer names
 
 
-                String query = "SELECT * FROM MANUFACTURER WHERE ManuID = '" + manuID[i]+"';";
+                String query = "SELECT * FROM MANUFACTURER WHERE ManuID = '" + manuID[i] + "';";
                 statement = dbConnect.createStatement();
                 results = statement.executeQuery(query);
                 results.next();
                 out += results.getString("Name");  //format string
                 out += "\n";
             }
-            
-        results.close();
-    
-        }catch(SQLException e){
+
+            results.close();
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        
-        return out;
 
+
+        return out;
+    }
 
     
 }
