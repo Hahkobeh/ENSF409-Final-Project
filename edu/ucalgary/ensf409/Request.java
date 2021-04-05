@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 import java.sql.*;
 
-public class Request {
+public class Request{
     private Connection dbConnect;
     private String category;
     private String type;
@@ -30,7 +30,7 @@ public class Request {
     private int [] chosenOptionsPrice;
 	private String [] chosenID;
 
-    public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) {
+    public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) throws Exception {
         this.category = category;
         this.type = type;
         this.numberOfitemsDemanded = numberOfitemsDemanded;
@@ -43,16 +43,16 @@ public class Request {
 
 
         if(possibleNumberOfItems == 0){
-            System.out.println("failed");
-
-            //FIX THIS
+            JOptionPane.showMessageDialog(new JFrame(), "No items can be made");
+            throw new Exception(" ");
         }else if(possibleNumberOfItems < numberOfitemsDemanded){
             chosenOptions = new int[possibleNumberOfItems][size];
             chosenOptionsPrice = new int[numberOfitemsDemanded];
-            JOptionPane.showMessageDialog(new JFrame(), "Not enough components only "+ possibleNumberOfItems + "could be made");
+            JOptionPane.showMessageDialog(new JFrame(), "Not enough components only "+ possibleNumberOfItems + " could be made");
             for(int z = 0; z < possibleNumberOfItems; z++){
                 searchForLowest(z);
             }
+            throw new Exception(" ");
         }else if(possibleNumberOfItems >= numberOfitemsDemanded){
             chosenOptions = new int[numberOfitemsDemanded][size];
             chosenOptionsPrice = new int[numberOfitemsDemanded];
@@ -60,7 +60,6 @@ public class Request {
             for(int z = 0; z < numberOfitemsDemanded; z++){
                 searchForLowest(z);
             }
-
         }
 
 		
@@ -409,7 +408,7 @@ public class Request {
         try{
             PreparedStatement statement = dbConnect.prepareStatement(query);
 
-            int result = statement.executeUpdate(query);  
+            statement.executeUpdate(query);  
         }catch(SQLException e){
             e.printStackTrace();
         }
