@@ -416,14 +416,15 @@ public class Request{
         }
         
     }
+/**
+ * ManuSuggest suggests manufacturers in the event an order cannot be fulfilled 
+ *
+ * @return return the formatted string containing suggested manufacturers
+ */
 
-    //need a function that will be called at the end to remove all used database members
-
-    //I need to find cheapest combination (make note of which
-    //furniture items have been used), then set used parts to N and set price of the furniture item
-    //that has been used to 0 then find next cheapest again.
     public String ManuSuggest(){
-        String out = "Order cannot be fulfilled with current inventory. Suggested Manufacturers for "+ category+"s are: \n";
+   
+        String out = possibleNumberOfItems+" could be made. Order cannot be fulfilled with current inventory. Suggested Manufacturers for "+ category+"s are: \n";
         String query2 = "SELECT DISTINCT ManuID FROM " + category;
         String [] manuID = new String[200];
         try{
@@ -431,15 +432,17 @@ public class Request{
             ResultSet results = statement.executeQuery(query2);
             int row = 0;
             while(results.next()){
-                manuID[row] = results.getString("ManuID");
+                manuID[row] = results.getString("ManuID");              //get relevant ManuIDs from requested category
                 row++;
             }
-            for(int i=0;i < row;i++){
+            for(int i=0;i < row;i++){                 					 //use ManuIDs to get manufacturer names
+            	
+            
                 String query = "SELECT * FROM MANUFACTURER WHERE ManuID = '" + manuID[i]+"';";
                 statement = dbConnect.createStatement();
                 results = statement.executeQuery(query);
                 results.next();
-                out += results.getString("Name");
+                out += results.getString("Name");  //format string
                 out += "\n";
             }
             
@@ -453,7 +456,6 @@ public class Request{
         return out;
 
         
-    }
     
 }
 
