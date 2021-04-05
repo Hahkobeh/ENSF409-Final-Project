@@ -30,7 +30,19 @@ public class Request{
     private int [] chosenOptionsPrice;
 	private String [] chosenID;
 
-    public Request(String category, String type, int numberOfitemsDemanded, Boolean partialOrder, String usernameMySQL, String passwordMySQL) throws Exception {
+    /**
+     *
+     * @param category Category is the type of object being requested. (e.g. chair, lamp, etc...)
+     * @param type Type is the type of furniture item that is being requested. (e.g. mesh)
+     * @param numberOfitemsDemanded Number of items that are being demanded.
+     * @param usernameMySQL
+     * @param passwordMySQL
+     * @throws Exception
+     */
+
+
+    public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) throws Exception {
+
         this.category = category;
         this.type = type;
         this.numberOfitemsDemanded = numberOfitemsDemanded;
@@ -64,21 +76,20 @@ public class Request{
         }
 
 		
-			
-		int countItems = 0; 
+		int countItems = 0;
 		
-		for(int i = 0;i<chosenOptions.length;i++){  // loop through the chosenOption array and count all the items
-			for(int j=0;j<chosenOptions[i].length;j++){ 
+		for(int i = 0;i<chosenOptions.length;i++){
+			for(int j=0;j<chosenOptions[i].length;j++){
 				if(chosenOptions[i][j] != 0){
 					countItems++;
 				}
 			}
 		}
 		
-		int [] itemList = new int[countItems]; 
+		int [] itemList = new int[countItems];
 		chosenID = new String[countItems];
 		countItems = 0;
-		for(int i = 0;i<chosenOptions.length;i++){                      //make an array of the positions chosen models
+		for(int i = 0;i<chosenOptions.length;i++){
 			for(int j=0;j<chosenOptions[i].length;j++){
 				if(chosenOptions[i][j] != 0){
 					itemList[countItems] = chosenOptions[i][j]-1;
@@ -88,7 +99,7 @@ public class Request{
 		}	
 
 		
-		for(int i = 0;i<itemList.length;i++){             //Use position array to make an array containing used model numbers
+		for(int i = 0;i<itemList.length;i++){
 			chosenID[i] = dataID[itemList[i]];
 			
 			
@@ -139,6 +150,9 @@ public class Request{
         return chosenID;
     }
 
+    /**
+     * Connects to database
+     */
     public void getDatabase() {
         try{
             dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/inventory", usernameMySQL, passwordMySQL);
@@ -147,6 +161,9 @@ public class Request{
         }
     }
 
+    /**
+     * Sets size, which is the number of parts that an item will need. (e.g. 4 parts for a chair)
+     */
     public void setSize(String category) {
         switch (category) {
             case "Chair": this.size = 4;
@@ -161,6 +178,9 @@ public class Request{
         }
     }
 
+    /**
+     * Reads from the database and stores the Y/N values into a 2D array for the item that is being ordered.
+     */
     public void storeData(){
         String query1 = "SELECT COUNT(*) FROM " + category + " WHERE type = '" + type + "';";
 
@@ -232,8 +252,9 @@ public class Request{
 
     }
 
-    //need a function that checks if possible (enough Y-s in each column)
-
+    /**
+     * Calculates the total amount of items that can be made by checking the amount of Y's in each column.
+     */
     public void totalItemsThatCanBeMade(){
         int possibleNumberOfItems = 10000;
         int temp;
@@ -255,6 +276,10 @@ public class Request{
         this.possibleNumberOfItems = possibleNumberOfItems;
     }
 
+    /**
+     * Searches for the lowest possible price to make one item.
+     * @param itemNumber itemNumber is the number of item of the item that is currently being made.
+     */
     public void searchForLowest(int itemNumber){
         int [] chosenOption = new int[numberOfEntries];
         int [] options = new int[numberOfEntries];
@@ -267,25 +292,21 @@ public class Request{
             numberOfPossibleCombinations += ( factorial(numberOfEntries) )/( factorial(temp)*factorial(numberOfEntries - temp));
         }
 
-
-
         int [][] allPossible = new int[numberOfPossibleCombinations][numberOfEntries];
         fillCombinationArray(allPossible, options);
-
-
-        //need a function that will be called at the end to remove all used database members
-
-
-
-
-        //I need to find cheapest combination (make note of which
-        //furniture items have been used), then set used parts to N and set price of the furniture item
-        //that has been used to 0 then find next cheapest again.
-
 
         chosenOptionsPrice[itemNumber] = findPrice(allPossible, numberOfPossibleCombinations, chosenOption, itemNumber);
 
     }
+
+    /**
+     * findPrice contains the algorithm which finds the lowest possible price for a given amount of combinations.
+     * @param allPossible 2D array of all the possible combinations.
+     * @param numberOfPossibleCombinations The number of possible combinations, how many rows in the allPossible array.
+     * @param chosenOption The chosen choice for one item that the order will fulfill.
+     * @param itemNumber itemNumber is the number of item of the item that is currently being made.
+     * @return Returns the price of the item.
+     */
 
     public int findPrice(int  [][] allPossible, int numberOfPossibleCombinations, int [] chosenOption, int itemNumber ){
         int price = 99999;
@@ -307,6 +328,11 @@ public class Request{
 
     }
 
+    /**
+     * Removes the used components from the 2D array (used when multiple items are being produced).
+     * @param array An array which contains the furniture items that will be used.
+     */
+
     public void removeTakenComponents(int [] array){
         for(int u = 0; u < size; u++){
             int q = 0;
@@ -321,6 +347,11 @@ public class Request{
 
     }
 
+    /**
+     * Sets the price of the used items to zero. (used when multiple items are being produced).
+     * @param array An array which contains the furniture items that will be used.
+     */
+
     public void removePriceFromUsed(int [] array){
         int q = 0;
         while(q < array.length && array[q] != 0){
@@ -328,6 +359,12 @@ public class Request{
             q++;
         }
     }
+
+    /**
+     * Determines whether the chosen combination can produce a furniture item.
+     * @param array An array which contains a combination of furniture items.
+     * @return returns true if an item can be more, false otherwise
+     */
 
     public boolean possibleChoice(int [] array){
         boolean [] test = new boolean[size];
@@ -354,6 +391,12 @@ public class Request{
         return true;
 
     }
+
+    /**
+     * Determines the price of a specific combination.
+     * @param array An array which contains a combination of furniture items.
+     * @return Returns price of that item.
+     */
     public int priceOfCombination(int [] array){
         int price = 0;
         int q = 0;
@@ -364,11 +407,11 @@ public class Request{
         return price;
     }
 
-
-
-
     /**
-     * 
+     * Creates the 2D array containing all possible combinations of furniture items.
+     * @param allPossible A 2D array of all the possible combinations.
+     * @param options A list of the furniture items that can be used.
+
      */
     public void fillCombinationArray(int [][] allPossible, int [] options){
         int position = 0;
@@ -379,6 +422,18 @@ public class Request{
 
     }
 
+    /**
+     * Fill the 2D array allPossible with all the possible combinations listed in options.
+     * @param allPossible A 2D array of all the possible combinations.
+     * @param options A list of the furniture items that can be used.
+     * @param toAdd Option that will be added next to the array.
+     * @param first Option that will added first.
+     * @param last The last option that will be added
+     * @param index Where the toAdd option will be added.
+     * @param r r is the size of the combination that is currently being made.
+     * @param position position is the position that is being used in the 2D array.
+     * @return Returns the position value so that it can be reused for higher r levels.
+     */
     public int combinationGenerator(int [][] allPossible, int [] options, int [] toAdd, int first, int last, int index, int r, int position) {
         if (index == r) {
             for (int j = 0; j < r; j++) {
@@ -395,6 +450,12 @@ public class Request{
         }
         return position;
     }
+
+    /**
+     * Calculates the factorial of a given number n.
+     * @param n n is the number that the factorial is being calculated from
+     * @return Returns the value of the factorial.
+     */
 
     public int factorial(int n){
         int temp = 1;
@@ -428,45 +489,44 @@ public class Request{
         
     }
 /**
- * ManuSuggest suggests manufacturers in the event an order cannot be fulfilled 
- *
+ * ManuSuggest suggests manufacturers in the event an order cannot be fulfilled
  * @return return the formatted string containing suggested manufacturers
  */
 
-    public String ManuSuggest(){
-   
-        String out = possibleNumberOfItems+" could be made. Order cannot be fulfilled with current inventory. Suggested Manufacturers for "+ category+"s are: \n";
+    public String ManuSuggest() {
+
+        String out = possibleNumberOfItems + " could be made. Order cannot be fulfilled with current inventory. Suggested Manufacturers for " + category + "s are: \n";
         String query2 = "SELECT DISTINCT ManuID FROM " + category;
-        String [] manuID = new String[200];
-        try{
+        String[] manuID = new String[200];
+        try {
             Statement statement = dbConnect.createStatement();
             ResultSet results = statement.executeQuery(query2);
             int row = 0;
-            while(results.next()){
+            while (results.next()) {
                 manuID[row] = results.getString("ManuID");              //get relevant ManuIDs from requested category
                 row++;
             }
-            for(int i=0;i < row;i++){                 					 //use ManuIDs to get manufacturer names
-            	
-            
-                String query = "SELECT * FROM MANUFACTURER WHERE ManuID = '" + manuID[i]+"';";
+            for (int i = 0; i < row; i++) {                                     //use ManuIDs to get manufacturer names
+
+
+                String query = "SELECT * FROM MANUFACTURER WHERE ManuID = '" + manuID[i] + "';";
                 statement = dbConnect.createStatement();
                 results = statement.executeQuery(query);
                 results.next();
                 out += results.getString("Name");  //format string
                 out += "\n";
             }
-            
-        results.close();
-    
-        }catch(SQLException e){
+
+            results.close();
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        
-        return out;
 
-        
+
+        return out;
+    }
+
     
 }
 
