@@ -5,7 +5,6 @@ package edu.ucalgary.ensf409;
  */
 
 
-
 import java.util.*;
 
 import javax.swing.JFrame;
@@ -13,12 +12,7 @@ import javax.swing.JOptionPane;
 
 import java.sql.*;
 
-/**
- *
- */
 public class Request{
-
-
     private Connection dbConnect;
     private String category;
     private String type;
@@ -168,7 +162,6 @@ public class Request{
      * Sets size, which is the number of parts that an item will need. (e.g. 4 parts for a chair)
      */
     public void setSize(String category) {
-
         switch (category) {
             case "Chair": this.size = 4;
             break;
@@ -485,10 +478,14 @@ public class Request{
         }
         
     }
-
+/**
+ * ManuSuggest suggests manufacturers in the event an order cannot be fulfilled
+ * @return return the formatted string containing suggested manufacturers
+ */
 
     public String ManuSuggest(){
-        String out = "Order cannot be fulfilled with current inventory. Suggested Manufacturers for "+ category+"s are: \n";
+
+        String out = possibleNumberOfItems+" could be made. Order cannot be fulfilled with current inventory. Suggested Manufacturers for "+ category+"s are: \n";
         String query2 = "SELECT DISTINCT ManuID FROM " + category;
         String [] manuID = new String[200];
         try{
@@ -496,15 +493,17 @@ public class Request{
             ResultSet results = statement.executeQuery(query2);
             int row = 0;
             while(results.next()){
-                manuID[row] = results.getString("ManuID");
+                manuID[row] = results.getString("ManuID");              //get relevant ManuIDs from requested category
                 row++;
             }
-            for(int i=0;i < row;i++){
+            for(int i=0;i < row;i++){                 					 //use ManuIDs to get manufacturer names
+
+
                 String query = "SELECT * FROM MANUFACTURER WHERE ManuID = '" + manuID[i]+"';";
                 statement = dbConnect.createStatement();
                 results = statement.executeQuery(query);
                 results.next();
-                out += results.getString("Name");
+                out += results.getString("Name");  //format string
                 out += "\n";
             }
             
@@ -517,8 +516,7 @@ public class Request{
         
         return out;
 
-        
-    }
+
     
 }
 
