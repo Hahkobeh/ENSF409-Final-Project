@@ -26,8 +26,8 @@ import javax.swing.*;
 public class UserInterface {
 
     // Username and password for the database to be connected to.
-    private static String USERNAME="User1";
-    private static String PASSWORD="password";
+    private static String USERNAME= "root";
+    private static String PASSWORD="h8te45";
     private JFrame frame;
 
    public UserInterface(){
@@ -92,7 +92,6 @@ public class UserInterface {
         public void actionPerformed(ActionEvent e) {
             Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), USERNAME,PASSWORD);
             OrderForm newOrderForm = new OrderForm(newRequest);
-            newOrderForm.generateOrderFormat();
         }
        });
    }
