@@ -109,12 +109,6 @@ public class Request{
 				
 			Remove();
 	}
-		
-        //NEED TO ADD A REMOVE FUNCTION THAT TAKES ALL THE USED ITEMS AND GETS RID OF THEM
-        //CHANGE CHOSENOPTIONS TO A STRING ARRAY THAT HOLDS THE USED DATAIDS
-
-
-
 
     public int[] getChosenOptionsPrice() {
         return chosenOptionsPrice;
