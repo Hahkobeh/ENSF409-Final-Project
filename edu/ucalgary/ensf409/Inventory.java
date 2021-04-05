@@ -8,7 +8,7 @@
  */
 package edu.ucalgary.ensf409;
 
-
+// Just holds main
 public class Inventory {
     public static void main (String [] args){
         UserInterface ui = new UserInterface();
