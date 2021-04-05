@@ -18,6 +18,7 @@ public class Request{
     private String type;
     private int size;
     private int numberOfEntries = 0;
+    private Boolean partialOrder;
     private String usernameMySQL;
     private String passwordMySQL;
     private char [][] data;
@@ -41,9 +42,11 @@ public class Request{
 
 
     public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) throws Exception {
+
         this.category = category;
         this.type = type;
         this.numberOfitemsDemanded = numberOfitemsDemanded;
+        this.partialOrder = partialOrder;
         this.usernameMySQL = usernameMySQL;
         this.passwordMySQL = passwordMySQL;
         setSize(category);
@@ -408,6 +411,7 @@ public class Request{
      * Creates the 2D array containing all possible combinations of furniture items.
      * @param allPossible A 2D array of all the possible combinations.
      * @param options A list of the furniture items that can be used.
+
      */
     public void fillCombinationArray(int [][] allPossible, int [] options){
         int position = 0;
@@ -461,6 +465,12 @@ public class Request{
         return temp;
     }
 
+ /**
+ * this function removes the purchased  entries from
+ * the sql inventory
+ * 
+ * 
+ */
     public void Remove(){
         
         for(int i=0;i < chosenID.length;i++){
