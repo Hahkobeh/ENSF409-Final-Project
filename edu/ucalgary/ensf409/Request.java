@@ -127,14 +127,6 @@ public class Request{
 		}
 		
 	}
-	public int getTotalPrice(){
-	int totalPrice = 0;	
-	for(int i =0; i < chosenOptionsPrice.length; i++){   //goes through the price array and adds all the prices together to get the total Price.
-            totalPrice = totalPrice + chosenOptionsPrice[i];
-        }
-		return totalPrice;
-		
-	}
 		
 
     public int[] getChosenOptionsPrice() {
