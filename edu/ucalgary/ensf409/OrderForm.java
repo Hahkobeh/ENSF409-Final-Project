@@ -6,8 +6,16 @@ import java.io.BufferedWriter;
 import java.io.File;
 
 /**
- * Code written by: Jacob Artuso, Colin Christophe, Nicholas Knapton, and Brian Kramer
+ @author Colin Christophe <a href="mailto:colin.christophe@ucalgary.ca">colin.christophe@ucalgary.ca</a>
+         Nick Knapton <a href="mailto:nick.knapton@ucalgary.ca">nick.knapton@ucalgary.ca</a>
+         Brian Kramer <a href="mailto:brian.kramer@ucalgary.ca">brian.kramer@ucalgary.ca</a>
+         tucan jake <a href="mailto:tucan.jake@ucalgary.ca">tucan.jake@ucalgary.ca</a>
+ @version       1.5
+ @since         1.0
  */
+/*
+OrderForm is a program which will make a file using information in a request object
+*/
 
 public class OrderForm {
     private Request originalRequest;
