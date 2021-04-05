@@ -119,6 +119,15 @@ public class Request{
 				
 			Remove();
 	}
+	public int getAmountFilled(){
+		if(numberOfItemsDemanded < possibleNumberOfItems){
+			return numberOfItemsDemanded;
+		}else{
+			return possibleNumberOfItems;
+		}
+		
+	}
+		
 
     public int[] getChosenOptionsPrice() {
         return chosenOptionsPrice;
