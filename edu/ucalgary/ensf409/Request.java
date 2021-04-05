@@ -401,6 +401,26 @@ public class Request {
         return temp;
     }
 
+    public void Remove(){
+        
+        for(int i=0;i < chosenID.length;i++){
+         String query = "DELETE FROM " + category + " WHERE ID = '" + chosenID[i] + "';";
+         
+        try{
+            Statement statement = dbConnect.createStatement();
+
+            ResultSet result = statement.executeQuery(query);  
+            result.close();
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+
+        }
+        
+    }
+
     //need a function that will be called at the end to remove all used database members
 
     //I need to find cheapest combination (make note of which
