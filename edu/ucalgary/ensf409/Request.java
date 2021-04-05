@@ -35,13 +35,14 @@ public class Request{
      * @param category Category is the type of object being requested. (e.g. chair, lamp, etc...)
      * @param type Type is the type of furniture item that is being requested. (e.g. mesh)
      * @param numberOfitemsDemanded Number of items that are being demanded.
+     * @param partialOrder If this can be a partial order or not.
      * @param usernameMySQL
      * @param passwordMySQL
      * @throws Exception
      */
 
 
-    public Request(String category, String type, int numberOfitemsDemanded, String usernameMySQL, String passwordMySQL) throws Exception {
+    public Request(String category, String type, int numberOfitemsDemanded, Boolean partialOrder, String usernameMySQL, String passwordMySQL) throws Exception {
 
         this.category = category;
         this.type = type;
