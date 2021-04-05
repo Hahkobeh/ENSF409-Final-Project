@@ -14,6 +14,7 @@ public class OrderForm {
 
     public OrderForm(Request request){
         this.originalRequest = request;
+        generateOrderFormat();
     }
 
     public void generateOrderFormat(){
