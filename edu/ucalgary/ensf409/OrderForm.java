@@ -1,10 +1,3 @@
-package edu.ucalgary.ensf409;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.BufferedWriter;
-import java.io.File;
-
 /**
  @author Colin Christophe <a href="mailto:colin.christophe@ucalgary.ca">colin.christophe@ucalgary.ca</a>
          Nick Knapton <a href="mailto:nick.knapton@ucalgary.ca">nick.knapton@ucalgary.ca</a>
@@ -13,6 +6,15 @@ import java.io.File;
  @version       1.5
  @since         1.0
  */
+
+package edu.ucalgary.ensf409;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.File;
+
+
 /*
 OrderForm is a program which will make a file using information in a request object
 */
