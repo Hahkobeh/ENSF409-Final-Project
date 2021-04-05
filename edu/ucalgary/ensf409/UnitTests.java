@@ -23,7 +23,8 @@ public class UnitTests {
  assertTrue(trial.getNumberOfItemsDemanded() == trial.geAmountFilled()); // check is partial order is filled
  trial = new Request(Desk, Standing, 2, false,  "scm","ensf409");
  assertTrue(trial.getPrice() == 600);
- 
+ trial = new Request(Lamp, Swing Arm, 3, true,  "scm","ensf409");
+ assertTrue(trial.getAmountFilled > 0 && trial.getPartialOrder());
  
 
 }
