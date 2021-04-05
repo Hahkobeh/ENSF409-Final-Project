@@ -5,16 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- *  TODODOODODODODODO
- * 
- *  Add catch for if user trys to input without any values or illegal values
- * 
- *  Figure out how to make sure if an order cannot be made we dont make an order form.
- * 
- * 
- */
-
-/**
  * Code written by: Jacob Artuso, Colin Christophe, Nicholas Knapton, and Brian Kramer
 */
 
@@ -90,11 +80,13 @@ public class UserInterface {
        
        requestButton.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
-            try{
-               Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), USERNAME,PASSWORD); 
-               OrderForm newOrderForm = new OrderForm(newRequest);
-            }catch(Exception error){
+            if(Integer.parseInt(numberText.getText()) >= 0){
+                try{
+                    Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), USERNAME,PASSWORD); 
+                    OrderForm newOrderForm = new OrderForm(newRequest);
+                }catch(Exception error){
 
+                }
             }
             
            
