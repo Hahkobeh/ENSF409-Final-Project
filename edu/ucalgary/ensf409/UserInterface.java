@@ -115,21 +115,37 @@ public class UserInterface {
        // Action listener for the Button where when pressed makes a request and decides to fill or not.
        requestButton.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
-            if(Integer.parseInt(numberText.getText()) >= 0){
-                try{
-                    Request newRequest;
-                    if(fillBox.isSelected()){
-                        newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), true, USERNAME,PASSWORD);
-                    }else{
-                        newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), false, USERNAME,PASSWORD);
-                    }
-                    OrderForm newOrderForm = new OrderForm(newRequest);
-                }catch(Exception error){
+            try{
+                if(Integer.parseInt(numberText.getText()) >= 0){
+                    try{
+                        Request newRequest;
+                        String category = catText.getText();
+                        String type = typeText.getText();
+                        int numberOfItems = Integer.parseInt(numberText.getText());
 
+                        if(category.equals("") || type.equals("")){
+                            JOptionPane.showMessageDialog(new JFrame(), "Please fill in all fields.");
+                        }else{
+                            if(fillBox.isSelected()){
+                                newRequest = new Request(category, type, numberOfItems, true, USERNAME,PASSWORD);
+                            }else{
+                                newRequest = new Request(category, type, numberOfItems, false, USERNAME,PASSWORD);
+                            }
+                            OrderForm newOrderForm = new OrderForm(newRequest);
+                            catText.setText("");
+                            typeText.setText("");
+                            numberText.setText("");
+                        }
+
+                    }catch(Exception error){
+                        catText.setText("");
+                        typeText.setText("");
+                        numberText.setText("");
+                    }
                 }
+            }catch(NumberFormatException error){
+                JOptionPane.showMessageDialog(new JFrame(), "Please fill in all fields.");
             }
-            
-           
         }
        });
    }
