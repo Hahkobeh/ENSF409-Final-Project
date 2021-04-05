@@ -95,7 +95,7 @@ public class Request {
 				}
 
 				
-			
+			Remove();
 	}
 		
         //NEED TO ADD A REMOVE FUNCTION THAT TAKES ALL THE USED ITEMS AND GETS RID OF THEM
