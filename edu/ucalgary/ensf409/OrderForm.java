@@ -28,6 +28,7 @@ public class OrderForm {
         StringBuilder order = new StringBuilder();
         order.append("Furniture Order Form\n\nFaculty Name:\nContact:\nDate:\n\nOriginal Request: "); 
         order.append(originalRequest.getType() +" "+ originalRequest.getCategory() +", " + originalRequest.getNumberOfitemsDemanded());
+        order.append("\nNumber of items filled: " + originalRequest.getPossibleNumberOfItems());
         order.append("\n\nItems Ordered\n");
        
         String[] tempID = originalRequest.getChosenID(); // create temporary string[] to store the ID numbers of the objects that will be used to fufill the order.
