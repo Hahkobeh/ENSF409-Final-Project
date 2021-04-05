@@ -92,6 +92,7 @@ public class UserInterface {
         public void actionPerformed(ActionEvent e) {
             Request newRequest = new Request(catText.getText(), typeText.getText(), Integer.parseInt(numberText.getText()), USERNAME,PASSWORD);
             OrderForm newOrderForm = new OrderForm(newRequest);
+            newOrderForm.generateOrderFormat();
         }
        });
    }
