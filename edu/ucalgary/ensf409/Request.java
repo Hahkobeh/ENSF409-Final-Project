@@ -53,7 +53,7 @@ public class Request{
         this.partialOrder = partialOrder;
         this.usernameMySQL = usernameMySQL;
         this.passwordMySQL = passwordMySQL;
-        setSize(category);
+        setSize(this.category);
         getDatabase();
         storeData();
         totalItemsThatCanBeMade();
@@ -126,6 +126,10 @@ public class Request{
         JOptionPane.showMessageDialog(new JFrame(), order);
 	}
 
+    /**
+     *  Gets the total number of items that were filled
+     * @return int corresponding to the number of items that can be filled.
+     */
 	public int getAmountFilled(){
 		if(numberOfItemsDemanded < possibleNumberOfItems){
 			return numberOfItemsDemanded;
@@ -194,8 +198,9 @@ public class Request{
 
     /**
      * Sets size, which is the number of parts that an item will need. (e.g. 4 parts for a chair)
+     * @throws Exception
      */
-    public void setSize(String category) {
+    public void setSize(String category) throws Exception {
         switch (category) {
             case "chair": this.size = 4;
             break;
@@ -205,7 +210,7 @@ public class Request{
             break;
             case "filing": this.size = 3;
             break;
-            default: System.err.println("Invalid Category");
+            default: throw new Exception();
         }
     }
 
