@@ -117,7 +117,7 @@ public class UnitTests {
       }catch(Exception er){
             e = er;
       }
-      assertTrue("Error was not thrown",trial.getPrice() == 150);
+      assertTrue("Error was not thrown",trial.getPrice() == 150 && e == null);
   }
 
   @Test
@@ -130,7 +130,7 @@ public class UnitTests {
       }catch(Exception er){
             e = er;
       }
-      assertTrue("Error was not thrown",trial.getPrice() == 150);
+      assertTrue("Error was not thrown",trial.getPrice() == 150 && e == null);
   }
 
   @Test
