@@ -15,29 +15,32 @@ import java.io.*;
 import java.util.*;
 
 public class UnitTests {
+ private static String PASSWORD = "ensf409";
+  private static String USERNAME = "scm";
  
  @Test
  public void testFileisMade(){
- Request trial = new Request(Chair, Task, 1, false,  "scm","ensf409"); // full order
+ Request trial = new Request("chair", "task", 1, false, USERNAME ,PASSWORD ); // full order
  OrderForm trialOrder = new OrderForm(trial); // orderform
- assertTrue("orderform.txt".exists()); // check if orderform creates file
+ File obj = new File("orderform.txt");
+ assertTrue(obj.exists()); // check if orderform creates file
  }
  
  @Test 
  public void testFullOrderIsFilled(){
- Request trial = new Request(Chair, Task, 1, false,  "scm","ensf409"); // full order
+ Request trial = new Request("chair", "task", 1, false,  USERNAME ,PASSWORD ); // full order
  OrderForm trialOrder = new OrderForm(trial); // orderform
  assertTrue(trial.getNumberOfItemsDemanded() == trial.geAmountFilled()); //if full order is filled
   
  }
   @Test
  public void testPartialOrderisFilled(){
-  Request Trial = new Request(Chair, Task, 16, true,  "scm","ensf409"); 
+  Request Trial = new Request("chair", "task", 16, true,  USERNAME ,PASSWORD ); 
    assertTrue(trial.getAmountFilled > 0 && trial.getPartialOrder());
  }
  @Test
  public void testFullOrderCannotBeFilled(){
-  Request Trial = new Request(Chair, Task, 16, false,  "scm","ensf409"); 
+  Request Trial = new Request("chair", "task", 16, false,  USERNAME ,PASSWORD ); 
   assertTrue(trial.getNumberOfItemsDemanded != trial.getAmountFilled();
  }
  

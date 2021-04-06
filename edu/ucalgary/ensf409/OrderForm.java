@@ -49,7 +49,7 @@ public class OrderForm {
             
         }
     
-        totalPrice = originalRequest.getPrice();
+       int totalPrice = originalRequest.getPrice();
         order.append("\nTotal Price: $" + totalPrice);
         
         try{
