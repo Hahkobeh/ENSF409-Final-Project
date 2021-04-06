@@ -119,7 +119,7 @@ public class UserInterface {
                 if(Integer.parseInt(numberText.getText()) >= 0){
                     try{
                         Request newRequest;
-                        String category = catText.getText().toLowerCase();
+                        String category = catText.getText().toLowerCase(); // Strings get converted to lower case to support lowercase and upper case writing.
                         String type = typeText.getText().toLowerCase();
                         int numberOfItems = Integer.parseInt(numberText.getText());
 
