@@ -58,7 +58,7 @@ public class UnitTests {
   }
 
   @Test
-  public void testCorrectItems3(){
+  public void testCorrectPrice(){
       this.resetTable();
       Request trial = null;
       try{
