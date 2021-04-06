@@ -34,7 +34,7 @@ public class Request{
 	private String [] chosenID;
 
     /**
-     *
+     * Constructor for Request, sets all initial variables, then trys to execute a request.
      * @param category Category is the type of object being requested. (e.g. chair, lamp, etc...)
      * @param type Type is the type of furniture item that is being requested. (e.g. mesh)
      * @param numberOfItemsDemanded Number of items that are being demanded.
@@ -47,8 +47,8 @@ public class Request{
 
     public Request(String category, String type, int numberOfItemsDemanded, Boolean partialOrder, String usernameMySQL, String passwordMySQL) throws Exception {
 
-        this.category = category;
-        this.type = type;
+        this.category = category.toLowerCase();
+        this.type = type.toLowerCase();
         this.numberOfItemsDemanded = numberOfItemsDemanded;
         this.partialOrder = partialOrder;
         this.usernameMySQL = usernameMySQL;
@@ -111,13 +111,19 @@ public class Request{
 		
 		for(int i = 0;i<itemList.length;i++){
 			chosenID[i] = dataID[itemList[i]];
-			
-			
-			
-				}
+		}
+        Remove();
 
-				
-			Remove();
+        StringBuilder order = new StringBuilder();
+        order.append("Order for: " + this.getAmountFilled() + " " + this.type + " " + this.category + " was fulfilled.\nThe cheapest option was to order:\n"); 
+        
+        for(int i = 0 ; i < this.chosenID.length; i++){     //goes through each ID in the temp array and appends it to the order stringBuilder. 
+            order.append("ID: " + this.chosenID[i] + "\n");  
+        }       
+
+        order.append("\nFor a total Price: $" + this.getPrice());
+        
+        JOptionPane.showMessageDialog(new JFrame(), order);
 	}
 
 	public int getAmountFilled(){
@@ -126,7 +132,6 @@ public class Request{
 		}else{
 			return possibleNumberOfItems;
 		}
-		
 	}
 		
 

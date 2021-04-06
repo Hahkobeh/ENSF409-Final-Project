@@ -21,8 +21,10 @@ import javax.swing.*;
 public class UserInterface {
 
     // Username and password for the database to be connected to.
+
     private static String USERNAME="";
     private static String PASSWORD="";
+
     private JFrame frame;
 
     /**
@@ -119,8 +121,8 @@ public class UserInterface {
                 if(Integer.parseInt(numberText.getText()) >= 0){
                     try{
                         Request newRequest;
-                        String category = catText.getText().toLowerCase(); // Strings get converted to lower case to support lowercase and upper case writing.
-                        String type = typeText.getText().toLowerCase();
+                        String category = catText.getText(); // Strings get converted to lower case to support lowercase and upper case writing.
+                        String type = typeText.getText();
                         int numberOfItems = Integer.parseInt(numberText.getText());
 
                         if(category.equals("") || type.equals("")){
