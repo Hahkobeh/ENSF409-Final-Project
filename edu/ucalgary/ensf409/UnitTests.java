@@ -22,7 +22,8 @@ public class UnitTests {
  public void testFileisMade(){
  Request trial = new Request("chair", "task", 1, false, USERNAME ,PASSWORD ); // full order
  OrderForm trialOrder = new OrderForm(trial); // orderform
- assertTrue("orderform.txt".exists()); // check if orderform creates file
+ File obj = new File("orderform.txt");
+ assertTrue(obj.exists()); // check if orderform creates file
  }
  
  @Test 
