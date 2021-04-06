@@ -15,11 +15,13 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+import com.mysql.cj.x.protobuf.MysqlxPrepare.Prepare;
 
 /**
  * Unit tests for the Inventory Manager Program. Ensure before running
@@ -129,6 +131,19 @@ public class UnitTests {
             e = er;
       }
       assertTrue("Error was not thrown",trial.getPrice() == 150);
+  }
+
+  @Test
+  public void testDataBaseIsUpdatedAfterSuccessfullOrder(){
+      this.resetTable();
+      Request trial = null;
+      Exception e = null;
+      try{
+            trial = new Request("chair", "mesh", 1, true, USERNAME, PASSWORD);
+      }catch(Exception er){
+            e = er;
+      }
+      assertTrue("Error was not thrown",(!(this.checkDataBaseForValue("chair", "C0942")) && !(this.checkDataBaseForValue("chair", "C9890"))));
   }
 
   @Test
@@ -247,5 +262,36 @@ public class UnitTests {
       }catch(SQLException e){
           e.printStackTrace();
       }
+  }
+
+  /**
+   * Checks the database for an element given by the parameters
+   * @param category 
+   * @param id
+   * @return True if item is in database
+   */
+  private boolean checkDataBaseForValue(String category, String id){
+      Connection dbConnect = null;
+      PreparedStatement statement = null;
+      try{
+            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/inventory", USERNAME, PASSWORD);
+      } catch (SQLException e) {
+            e.printStackTrace();
+      }
+      try {
+            statement = dbConnect.prepareStatement("SELECT * FROM " + category + " where ID = \"" + id + "\";");
+
+            ResultSet res = statement.executeQuery();
+
+            if(res.next()){
+                  return true;
+            }else{
+                  return false;
+            }
+
+      } catch (SQLException e) {
+            e.printStackTrace();
+      }
+      return false;
   }
 }
