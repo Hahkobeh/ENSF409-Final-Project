@@ -166,10 +166,9 @@ public class Request{
      * @return price
      */
     public int getPrice(){
-    	int[] price = originalRequest.getChosenOptionsPrice(); //creates an int[] that contains the price of each object of furniture it used to fufill the order.
         int totalPrice = 0;
-        for(int i =0; i < price.length; i++){   //goes through the price array and adds all the prices together to get the total Price.
-            totalPrice = totalPrice + price[i];
+        for(int i =0; i < chosenOptionsPrice.length; i++){   //goes through the price array and adds all the prices together to get the total Price.
+            totalPrice = totalPrice + chosenOptionsPrice[i];
         }
 	    
 	    return totalPrice;
