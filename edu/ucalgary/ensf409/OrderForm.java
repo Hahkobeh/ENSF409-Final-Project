@@ -38,7 +38,8 @@ public class OrderForm {
         StringBuilder order = new StringBuilder();
         order.append("Furniture Order Form\n\nFaculty Name:\nContact:\nDate:\n\nOriginal Request: "); 
         order.append(originalRequest.getType() +" "+ originalRequest.getCategory() +", " + originalRequest.getNumberOfitemsDemanded());
-        order.append("\nNumber of items filled: " + originalRequest.getPossibleNumberOfItems());
+     
+        order.append("\nNumber of items filled: " + originalRequest.getAmountFilled());
         order.append("\n\nItems Ordered\n");
        
         String[] tempID = originalRequest.getChosenID(); // create temporary string[] to store the ID numbers of the objects that will be used to fufill the order.
@@ -47,12 +48,8 @@ public class OrderForm {
             order.append("ID: " + tempID[i] + "\n");
             
         }
-        int[] price = originalRequest.getChosenOptionsPrice(); //creates an int[] that contains the price of each object of furniture it used to fufill the order.
-        int totalPrice = 0;
-        for(int i =0; i < price.length; i++){   //goes through the price array and adds all the prices together to get the total Price.
-            totalPrice = totalPrice + price[i];
-        }
-
+    
+        totalPrice = originalRequest.getPrice();
         order.append("\nTotal Price: $" + totalPrice);
         
         try{

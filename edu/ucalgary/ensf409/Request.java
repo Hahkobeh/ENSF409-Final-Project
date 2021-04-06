@@ -119,6 +119,15 @@ public class Request{
 				
 			Remove();
 	}
+	public int getAmountFilled(){
+		if(numberOfItemsDemanded < possibleNumberOfItems){
+			return numberOfItemsDemanded;
+		}else{
+			return possibleNumberOfItems;
+		}
+		
+	}
+		
 
     public int[] getChosenOptionsPrice() {
         return chosenOptionsPrice;
@@ -153,7 +162,18 @@ public class Request{
     public String[] getChosenID() {
         return chosenID;
     }
-
+     /**gets total price
+     * @return price
+     */
+    public int getPrice(){
+    	int[] price = originalRequest.getChosenOptionsPrice(); //creates an int[] that contains the price of each object of furniture it used to fufill the order.
+        int totalPrice = 0;
+        for(int i =0; i < price.length; i++){   //goes through the price array and adds all the prices together to get the total Price.
+            totalPrice = totalPrice + price[i];
+        }
+	    
+	    return totalPrice;
+    }
     /**
      * Connects to database
      */
