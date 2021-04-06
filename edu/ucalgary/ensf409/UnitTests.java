@@ -185,6 +185,40 @@ public class UnitTests {
       }
       assertTrue("No orderform for a partial order was made.", new File("orderform.txt").exists()); // If a partial order was filled it should make a orderform
   }
+   @Test
+  public void testItemsDeletedSuccessfully(){
+    this.resetTable();
+    Request trial = null;
+    boolean checkIfDeleted = true;
+    try {
+        trial = new Request("chair", "task", 1, true,  USERNAME ,PASSWORD );
+        String [] orderedFurniture = trial.getChosenID();
+        
+        for(int i = 0; i < orderedFurniture.length; i++){
+            if(checkDataBaseForValue(trial.getCategory(), orderedFurniture[i])){
+                checkIfDeleted = false;
+            }
+
+        }
+    } catch (Exception e) {
+       
+    }
+    assertTrue("Item was not successfully deleted after it was sold.", checkIfDeleted); // If the furniture is sold it should be removed from the datatbase
+  }
+
+  @Test 
+  public void testOrderNotEmpty(){
+      this.resetTable();
+      Request trial = null;
+      Exception e = null;
+      try{
+          trial = new Request("chair", "mesh", 0, false, USERNAME, PASSWORD);
+
+      }catch(Exception er){
+            e = er;
+      }
+      assertTrue("Error was not thrown", e != null);
+  }
 
 
   /**
