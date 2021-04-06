@@ -106,16 +106,29 @@ public class UnitTests {
   }
 
   @Test
-  public void testInvalidInputItemNotInTable(){
+  public void testWierdCasingOnCategory(){
       this.resetTable();
       Request trial = null;
       Exception e = null;
       try{
-            trial = new Request("Chair", "NotARealType", 2, true, USERNAME, PASSWORD);
+            trial = new Request("ChAiR", "Mesh", 1, true, USERNAME, PASSWORD);
       }catch(Exception er){
             e = er;
       }
-      assertTrue("Error was not thrown",e != null);
+      assertTrue("Error was not thrown",trial.getPrice() == 150);
+  }
+
+  @Test
+  public void testWierdCasingOnType(){
+      this.resetTable();
+      Request trial = null;
+      Exception e = null;
+      try{
+            trial = new Request("chair", "mEsH", 1, true, USERNAME, PASSWORD);
+      }catch(Exception er){
+            e = er;
+      }
+      assertTrue("Error was not thrown",trial.getPrice() == 150);
   }
 
   @Test
