@@ -26,9 +26,98 @@ import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
  */
 public class UnitTests {
 
- private static String PASSWORD = "";
-  private static String USERNAME = "";
+ private static String PASSWORD = "password";
+  private static String USERNAME = "Nick";
  
+  @Test
+  public void testCorrectItems1(){
+        this.resetTable();
+        Request trial = null;
+        try{
+              trial = new Request("Chair", "Mesh", 1, false, USERNAME, PASSWORD);
+        }catch(Exception e){
+
+        }
+        assertTrue("Uncorrect combination of items", trial.getPossibleNumberOfItems() == 1);
+  }
+  
+  @Test
+  public void testCorrectItems2(){
+        this.resetTable();
+        String[] answer = {"D0890","D8675"};
+        String[] answer2 = {"D8675","D0890"};
+        Request trial = null;
+        try{
+              trial = new Request("Desk", "traditional", 1, false, USERNAME, PASSWORD);
+        }catch(Exception e){
+
+        }
+        assertTrue("Uncorrect combination of items", (Arrays.equals(trial.getChosenID(), answer2) || Arrays.equals(trial.getChosenID(),answer)));
+  }
+
+  @Test
+  public void testCorrectItems3(){
+      this.resetTable();
+      Request trial = null;
+      try{
+            trial = new Request("lamp", "swing arm", 2, false, USERNAME, PASSWORD);
+      }catch(Exception e){
+
+      }
+      assertTrue("Uncorrect combination of items", trial.getPrice() == 60);
+  }
+
+  @Test
+  public void testCorrectItems4(){
+        this.resetTable();
+        Request trial = null;
+        try{
+            trial = new Request("lamp", "Desk", 3, false, USERNAME, PASSWORD);
+        }catch(Exception e){
+
+        }
+        assertTrue("Uncorrect combination of items", trial.getPossibleNumberOfItems() == 3);
+  }
+
+  @Test
+  public void testInvalidInputTypeNotInTable(){
+      this.resetTable();
+      Request trial = null;
+      Exception e = null;
+      try{
+            trial = new Request("Chair", "NotARealType", 2, true, USERNAME, PASSWORD);
+      }catch(Exception er){
+            e = er;
+      }
+      assertTrue("Error was not thrown",e != null);
+  }
+
+  @Test
+  public void testInvalidInputCategoryNotInTable(){
+      this.resetTable();
+      Request trial = null;
+      Exception e = null;
+      try{
+            trial = new Request("NotAChair", "Mesh", 2, true, USERNAME, PASSWORD);
+      }catch(Exception er){
+            e = er;
+      }
+      assertTrue("Error was not thrown",e != null);
+  }
+
+  @Test
+  public void testInvalidInputItemNotInTable(){
+      this.resetTable();
+      Request trial = null;
+      Exception e = null;
+      try{
+            trial = new Request("Chair", "NotARealType", 2, true, USERNAME, PASSWORD);
+      }catch(Exception er){
+            e = er;
+      }
+      assertTrue("Error was not thrown",e != null);
+  }
+
   @Test
   public void testFileisMade(){
         this.resetTable();
@@ -62,26 +151,13 @@ public class UnitTests {
       Request trial = null;
       try {
             trial = new Request("chair", "mesh", 16, true,  USERNAME ,PASSWORD );
+            OrderForm form = new OrderForm(trial); 
       } catch (Exception e) {
            
       }
-      OrderForm form = new OrderForm(trial); 
       assertTrue("No orderform for a partial order was made.", new File("orderform.txt").exists()); // If a partial order was filled it should make a orderform
   }
 
-  @Test
-  public void testFullOrderCannotBeFilled(){
-      this.resetTable();
-      Request Trial = new Request("chair", "task", 16, false,  USERNAME ,PASSWORD ); 
-      assertTrue(trial.getNumberOfItemsDemanded != trial.getAmountFilled();
-  }
- 
-  @Test 
-  public void testPartialOrderCannotBeFilled(){
-      this.resetTable();
-  
-  
-  }
 
   /**
    * Resets the example table provided everytime the tests are run to ensure values are not deleted in one test then tried to be used in another test and fail.
