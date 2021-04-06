@@ -15,8 +15,8 @@ import java.io.*;
 import java.util.*;
 
 public class UnitTests {
- private static String PASSWORD = "Whicket1!";
-  private static String USERNAME = "Nick";
+ private static String PASSWORD = "";
+  private static String USERNAME = "";
  
   @Test
   public void testFileisMade(){
