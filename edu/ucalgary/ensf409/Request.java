@@ -27,7 +27,7 @@ public class Request{
     private char [][] data;
     private int [] priceData;
     private String [] dataID;
-    private int numberOfitemsDemanded;
+    private int numberOfItemsDemanded;
     private int possibleNumberOfItems;
     private int [][] chosenOptions;
     private int [] chosenOptionsPrice;
@@ -37,7 +37,7 @@ public class Request{
      *
      * @param category Category is the type of object being requested. (e.g. chair, lamp, etc...)
      * @param type Type is the type of furniture item that is being requested. (e.g. mesh)
-     * @param numberOfitemsDemanded Number of items that are being demanded.
+     * @param numberOfItemsDemanded Number of items that are being demanded.
      * @param partialOrder If this can be a partial order or not.
      * @param usernameMySQL
      * @param passwordMySQL
@@ -45,11 +45,11 @@ public class Request{
      */
 
 
-    public Request(String category, String type, int numberOfitemsDemanded, Boolean partialOrder, String usernameMySQL, String passwordMySQL) throws Exception {
+    public Request(String category, String type, int numberOfItemsDemanded, Boolean partialOrder, String usernameMySQL, String passwordMySQL) throws Exception {
 
         this.category = category;
         this.type = type;
-        this.numberOfitemsDemanded = numberOfitemsDemanded;
+        this.numberOfItemsDemanded = numberOfItemsDemanded;
         this.partialOrder = partialOrder;
         this.usernameMySQL = usernameMySQL;
         this.passwordMySQL = passwordMySQL;
@@ -62,9 +62,9 @@ public class Request{
         if(possibleNumberOfItems == 0){
             JOptionPane.showMessageDialog(new JFrame(), ManuSuggest());
             throw new Exception(" ");
-        }else if(possibleNumberOfItems < numberOfitemsDemanded){
+        }else if(possibleNumberOfItems < numberOfItemsDemanded){
             chosenOptions = new int[possibleNumberOfItems][size];
-            chosenOptionsPrice = new int[numberOfitemsDemanded];
+            chosenOptionsPrice = new int[numberOfItemsDemanded];
 
             if(!this.partialOrder){
                 JOptionPane.showMessageDialog(new JFrame(), ManuSuggest());
@@ -77,10 +77,10 @@ public class Request{
                 searchForLowest(z);
             }
             
-        }else if(possibleNumberOfItems >= numberOfitemsDemanded){
-            chosenOptions = new int[numberOfitemsDemanded][size];
-            chosenOptionsPrice = new int[numberOfitemsDemanded];
-            for(int z = 0; z < numberOfitemsDemanded; z++){
+        }else if(possibleNumberOfItems >= numberOfItemsDemanded){
+            chosenOptions = new int[numberOfItemsDemanded][size];
+            chosenOptionsPrice = new int[numberOfItemsDemanded];
+            for(int z = 0; z < numberOfItemsDemanded; z++){
                 searchForLowest(z);
             }
         }
@@ -119,6 +119,7 @@ public class Request{
 				
 			Remove();
 	}
+
 	public int getAmountFilled(){
 		if(numberOfItemsDemanded < possibleNumberOfItems){
 			return numberOfItemsDemanded;
@@ -150,8 +151,8 @@ public class Request{
         return size;
     }
 
-    public int getNumberOfitemsDemanded() {
-        return numberOfitemsDemanded;
+    public int getNumberOfItemsDemanded() {
+        return numberOfItemsDemanded;
     }
 
     public int getPossibleNumberOfItems() {
@@ -162,11 +163,12 @@ public class Request{
     public String[] getChosenID() {
         return chosenID;
     }
+
      /**gets total price
      * @return price
      */
     public int getPrice(){
-    	int[] price = originalRequest.getChosenOptionsPrice(); //creates an int[] that contains the price of each object of furniture it used to fufill the order.
+    	int[] price = this.getChosenOptionsPrice(); //creates an int[] that contains the price of each object of furniture it used to fufill the order.
         int totalPrice = 0;
         for(int i =0; i < price.length; i++){   //goes through the price array and adds all the prices together to get the total Price.
             totalPrice = totalPrice + price[i];
@@ -174,6 +176,7 @@ public class Request{
 	    
 	    return totalPrice;
     }
+    
     /**
      * Connects to database
      */

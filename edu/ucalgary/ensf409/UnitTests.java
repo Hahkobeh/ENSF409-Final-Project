@@ -15,42 +15,42 @@ import java.io.*;
 import java.util.*;
 
 public class UnitTests {
- private static String PASSWORD = "ensf409";
-  private static String USERNAME = "scm";
+ private static String PASSWORD = "Whicket1!";
+  private static String USERNAME = "Nick";
  
- @Test
- public void testFileisMade(){
- Request trial = new Request("chair", "task", 1, false, USERNAME ,PASSWORD ); // full order
- OrderForm trialOrder = new OrderForm(trial); // orderform
- File obj = new File("orderform.txt");
- assertTrue(obj.exists()); // check if orderform creates file
- }
+  @Test
+  public void testFileisMade(){
+        Request trial = null;
+        try{
+            trial = new Request("chair", "Task", 1, false, USERNAME,PASSWORD); // full order
+        }catch(Exception e){
+
+        }
+        OrderForm trialOrder = new OrderForm(trial); // orderform
+        assertTrue(new File("orderform.txt").exists()); // check if orderform creates file 
+  }
  
- @Test 
- public void testFullOrderIsFilled(){
- Request trial = new Request("chair", "task", 1, false,  USERNAME ,PASSWORD ); // full order
- OrderForm trialOrder = new OrderForm(trial); // orderform
- assertTrue(trial.getNumberOfItemsDemanded() == trial.geAmountFilled()); //if full order is filled
+  @Test 
+  public void testFullOrderIsFilled(){
+        Request trial = new Request("chair", "task", 1, false,  USERNAME ,PASSWORD ); // full order
+        OrderForm trialOrder = new OrderForm(trial); // orderform
+        assertTrue(trial.getNumberOfItemsDemanded() == trial.geAmountFilled()); //if full order is filled
   
+    }
+  @Test
+  public void testPartialOrderisFilled(){
+        Request Trial = new Request("chair", "task", 16, true,  USERNAME ,PASSWORD ); 
+        assertTrue(trial.getAmountFilled > 0 && trial.getPartialOrder());
  }
   @Test
- public void testPartialOrderisFilled(){
-  Request Trial = new Request("chair", "task", 16, true,  USERNAME ,PASSWORD ); 
-   assertTrue(trial.getAmountFilled > 0 && trial.getPartialOrder());
- }
- @Test
- public void testFullOrderCannotBeFilled(){
-  Request Trial = new Request("chair", "task", 16, false,  USERNAME ,PASSWORD ); 
-  assertTrue(trial.getNumberOfItemsDemanded != trial.getAmountFilled();
- }
+  public void testFullOrderCannotBeFilled(){
+        Request Trial = new Request("chair", "task", 16, false,  USERNAME ,PASSWORD ); 
+        assertTrue(trial.getNumberOfItemsDemanded != trial.getAmountFilled();
+  }
  
- @Test 
- public void testPartialOrderCannotBeFilled(){
+  @Test 
+  public void testPartialOrderCannotBeFilled(){
   
   
- }
-
-
- 
-
+  }
 }

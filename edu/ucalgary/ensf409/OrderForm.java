@@ -37,7 +37,7 @@ public class OrderForm {
 
         StringBuilder order = new StringBuilder();
         order.append("Furniture Order Form\n\nFaculty Name:\nContact:\nDate:\n\nOriginal Request: "); 
-        order.append(originalRequest.getType() +" "+ originalRequest.getCategory() +", " + originalRequest.getNumberOfitemsDemanded());
+        order.append(originalRequest.getType() +" "+ originalRequest.getCategory() +", " + originalRequest.getNumberOfItemsDemanded());
      
         order.append("\nNumber of items filled: " + originalRequest.getAmountFilled());
         order.append("\n\nItems Ordered\n");
