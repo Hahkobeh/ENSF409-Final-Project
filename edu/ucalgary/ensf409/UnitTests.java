@@ -74,7 +74,7 @@ public class UnitTests {
         this.resetTable();
         Request trial = null;
         try{
-            trial = new Request("lamp", "Desk", 3, false, USERNAME, PASSWORD);
+            trial = new Request("lamp", "Desk", 3, true, USERNAME, PASSWORD);
         }catch(Exception e){
 
         }
