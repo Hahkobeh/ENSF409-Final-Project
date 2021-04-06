@@ -46,9 +46,11 @@ public class Request{
 
 
     public Request(String category, String type, int numberOfItemsDemanded, Boolean partialOrder, String usernameMySQL, String passwordMySQL) throws Exception {
-
         this.category = category.toLowerCase();
         this.type = type.toLowerCase();
+        if(numberOfItemsDemanded < 1){
+            throw new NumberFormatException();
+        }
         this.numberOfItemsDemanded = numberOfItemsDemanded;
         this.partialOrder = partialOrder;
         this.usernameMySQL = usernameMySQL;

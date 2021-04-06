@@ -139,6 +139,8 @@ public class UserInterface {
                             numberText.setText("");
                         }
 
+                    }catch(NumberFormatException error){
+                        JOptionPane.showMessageDialog(new JFrame(), "Please fill in all fields properly.");
                     }catch(Exception error){
                         catText.setText("");
                         typeText.setText("");
@@ -146,7 +148,7 @@ public class UserInterface {
                     }
                 }
             }catch(NumberFormatException error){
-                JOptionPane.showMessageDialog(new JFrame(), "Please fill in all fields.");
+                JOptionPane.showMessageDialog(new JFrame(), "Please fill in all fields properly.");
             }
         }
        });
