@@ -25,8 +25,9 @@ import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
  * Unit tests for the Inventory Manager Program. Ensure before running
  */
 public class UnitTests {
-  private static String PASSWORD = "password";
-  private static String USERNAME = "Nick";
+
+ private static String PASSWORD = "";
+  private static String USERNAME = "";
  
   @Test
   public void testFileisMade(){
