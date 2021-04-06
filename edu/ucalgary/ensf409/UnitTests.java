@@ -32,7 +32,7 @@ public class UnitTests {
   private static String USERNAME = "Nick";
  
   @Test
-  public void testCorrectItems1(){
+  public void testCorrectNumberOfItems(){
         this.resetTable();
         Request trial = null;
         try{
@@ -40,11 +40,11 @@ public class UnitTests {
         }catch(Exception e){
 
         }
-        assertTrue("Uncorrect combination of items", trial.getPossibleNumberOfItems() == 1);
+        assertTrue("Incorrect number of items", trial.getPossibleNumberOfItems() == 1);
   }
   
   @Test
-  public void testCorrectItems2(){
+  public void testCorrectItems(){
         this.resetTable();
         String[] answer = {"D0890","D8675"};
         String[] answer2 = {"D8675","D0890"};
@@ -54,7 +54,7 @@ public class UnitTests {
         }catch(Exception e){
 
         }
-        assertTrue("Uncorrect combination of items", (Arrays.equals(trial.getChosenID(), answer2) || Arrays.equals(trial.getChosenID(),answer)));
+        assertTrue("Incorrect combination of items", (Arrays.equals(trial.getChosenID(), answer2) || Arrays.equals(trial.getChosenID(),answer)));
   }
 
   @Test
@@ -66,7 +66,7 @@ public class UnitTests {
       }catch(Exception e){
 
       }
-      assertTrue("Uncorrect combination of items", trial.getPrice() == 60);
+      assertTrue("Incorrect price for items", trial.getPrice() == 60);
   }
 
   @Test
@@ -78,7 +78,7 @@ public class UnitTests {
         }catch(Exception e){
 
         }
-        assertTrue("Uncorrect combination of items", trial.getPossibleNumberOfItems() == 3);
+        assertTrue("Incorrect combination of items", trial.getPossibleNumberOfItems() == 3);
   }
 
   @Test
@@ -207,7 +207,7 @@ public class UnitTests {
   }
 
   @Test 
-  public void testOrderNotEmpty(){
+  public void testOrderEmpty(){
       this.resetTable();
       Request trial = null;
       Exception e = null;
