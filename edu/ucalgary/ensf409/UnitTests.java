@@ -26,7 +26,7 @@ import java.util.*;
 public class UnitTests {
 
  private static String PASSWORD = "password";
-  private static String USERNAME = "Nick";
+  private static String USERNAME = "User1";
  
 
       /**
