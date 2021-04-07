@@ -2,6 +2,8 @@
 <br>
 Document as you go
 
+CHANGE db USERNAME AND PASSWORD BEFORE HANDING IN!
+
 <br>
 
 After creating every class write a unit test in the UnitTests.java file.
