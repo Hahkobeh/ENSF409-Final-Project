@@ -129,12 +129,7 @@ public class Request{
         JOptionPane.showMessageDialog(new JFrame(), order);
 	}
 
-    /**
-     * This Constructor is purely for testing purposes.
-     */
-    public Request(){
 
-    }
 
     /**
      *  Gets the total number of items that were filled
@@ -318,7 +313,6 @@ public class Request{
                 }
                 row++;
             }
-            System.out.println("finished");
 
         }catch(SQLException e){
             e.printStackTrace();
@@ -651,6 +645,101 @@ public String ManuSuggest(){
         this.chosenID = chosenIDs;
     }
 
+    /**
+     * This Constructor is purely for testing purposes.
+     */
+    public Request(){
+
+    }
+
+    /**
+     *  This Constructor is purely for testing purposes, It is the same as the standard constructor but stripped of dialog boxes popping up to make testing easier and
+     *  more efficient.
+     * @param category
+     * @param type
+     * @param numberOfItemsDemanded
+     * @param partialOrder
+     * @param usernameMySQL
+     * @param passwordMySQL
+     * @param test
+     * @throws Exception
+     */
+    public Request(String category, String type, int numberOfItemsDemanded, Boolean partialOrder, String usernameMySQL, String passwordMySQL, String test) throws Exception {
+        this.category = category.toLowerCase();
+        this.type = type.toLowerCase();
+        if(numberOfItemsDemanded < 1){
+            throw new NumberFormatException();
+        }
+        this.numberOfItemsDemanded = numberOfItemsDemanded;
+        this.partialOrder = partialOrder;
+        this.usernameMySQL = usernameMySQL;
+        this.passwordMySQL = passwordMySQL;
+        setSize(this.category);
+        getDatabase(); // Connect to database.
+        storeData(); // Pulls data from database into variables.
+        totalItemsThatCanBeMade(); // Calculates the total number of items that can be made.
+
+
+        if(possibleNumberOfItems == 0){
+            throw new Exception(" ");
+        }else if(possibleNumberOfItems < numberOfItemsDemanded){
+            chosenOptions = new int[possibleNumberOfItems][size];
+            chosenOptionsPrice = new int[numberOfItemsDemanded];
+
+            if(!this.partialOrder){ // If partial order fulfillment wasnt selected then we show a window with suggested manufacturers then throw exception since order cannot be fulfilled.
+                throw new Exception(" ");
+            }
+            
+            for(int z = 0; z < possibleNumberOfItems; z++){
+                searchForLowest(z); // Searches for the lowest price to make each item.
+            }
+            
+        }else if(possibleNumberOfItems >= numberOfItemsDemanded){
+            chosenOptions = new int[numberOfItemsDemanded][size];
+            chosenOptionsPrice = new int[numberOfItemsDemanded];
+            for(int z = 0; z < numberOfItemsDemanded; z++){
+                searchForLowest(z);
+            }
+        }
+
+		
+		int countItems = 0;
+		
+		for(int i = 0;i<chosenOptions.length;i++){
+			for(int j=0;j<chosenOptions[i].length;j++){
+				if(chosenOptions[i][j] != 0){
+					countItems++;
+				}
+			}
+		}
+		
+		int [] itemList = new int[countItems];
+		chosenID = new String[countItems];
+		countItems = 0;
+		for(int i = 0;i<chosenOptions.length;i++){
+			for(int j=0;j<chosenOptions[i].length;j++){
+				if(chosenOptions[i][j] != 0){
+					itemList[countItems] = chosenOptions[i][j]-1;
+					countItems++;
+				}
+			}
+		}	
+
+		
+		for(int i = 0;i<itemList.length;i++){
+			chosenID[i] = dataID[itemList[i]];
+		}
+        remove(); // Remove taken items from the database.
+
+        StringBuilder order = new StringBuilder();
+        order.append("Order for: " + this.getAmountFilled() + " " + this.type + " " + this.category + " was fulfilled.\nThe cheapest option was to order:\n"); 
+        
+        for(int i = 0 ; i < this.chosenID.length; i++){     //goes through each ID in the temp array and appends it to the order stringBuilder. 
+            order.append("ID: " + this.chosenID[i] + "\n");  
+        }       
+
+        order.append("\nFor a total Price: $" + this.getPrice());
+	}
 
 }//end of class declaration
 

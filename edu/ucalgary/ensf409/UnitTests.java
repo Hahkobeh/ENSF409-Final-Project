@@ -17,11 +17,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.*;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
-import com.mysql.cj.x.protobuf.MysqlxPrepare.Prepare;
 
 /**
  * Unit tests for the Inventory Manager Program. Ensure before running
@@ -260,7 +257,7 @@ public class UnitTests {
         String[] answer2 = {"D8675","D0890"};
         Request trial = null;
         try{
-              trial = new Request("Desk", "traditional", 1, false, USERNAME, PASSWORD);
+              trial = new Request("Desk", "traditional", 1, false, USERNAME, PASSWORD, "test");
         }catch(Exception e){
 
         }
@@ -274,7 +271,7 @@ public class UnitTests {
       this.resetTable();
       Request trial = null;
       try{
-            trial = new Request("lamp", "swing arm", 2, false, USERNAME, PASSWORD);
+            trial = new Request("lamp", "swing arm", 2, false, USERNAME, PASSWORD, "test");
       }catch(Exception e){
 
       }
@@ -288,7 +285,7 @@ public class UnitTests {
         this.resetTable();
         Request trial = null;
         try{
-            trial = new Request("lamp", "Desk", 3, true, USERNAME, PASSWORD);
+            trial = new Request("lamp", "Desk", 3, true, USERNAME, PASSWORD, "test");
         }catch(Exception e){
 
         }
@@ -302,7 +299,7 @@ public class UnitTests {
       Request trial = null;
       Exception e = null;
       try{
-            trial = new Request("Chair", "NotARealType", 2, true, USERNAME, PASSWORD);
+            trial = new Request("Chair", "NotARealType", 2, true, USERNAME, PASSWORD, "test");
       }catch(Exception er){
             e = er;
       }
@@ -316,7 +313,7 @@ public class UnitTests {
       Request trial = null;
       Exception e = null;
       try{
-            trial = new Request("NotAChair", "Mesh", 2, true, USERNAME, PASSWORD);
+            trial = new Request("NotAChair", "Mesh", 2, true, USERNAME, PASSWORD, "test");
       }catch(Exception er){
             e = er;
       }
@@ -331,7 +328,7 @@ public class UnitTests {
       Request trial = null;
       Exception e = null;
       try{
-            trial = new Request("ChAiR", "Mesh", 1, true, USERNAME, PASSWORD);
+            trial = new Request("ChAiR", "Mesh", 1, true, USERNAME, PASSWORD, "test");
       }catch(Exception er){
             e = er;
       }
@@ -346,7 +343,7 @@ public class UnitTests {
       Request trial = null;
       Exception e = null;
       try{
-            trial = new Request("chair", "mEsH", 1, true, USERNAME, PASSWORD);
+            trial = new Request("chair", "mEsH", 1, true, USERNAME, PASSWORD, "test");
       }catch(Exception er){
             e = er;
       }
@@ -359,19 +356,12 @@ public class UnitTests {
   public void testDataBaseIsUpdatedAfterSuccessOrder(){
       this.resetTable();
       Request trial = null;
-      Exception e = null;
       try{
-            trial = new Request();
-            trial.setCategory("chair");
-            trial.setType("mesh");
-            trial.setNumberOfItemsDemanded(1);
-            trial.setPartialOrder(true);
-            trial.setUsernameMySQL(USERNAME);
-            trial.setPasswordMySQL(PASSWORD);
+            trial = new Request("Chair", "mesh", 1, true, USERNAME, PASSWORD, "test");
       }catch(Exception er){
-            e = er;
+
       }
-      assertTrue("Error was not thrown",(!(this.checkDataBaseForValue("chair", "C0942")) && !(this.checkDataBaseForValue("chair", "C9890"))));
+      assertTrue("DataBase not succesfully updated.",(!(this.checkDataBaseForValue("chair", "C0942")) && !(this.checkDataBaseForValue("chair", "C9890"))));
   }
 
   @Test
@@ -381,7 +371,7 @@ public class UnitTests {
         this.resetTable();
         Request trial = null;
         try{
-            trial = new Request("chair", "Task", 1, false, USERNAME,PASSWORD); // full order
+            trial = new Request("chair", "Task", 1, false, USERNAME,PASSWORD, "test"); // full order
         }catch(Exception e){
 
         }
@@ -396,7 +386,7 @@ public class UnitTests {
       this.resetTable();
       Request trial = null;
       try {
-            trial = new Request("desk", "Standing", 2, false,  USERNAME ,PASSWORD );
+            trial = new Request("desk", "Standing", 2, false,  USERNAME ,PASSWORD, "test");
       } catch (Exception e) {
           
       } 
@@ -412,7 +402,7 @@ public class UnitTests {
       this.resetTable();
       Request trial = null;
       try {
-            trial = new Request("chair", "mesh", 16, true,  USERNAME ,PASSWORD );
+            trial = new Request("chair", "mesh", 16, true,  USERNAME ,PASSWORD, "test");
             OrderForm form = new OrderForm(trial); 
       } catch (Exception e) {
            
@@ -428,7 +418,7 @@ public class UnitTests {
     Request trial = null;
     boolean checkIfDeleted = true;
     try {
-        trial = new Request("chair", "task", 1, true,  USERNAME ,PASSWORD );
+        trial = new Request("chair", "task", 1, true,  USERNAME ,PASSWORD, "test");
         String [] orderedFurniture = trial.getChosenID();
         
         for(int i = 0; i < orderedFurniture.length; i++){
@@ -451,7 +441,7 @@ public class UnitTests {
       Request trial = null;
       Exception e = null;
       try{
-          trial = new Request("chair", "mesh", 0, false, USERNAME, PASSWORD);
+          trial = new Request("chair", "mesh", 0, false, USERNAME, PASSWORD, "test");
 
       }catch(Exception er){
             e = er;
