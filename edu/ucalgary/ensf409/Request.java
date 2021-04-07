@@ -88,33 +88,8 @@ public class Request{
             }
         }
 
+		fillChosenID(); //get ID's of chosen items
 		
-		int countItems = 0;
-		
-		for(int i = 0;i<chosenOptions.length;i++){
-			for(int j=0;j<chosenOptions[i].length;j++){
-				if(chosenOptions[i][j] != 0){
-					countItems++;
-				}
-			}
-		}
-		
-		int [] itemList = new int[countItems];
-		chosenID = new String[countItems];
-		countItems = 0;
-		for(int i = 0;i<chosenOptions.length;i++){
-			for(int j=0;j<chosenOptions[i].length;j++){
-				if(chosenOptions[i][j] != 0){
-					itemList[countItems] = chosenOptions[i][j]-1;
-					countItems++;
-				}
-			}
-		}	
-
-		
-		for(int i = 0;i<itemList.length;i++){
-			chosenID[i] = dataID[itemList[i]];
-		}
         remove(); // Remove taken items from the database.
 
         StringBuilder order = new StringBuilder();
@@ -127,6 +102,45 @@ public class Request{
         order.append("\nFor a total Price: $" + this.getPrice());
         
         JOptionPane.showMessageDialog(new JFrame(), order);
+	}
+
+    /**
+     * This Constructor is purely for testing purposes.
+     */
+    public Request(){
+
+    }
+
+	/**
+	*takes solutions for lowest price and gets model numbers
+	*/
+	public void fillChosenID(){
+		int countItems = 0;
+		
+		for(int i = 0;i<chosenOptions.length;i++){           //count non-zero entries in 2d array
+			for(int j=0;j<chosenOptions[i].length;j++){
+				if(chosenOptions[i][j] != 0){
+					countItems++;
+				}
+			}
+		}
+		
+		int [] itemList = new int[countItems];
+		chosenID = new String[countItems];
+		countItems = 0;
+		for(int i = 0;i<chosenOptions.length;i++){                            //get all non-zero entries
+			for(int j=0;j<chosenOptions[i].length;j++){
+				if(chosenOptions[i][j] != 0){
+					itemList[countItems] = chosenOptions[i][j]-1;
+					countItems++;
+				}
+			}
+		}	
+
+		
+		for(int i = 0;i<itemList.length;i++){                      //get ID's from dataID
+			chosenID[i] = dataID[itemList[i]];
+		}
 	}
 
 
