@@ -34,7 +34,7 @@ public class Request{
 	private String [] chosenID;
 
     /**
-     * Constructor for Request, sets all initial variables, then trys to execute a request.
+     * Constructor for Request, sets all initial variables, then tries to execute a request.
      * @param category Category is the type of object being requested. (e.g. chair, lamp, etc...)
      * @param type Type is the type of furniture item that is being requested. (e.g. mesh)
      * @param numberOfItemsDemanded Number of items that are being demanded.
@@ -571,7 +571,7 @@ public void remove(){
 
 public String ManuSuggest(){
     {
-         String out = possibleNumberOfItems+" could be made. Order cannot be fulfilled with current inventory. Suggested Manufacturers for "+ category+"s are: \n";
+         String out = "Order cannot be fulfilled with current inventory. " +possibleNumberOfItems+" could be made. Suggested Manufacturers for "+ category+"s are: \n";
          String query2 = "SELECT DISTINCT ManuID FROM " + category;
          String [] manuID = new String[200];
          try{
