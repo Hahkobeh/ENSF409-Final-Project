@@ -58,13 +58,13 @@ public class UserInterface {
        JLabel header = new JLabel("INVENTORY", JLabel.CENTER);
        header.setForeground(Color.BLUE);
        header.setBounds(125,20,340,40);
-       header.setFont(new Font("Courier", Font.PLAIN, 40));
+       header.setFont(new Font("Courier", Font.PLAIN, 30));
        panel.add(header);
 
        // Places Category Label
        JLabel catLabel = new JLabel("Category");
        catLabel.setBounds(10,80,160,40);
-       catLabel.setFont(new Font("Courier", Font.PLAIN, 30));
+       catLabel.setFont(new Font("Courier", Font.PLAIN, 20));
        panel.add(catLabel);
 
        // Places Text field for Category field
@@ -76,7 +76,7 @@ public class UserInterface {
        // Places Label for Type
        JLabel typeLabel = new JLabel("Type");
        typeLabel.setBounds(10,135,80,40);
-       typeLabel.setFont(new Font("Courier", Font.PLAIN, 30));
+       typeLabel.setFont(new Font("Courier", Font.PLAIN, 20));
        panel.add(typeLabel);
 
        // Places Text Field for Type
@@ -87,7 +87,7 @@ public class UserInterface {
 
        // Label for number of items
        JLabel numberLabel = new JLabel("Number of Items");
-       numberLabel.setFont(new Font("Courier", Font.PLAIN, 30));
+       numberLabel.setFont(new Font("Courier", Font.PLAIN, 20));
        numberLabel.setBounds(10,190,230,40);
        panel.add(numberLabel);
 
@@ -99,7 +99,7 @@ public class UserInterface {
 
        // Label for Partial Orders
        JLabel fillLabel = new JLabel("Fill Partial Order?");
-       fillLabel.setFont(new Font("Courier", Font.PLAIN, 30));
+       fillLabel.setFont(new Font("Courier", Font.PLAIN, 20));
        fillLabel.setBounds(10,245,240,40);
        panel.add(fillLabel);
 
