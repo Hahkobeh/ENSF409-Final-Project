@@ -95,8 +95,11 @@ public class Request{
         StringBuilder order = new StringBuilder();
         order.append("Order for: " + this.getAmountFilled() + " " + this.type + " " + this.category + " was fulfilled.\nThe cheapest option was to order:\n"); 
         
-        for(int i = 0 ; i < this.chosenID.length; i++){     //goes through each ID in the temp array and appends it to the order stringBuilder. 
-            order.append("ID: " + this.chosenID[i] + "\n");  
+        for(int i = 0 ; i < this.chosenID.length; i++){//goes through each ID in the temp array and appends it to the order stringBuilder.
+            if (chosenID[i] != null) {
+                order.append("ID: " + this.chosenID[i] + "\n");
+            }
+
         }       
 
         order.append("\nFor a total Price: $" + this.getPrice());
@@ -110,6 +113,9 @@ public class Request{
 	*/
 	public void fillChosenID(){
 		int countItems = 0;
+		String [] tempArray = new String[100];
+
+
 		
 		for(int i = 0;i<chosenOptions.length;i++){           //count non-zero entries in 2d array
 			for(int j=0;j<chosenOptions[i].length;j++){
@@ -128,6 +134,7 @@ public class Request{
 		int [] itemList = new int[countItems];
 		chosenID = new String[countItems];
 		countItems = 0;
+		int countRepeat = 0;
 		for(int i = 0;i<chosenOptions.length;i++){                            //get all non-zero entries
 			for(int j=0;j<chosenOptions[i].length;j++){
 				if(chosenOptions[i][j] != 0){
@@ -146,8 +153,25 @@ public class Request{
 
 		
 		for(int i = 0;i<itemList.length;i++){                      //get ID's from dataID
-			chosenID[i] = dataID[itemList[i]];
+			tempArray[i] = dataID[itemList[i]];
 		}
+		int r = 0;
+		for(int g = 0; g < chosenID.length; g++){
+		    boolean temp = false;
+            int y = 0;
+		    while(chosenID[y] != null){
+		        if(chosenID[y].equals(tempArray[g])){
+		            temp = true;
+                }
+		        y++;
+            }
+		    if(!temp) {
+                chosenID[r++] = tempArray[g];
+            }
+
+		}
+
+
 	}
 
 
