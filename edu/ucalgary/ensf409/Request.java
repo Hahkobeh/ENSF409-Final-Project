@@ -686,7 +686,7 @@ public String ManuSuggest(){
         getDatabase(); // Connect to database.
         storeData(); // Pulls data from database into variables.
         totalItemsThatCanBeMade(); // Calculates the total number of items that can be made.
-
+        
 
         if(possibleNumberOfItems == 0){
             throw new Exception(" ");
@@ -696,6 +696,8 @@ public String ManuSuggest(){
 
             if(!this.partialOrder){ // If partial order fulfillment wasnt selected then we show a window with suggested manufacturers then throw exception since order cannot be fulfilled.
                 throw new Exception(" ");
+            }else{
+                // If Partial order is selected, show window with the amount that can be made before making it.
             }
             
             for(int z = 0; z < possibleNumberOfItems; z++){
@@ -710,33 +712,8 @@ public String ManuSuggest(){
             }
         }
 
+		fillChosenID(); //get ID's of chosen items
 		
-		int countItems = 0;
-		
-		for(int i = 0;i<chosenOptions.length;i++){
-			for(int j=0;j<chosenOptions[i].length;j++){
-				if(chosenOptions[i][j] != 0){
-					countItems++;
-				}
-			}
-		}
-		
-		int [] itemList = new int[countItems];
-		chosenID = new String[countItems];
-		countItems = 0;
-		for(int i = 0;i<chosenOptions.length;i++){
-			for(int j=0;j<chosenOptions[i].length;j++){
-				if(chosenOptions[i][j] != 0){
-					itemList[countItems] = chosenOptions[i][j]-1;
-					countItems++;
-				}
-			}
-		}	
-
-		
-		for(int i = 0;i<itemList.length;i++){
-			chosenID[i] = dataID[itemList[i]];
-		}
         remove(); // Remove taken items from the database.
 
         StringBuilder order = new StringBuilder();
