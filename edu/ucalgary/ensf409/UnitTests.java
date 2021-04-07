@@ -32,6 +32,8 @@ public class UnitTests {
   private static String USERNAME = "Nick";
  
   @Test
+  //Constructor created with 6 arguments
+  //use getPossibleNumberOfItems() to retreive value
   public void testCorrectNumberOfItems(){
         this.resetTable();
         Request trial = null;
@@ -44,6 +46,8 @@ public class UnitTests {
   }
   
   @Test
+   //Constructor created with 6 arguments
+  //use getChosenID() to retreive value
   public void testCorrectItems(){
         this.resetTable();
         String[] answer = {"D0890","D8675"};
@@ -58,6 +62,8 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use getPrice() to retreive value
   public void testCorrectPrice(){
       this.resetTable();
       Request trial = null;
@@ -70,6 +76,8 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use getPossibleNumberOfItems() to retreive value
   public void testCorrectItems4(){
         this.resetTable();
         Request trial = null;
@@ -82,6 +90,7 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
   public void testInvalidInputTypeNotInTable(){
       this.resetTable();
       Request trial = null;
@@ -95,6 +104,7 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
   public void testInvalidInputCategoryNotInTable(){
       this.resetTable();
       Request trial = null;
@@ -108,6 +118,8 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use getPrice() to retreive value
   public void testWierdCasingOnCategory(){
       this.resetTable();
       Request trial = null;
@@ -121,6 +133,8 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use getPrice() to retreive value
   public void testWierdCasingOnType(){
       this.resetTable();
       Request trial = null;
@@ -134,6 +148,8 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use getdtaBaseForValue(category, ID) with two arguments to see if item is in database 
   public void testDataBaseIsUpdatedAfterSuccessfullOrder(){
       this.resetTable();
       Request trial = null;
@@ -147,6 +163,8 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use new File().exists uses an argument to confirm the existence of an orderform 
   public void testFileisMade(){
         this.resetTable();
         Request trial = null;
@@ -160,6 +178,8 @@ public class UnitTests {
   }
  
   @Test 
+  //Constructor created with 6 arguments
+  //use getNumberOfItemsDemanded() and getAmountFilled() to get values for amount of items asked for and filled
   public void testFullOrderIsFilled(){
       this.resetTable();
       Request trial = null;
@@ -174,6 +194,8 @@ public class UnitTests {
     }
 
   @Test
+ //Constructor created with 6 arguments
+ //use new File().exists uses an argument to confirm the existence of an orderform
   public void testPartialOrderisFilled(){
       this.resetTable();
       Request trial = null;
@@ -186,6 +208,9 @@ public class UnitTests {
       assertTrue("No orderform for a partial order was made.", new File("orderform.txt").exists()); // If a partial order was filled it should make a orderform
   }
    @Test
+  //Constructor created with 6 arguments
+  //use getCategory() to return value
+ //use getChosenID() to get values
   public void testItemsDeletedSuccessfully(){
     this.resetTable();
     Request trial = null;
@@ -207,6 +232,8 @@ public class UnitTests {
   }
 
   @Test 
+ //Constructor created with 6 arguments
+ 
   public void testOrderEmpty(){
       this.resetTable();
       Request trial = null;
