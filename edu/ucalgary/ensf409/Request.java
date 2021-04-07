@@ -115,7 +115,7 @@ public class Request{
 		for(int i = 0;i<itemList.length;i++){
 			chosenID[i] = dataID[itemList[i]];
 		}
-        Remove(); // Remove taken items from the database.
+        remove(); // Remove taken items from the database.
 
         StringBuilder order = new StringBuilder();
         order.append("Order for: " + this.getAmountFilled() + " " + this.type + " " + this.category + " was fulfilled.\nThe cheapest option was to order:\n"); 
@@ -547,7 +547,7 @@ public class Request{
  * 
  * 
  */
-    public void Remove(){
+public void remove(){
         
         for(int i=0;i < chosenID.length;i++){
          String query = "DELETE FROM " + category + " WHERE ID = '" + chosenID[i] + "';";
@@ -560,10 +560,8 @@ public class Request{
             e.printStackTrace();
         }
 
-
-        }
-        
-    }
+        }  
+}
 /**
  * ManuSuggest suggests manufacturers in the event an order cannot be fulfilled
  * @return return the formatted string containing suggested manufacturers
