@@ -31,6 +31,202 @@ public class UnitTests {
  private static String PASSWORD = "password";
   private static String USERNAME = "Nick";
  
+
+      /**
+       * 
+       *  These First tests test indavidual methods
+       * 
+       * 
+       */
+
+
+  @Test
+  public void testManuSuggestChairs(){
+      this.resetTable();
+      Request trial = null;
+      String ans = null;
+      String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
+                       " Suggested Manufacturers for chairs are: \n" +
+                       "Office Furnishings\nChairs R Us\nFurniture Goods\nFine Office Supplies\n";
+      try{
+            trial = new Request();
+            trial.setCategory("chair");
+            trial.setType("NotAType");
+            trial.setNumberOfItemsDemanded(70);
+            trial.setUsernameMySQL(USERNAME);
+            trial.setPasswordMySQL(PASSWORD);
+            trial.getDatabase();
+            ans = trial.ManuSuggest();
+      }catch(Exception er){
+
+      }
+      assertTrue("The incorrect manufacturers were given", correct.equals(ans));
+  }
+
+  @Test
+  public void testManuSuggestDesk(){
+      this.resetTable();
+      Request trial = null;
+      String ans = null;
+      String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
+                       " Suggested Manufacturers for desks are: \n" +
+                       "Academic Desks\nOffice Furnishings\nFurniture Goods\nFine Office Supplies\n";
+      try{
+            trial = new Request();
+            trial.setCategory("desk");
+            trial.setType("NotAType");
+            trial.setNumberOfItemsDemanded(70);
+            trial.setUsernameMySQL(USERNAME);
+            trial.setPasswordMySQL(PASSWORD);
+            trial.getDatabase();
+            ans = trial.ManuSuggest();
+      }catch(Exception er){
+
+      }
+      assertTrue("The incorrect manufacturers were given", correct.equals(ans));
+  }
+
+  @Test
+  public void testManuSuggestLamp(){
+      this.resetTable();
+      Request trial = null;
+      String ans = null;
+      String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
+                       " Suggested Manufacturers for lamps are: \n" +
+                       "Office Furnishings\nFurniture Goods\nFine Office Supplies\n";
+      try{
+            trial = new Request();
+            trial.setCategory("lamp");
+            trial.setType("NotAType");
+            trial.setNumberOfItemsDemanded(70);
+            trial.setUsernameMySQL(USERNAME);
+            trial.setPasswordMySQL(PASSWORD);
+            trial.getDatabase();
+            ans = trial.ManuSuggest();
+      }catch(Exception er){
+
+      }
+      assertTrue("The incorrect manufacturers were given", correct.equals(ans));
+  }
+
+  @Test
+  public void testManuSuggestFiling(){
+      this.resetTable();
+      Request trial = null;
+      String ans = null;
+      String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
+                       " Suggested Manufacturers for filings are: \n" +
+                       "Office Furnishings\nFurniture Goods\nFine Office Supplies\n";
+      try{
+            trial = new Request();
+            trial.setCategory("filing");
+            trial.setType("NotAType");
+            trial.setNumberOfItemsDemanded(70);
+            trial.setUsernameMySQL(USERNAME);
+            trial.setPasswordMySQL(PASSWORD);
+            trial.getDatabase();
+            ans = trial.ManuSuggest();
+      }catch(Exception er){
+
+      }
+      assertTrue("The incorrect manufacturers were given", correct.equals(ans));
+  }
+
+  @Test
+  public void testRemoveFilings(){
+      this.resetTable();
+      Request trial = null; 
+      String[] testIDs = {"L132","L208","L096"}; 
+      try{
+            trial = new Request();
+            trial.setCategory("filing");
+            trial.setUsernameMySQL(USERNAME);
+            trial.setPasswordMySQL(PASSWORD);
+            trial.setChosenID(testIDs);
+            trial.getDatabase();
+            trial.remove();
+      }catch(Exception er){
+
+      }
+
+      boolean test1 = this.checkDataBaseForValue("filing", "L132");
+      boolean test2 = this.checkDataBaseForValue("filing", "L208");
+      boolean test3 = this.checkDataBaseForValue("filing", "L096");
+
+      assertTrue("DataBase was incorrectly updated after remove() was called", (!test1 && !test2 && !test3));
+  }
+
+  @Test
+  public void testRemoveDesks(){
+      this.resetTable();
+      Request trial = null; 
+      String[] testIDs = {"D3820","D1927","D1030"}; 
+      try{
+            trial = new Request();
+            trial.setCategory("desk");
+            trial.setUsernameMySQL(USERNAME);
+            trial.setPasswordMySQL(PASSWORD);
+            trial.setChosenID(testIDs);
+            trial.getDatabase();
+            trial.remove();
+      }catch(Exception er){
+
+      }
+
+      boolean test1 = this.checkDataBaseForValue("desk", "D3820");
+      boolean test2 = this.checkDataBaseForValue("desk", "D1927");
+      boolean test3 = this.checkDataBaseForValue("desk", "D1030");
+
+      assertTrue("DataBase was incorrectly updated after remove() was called", (!test1 && !test2 && !test3));
+  }
+
+  @Test
+  public void testFactorial(){
+      Request trial = null; 
+      try{
+            trial = new Request();
+      }catch(Exception er){
+
+      }
+      int test1 = trial.factorial(5);
+      int test2 = trial.factorial(9);
+      int test3 = trial.factorial(2);
+
+      assertTrue("Incorrect factorial for test1", test1 == 120);
+      assertTrue("Incorrect factorial for test2", test2 == 362880);
+      assertTrue("Incorrect factorial for test3", test3 == 2);
+  }
+
+  @Test
+  public void testTotalItemsThatCanBeMade(){
+      Request trial = null; 
+      char[][] testArray = {{'Y','N','N'},
+                           {'Y','Y','Y'},
+                           {'N','Y','Y'},
+                           {'N','Y','Y'},
+                           {'Y','Y','Y'}};
+      try{
+            trial = new Request();
+            trial.setSize(3);
+            trial.setData(testArray);
+            trial.totalItemsThatCanBeMade();
+      }catch(Exception er){
+
+      }
+      assertTrue("The incorrect amount of items were calculated.", trial.getPossibleNumberOfItems() == 3);
+  }
+
+
+  /**
+   * 
+   * 
+   *  This next part tests full program functionality as opposed to indavidual methods.
+   * 
+   * 
+   * 
+   */
+
+
   @Test
   //Constructor created with 6 arguments
   //use getPossibleNumberOfItems() to retreive value
@@ -72,7 +268,7 @@ public class UnitTests {
   }
 
   @Test
- //Constructor created with 6 arguments
+  //Constructor created with 6 arguments
   //use getPrice() to retreive value
   public void testCorrectPrice(){
       this.resetTable();
@@ -160,12 +356,18 @@ public class UnitTests {
   @Test
  //Constructor created with 6 arguments
   //use getdtaBaseForValue(category, ID) with two arguments to see if item is in database 
-  public void testDataBaseIsUpdatedAfterSuccessfullOrder(){
+  public void testDataBaseIsUpdatedAfterSuccessOrder(){
       this.resetTable();
       Request trial = null;
       Exception e = null;
       try{
-            trial = new Request("chair", "mesh", 1, true, USERNAME, PASSWORD);
+            trial = new Request();
+            trial.setCategory("chair");
+            trial.setType("mesh");
+            trial.setNumberOfItemsDemanded(1);
+            trial.setPartialOrder(true);
+            trial.setUsernameMySQL(USERNAME);
+            trial.setPasswordMySQL(PASSWORD);
       }catch(Exception er){
             e = er;
       }
@@ -257,19 +459,6 @@ public class UnitTests {
       assertTrue("Error was not thrown", e != null);
   }
 
-  @Test
-  public void testCorrectSuggestedManufacturers(){
-      this.resetTable();
-      Request trial = null;
-      Exception e = null;
-      try{
-          trial = new Request("chair", "mesh", 70, false, USERNAME, PASSWORD);
-      }catch(Exception er){
-
-      }
-      String ans = trial.ManuSuggest();
-      assertTrue("Error was not thrown", e != null);
-  }
 
 
   /**
