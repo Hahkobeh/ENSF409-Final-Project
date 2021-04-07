@@ -120,13 +120,7 @@ public class Request{
 		for(int i = 0;i<chosenOptions.length;i++){           //count non-zero entries in 2d array
 			for(int j=0;j<chosenOptions[i].length;j++){
 				if(chosenOptions[i][j] != 0){
-					for(int k=0;k<chosenOptions.length;k++){
-						for(int l=0;l<chosenOptions[k].length;l++){
-							if(chosenOptions[i][j] != chosenOptions[k][l]){
-									countItems++;
-							}
-						}
-					}
+                    countItems++;
 				}
 			}
 		}
@@ -138,15 +132,8 @@ public class Request{
 		for(int i = 0;i<chosenOptions.length;i++){                            //get all non-zero entries
 			for(int j=0;j<chosenOptions[i].length;j++){
 				if(chosenOptions[i][j] != 0){
-						for(int k=0;k<chosenOptions.length;k++){
-						for(int l=0;l<chosenOptions[k].length;l++){
-							if(chosenOptions[i][j] != chosenOptions[k][l]){
-									itemList[countItems] = chosenOptions[i][j]-1;
-									countItems++;
-							}
-						}
-					}
-					
+                    itemList[countItems] = chosenOptions[i][j]-1;
+                    countItems++;
 				}
 			}
 		}	
