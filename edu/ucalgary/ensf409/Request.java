@@ -104,12 +104,6 @@ public class Request{
         JOptionPane.showMessageDialog(new JFrame(), order);
 	}
 
-    /**
-     * This Constructor is purely for testing purposes.
-     */
-    public Request(){
-
-    }
 
 	/**
 	*takes solutions for lowest price and gets model numbers
