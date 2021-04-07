@@ -2,7 +2,7 @@
  @author Colin Christophe <a href="mailto:colin.christophe@ucalgary.ca">colin.christophe@ucalgary.ca</a>
          Nick Knapton <a href="mailto:nick.knapton@ucalgary.ca">nick.knapton@ucalgary.ca</a>
          Brian Kramer <a href="mailto:brian.kramer@ucalgary.ca">brian.kramer@ucalgary.ca</a>
-         tucan jake <a href="mailto:tucan.jake@ucalgary.ca">tucan.jake@ucalgary.ca</a>
+         Jacob Artuso <a href="mailto:jacob.artuso@ucalgary.ca">jacob.artuso@ucalgary.ca</a>
  @version       1.5
  @since         1.0
  */
@@ -32,7 +32,9 @@ public class UnitTests {
   private static String USERNAME = "Nick";
  
   @Test
-  public void testCorrectItems1(){
+  //Constructor created with 6 arguments
+  //use getPossibleNumberOfItems() to retreive value
+  public void testCorrectNumberOfItems(){
         this.resetTable();
         Request trial = null;
         try{
@@ -40,11 +42,13 @@ public class UnitTests {
         }catch(Exception e){
 
         }
-        assertTrue("Uncorrect combination of items", trial.getPossibleNumberOfItems() == 1);
+        assertTrue("Incorrect number of items", trial.getPossibleNumberOfItems() == 1);
   }
   
   @Test
-  public void testCorrectItems2(){
+   //Constructor created with 6 arguments
+  //use getChosenID() to retreive value
+  public void testCorrectItems(){
         this.resetTable();
         String[] answer = {"D0890","D8675"};
         String[] answer2 = {"D8675","D0890"};
@@ -54,11 +58,13 @@ public class UnitTests {
         }catch(Exception e){
 
         }
-        assertTrue("Uncorrect combination of items", (Arrays.equals(trial.getChosenID(), answer2) || Arrays.equals(trial.getChosenID(),answer)));
+        assertTrue("Incorrect combination of items", (Arrays.equals(trial.getChosenID(), answer2) || Arrays.equals(trial.getChosenID(),answer)));
   }
 
   @Test
-  public void testCorrectItems3(){
+ //Constructor created with 6 arguments
+  //use getPrice() to retreive value
+  public void testCorrectPrice(){
       this.resetTable();
       Request trial = null;
       try{
@@ -66,22 +72,25 @@ public class UnitTests {
       }catch(Exception e){
 
       }
-      assertTrue("Uncorrect combination of items", trial.getPrice() == 60);
+      assertTrue("Incorrect price for items", trial.getPrice() == 60);
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use getPossibleNumberOfItems() to retreive value
   public void testCorrectItems4(){
         this.resetTable();
         Request trial = null;
         try{
-            trial = new Request("lamp", "Desk", 3, false, USERNAME, PASSWORD);
+            trial = new Request("lamp", "Desk", 3, true, USERNAME, PASSWORD);
         }catch(Exception e){
 
         }
-        assertTrue("Uncorrect combination of items", trial.getPossibleNumberOfItems() == 3);
+        assertTrue("Incorrect combination of items", trial.getPossibleNumberOfItems() == 3);
   }
 
   @Test
+ //Constructor created with 6 arguments
   public void testInvalidInputTypeNotInTable(){
       this.resetTable();
       Request trial = null;
@@ -95,6 +104,7 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
   public void testInvalidInputCategoryNotInTable(){
       this.resetTable();
       Request trial = null;
@@ -108,6 +118,8 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use getPrice() to retreive value
   public void testWierdCasingOnCategory(){
       this.resetTable();
       Request trial = null;
@@ -117,10 +129,12 @@ public class UnitTests {
       }catch(Exception er){
             e = er;
       }
-      assertTrue("Error was not thrown",trial.getPrice() == 150);
+      assertTrue("Error was not thrown",trial.getPrice() == 150 && e == null);
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use getPrice() to retreive value
   public void testWierdCasingOnType(){
       this.resetTable();
       Request trial = null;
@@ -130,10 +144,12 @@ public class UnitTests {
       }catch(Exception er){
             e = er;
       }
-      assertTrue("Error was not thrown",trial.getPrice() == 150);
+      assertTrue("Error was not thrown",trial.getPrice() == 150 && e == null);
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use getdtaBaseForValue(category, ID) with two arguments to see if item is in database 
   public void testDataBaseIsUpdatedAfterSuccessfullOrder(){
       this.resetTable();
       Request trial = null;
@@ -147,6 +163,8 @@ public class UnitTests {
   }
 
   @Test
+ //Constructor created with 6 arguments
+  //use new File().exists uses an argument to confirm the existence of an orderform 
   public void testFileisMade(){
         this.resetTable();
         Request trial = null;
@@ -160,6 +178,8 @@ public class UnitTests {
   }
  
   @Test 
+  //Constructor created with 6 arguments
+  //use getNumberOfItemsDemanded() and getAmountFilled() to get values for amount of items asked for and filled
   public void testFullOrderIsFilled(){
       this.resetTable();
       Request trial = null;
@@ -174,6 +194,8 @@ public class UnitTests {
     }
 
   @Test
+ //Constructor created with 6 arguments
+ //use new File().exists uses an argument to confirm the existence of an orderform
   public void testPartialOrderisFilled(){
       this.resetTable();
       Request trial = null;
@@ -184,6 +206,45 @@ public class UnitTests {
            
       }
       assertTrue("No orderform for a partial order was made.", new File("orderform.txt").exists()); // If a partial order was filled it should make a orderform
+  }
+   @Test
+  //Constructor created with 6 arguments
+  //use getCategory() to return value
+ //use getChosenID() to get values
+  public void testItemsDeletedSuccessfully(){
+    this.resetTable();
+    Request trial = null;
+    boolean checkIfDeleted = true;
+    try {
+        trial = new Request("chair", "task", 1, true,  USERNAME ,PASSWORD );
+        String [] orderedFurniture = trial.getChosenID();
+        
+        for(int i = 0; i < orderedFurniture.length; i++){
+            if(checkDataBaseForValue(trial.getCategory(), orderedFurniture[i])){
+                checkIfDeleted = false;
+            }
+
+        }
+    } catch (Exception e) {
+       
+    }
+    assertTrue("Item was not successfully deleted after it was sold.", checkIfDeleted); // If the furniture is sold it should be removed from the datatbase
+  }
+
+  @Test 
+ //Constructor created with 6 arguments
+ 
+  public void testOrderEmpty(){
+      this.resetTable();
+      Request trial = null;
+      Exception e = null;
+      try{
+          trial = new Request("chair", "mesh", 0, false, USERNAME, PASSWORD);
+
+      }catch(Exception er){
+            e = er;
+      }
+      assertTrue("Error was not thrown", e != null);
   }
 
 

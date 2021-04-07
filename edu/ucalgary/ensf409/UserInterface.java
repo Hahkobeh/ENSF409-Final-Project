@@ -55,7 +55,7 @@ public class UserInterface {
        panel.setLayout(null);
 
        // Places Header
-       JLabel header = new JLabel("IKEA INVENTORY", JLabel.CENTER);
+       JLabel header = new JLabel("INVENTORY", JLabel.CENTER);
        header.setForeground(Color.BLUE);
        header.setBounds(125,20,340,40);
        header.setFont(new Font("Courier", Font.PLAIN, 30));

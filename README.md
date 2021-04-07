@@ -1,11 +1,14 @@
 # ENSF409-Final-Project
 <br>
-Document as you go so we dont need to go back and do it.
+Document as you go
+
 <br>
-<br>
+
 After creating every class write a unit test in the UnitTests.java file.
 
-## LOOK AT BEFORE SUBMITTING:
+<br>
+
+## Discussions:
 https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1339806/View?filters=unread
 https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1337111/View
 https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1336397/View
