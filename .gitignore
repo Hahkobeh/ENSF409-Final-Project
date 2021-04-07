@@ -12,7 +12,6 @@
 
 # Package Files #
 *.iml
-*.jar
 *.war
 *.nar
 *.ear
