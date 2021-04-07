@@ -18,3 +18,15 @@ https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1333416/View
 * Use the package edu.ucalgary.ensf409 for all .java files.
 * UML Diagram in root.
 * All library packages etc. to go in ./lib.
+
+## To Compile
+Assuming in working directory
+```
+javac -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/Inventory.java
+```
+## To Run
+Assuming in working directory
+```
+java -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/Inventory
+```
+
