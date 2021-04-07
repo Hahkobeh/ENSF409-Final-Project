@@ -34,7 +34,7 @@ public class Request{
 	private String [] chosenID;
 
     /**
-     * Constructor for Request, sets all initial variables, then trys to execute a request.
+     * Constructor for Request, sets all initial variables, then tries to execute a request.
      * @param category Category is the type of object being requested. (e.g. chair, lamp, etc...)
      * @param type Type is the type of furniture item that is being requested. (e.g. mesh)
      * @param numberOfItemsDemanded Number of items that are being demanded.
