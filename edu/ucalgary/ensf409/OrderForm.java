@@ -44,8 +44,10 @@ public class OrderForm {
        
         String[] tempID = originalRequest.getChosenID(); // create temporary string[] to store the ID numbers of the objects that will be used to fufill the order.
 
-        for(int i = 0 ; i < tempID.length; i++){     //goes through each ID in the temp array and appends it to the order stringBuilder. 
-            order.append("ID: " + tempID[i] + "\n");  
+        for(int i = 0 ; i < tempID.length; i++){//goes through each ID in the temp array and appends it to the order stringBuilder.
+            if (tempID[i] != null) {
+                order.append("ID: " + tempID[i] + "\n");
+            }
         }
     
        int totalPrice = originalRequest.getPrice();
