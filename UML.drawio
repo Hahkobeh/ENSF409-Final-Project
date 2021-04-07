@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="2HQJwIc4DXmZJdzYK_6-" name="Page-1">
-        <mxGraphModel dx="1538" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#182E3E" math="0" shadow="0">
+        <mxGraphModel dx="1054" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#182E3E" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -69,6 +69,9 @@
                             <mxPoint x="820" y="121"/>
                         </Array>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="Authors:&#10;Nicholas knapton&#10;Brian Kramer&#10;Colin Christophe&#10;Jacob Artuso" style="text;align=left;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=25;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="540" width="330" height="203" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

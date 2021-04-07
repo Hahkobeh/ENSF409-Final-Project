@@ -1,6 +1,6 @@
 /**
  @author Colin Christophe <a href="mailto:colin.christophe@ucalgary.ca">colin.christophe@ucalgary.ca</a>
-         Nick Knapton <a href="mailto:nicholas.knapton@ucalgary.ca">nicholas.knapton@ucalgary.ca</a>
+         Nicholas Knapton <a href="mailto:nicholas.knapton@ucalgary.ca">nicholas.knapton@ucalgary.ca</a>
          Brian Kramer <a href="mailto:brian.kramer@ucalgary.ca">brian.kramer@ucalgary.ca</a>
          Jacob Artuso <a href="mailto:jacob.artuso@ucalgary.ca">jacob.artuso@ucalgary.ca</a>
  @version       1.5
@@ -39,9 +39,9 @@ public class Request{
      * @param type Type is the type of furniture item that is being requested. (e.g. mesh)
      * @param numberOfItemsDemanded Number of items that are being demanded.
      * @param partialOrder If this can be a partial order or not.
-     * @param usernameMySQL
-     * @param passwordMySQL
-     * @throws Exception
+     * @param usernameMySQL Username for the SQL database to be accessed.
+     * @param passwordMySQL Password for the SQL database to be accessed.
+     * @throws Exception Throws Exception if request cannot be fulfilled
      */
 
 
@@ -56,27 +56,28 @@ public class Request{
         this.usernameMySQL = usernameMySQL;
         this.passwordMySQL = passwordMySQL;
         setSize(this.category);
-        getDatabase();
-        storeData();
-        totalItemsThatCanBeMade();
+        getDatabase(); // Connect to database.
+        storeData(); // Pulls data from database into variables.
+        totalItemsThatCanBeMade(); // Calculates the total number of items that can be made.
 
 
         if(possibleNumberOfItems == 0){
-            JOptionPane.showMessageDialog(new JFrame(), ManuSuggest());
+            JOptionPane.showMessageDialog(new JFrame(), ManuSuggest()); // If zero can be made, show new window with suggested manufacturers.
             throw new Exception(" ");
         }else if(possibleNumberOfItems < numberOfItemsDemanded){
             chosenOptions = new int[possibleNumberOfItems][size];
             chosenOptionsPrice = new int[numberOfItemsDemanded];
 
-            if(!this.partialOrder){
+            if(!this.partialOrder){ // If partial order fulfillment wasnt selected then we show a window with suggested manufacturers then throw exception since order cannot be fulfilled.
                 JOptionPane.showMessageDialog(new JFrame(), ManuSuggest());
                 throw new Exception(" ");
             }else{
+                // If Partial order is selected, show window with the amount that can be made before making it.
                 JOptionPane.showMessageDialog(new JFrame(), "Unfortunately only " + possibleNumberOfItems + " could be made, we will fill partial order.");
             }
             
             for(int z = 0; z < possibleNumberOfItems; z++){
-                searchForLowest(z);
+                searchForLowest(z); // Searches for the lowest price to make each item.
             }
             
         }else if(possibleNumberOfItems >= numberOfItemsDemanded){
@@ -114,7 +115,7 @@ public class Request{
 		for(int i = 0;i<itemList.length;i++){
 			chosenID[i] = dataID[itemList[i]];
 		}
-        Remove();
+        Remove(); // Remove taken items from the database.
 
         StringBuilder order = new StringBuilder();
         order.append("Order for: " + this.getAmountFilled() + " " + this.type + " " + this.category + " was fulfilled.\nThe cheapest option was to order:\n"); 
@@ -129,48 +130,85 @@ public class Request{
 	}
 
     /**
+     * This Constructor is purely for testing purposes.
+     */
+    public Request(){
+
+    }
+
+    /**
      *  Gets the total number of items that were filled
      * @return int corresponding to the number of items that can be filled.
      */
 	public int getAmountFilled(){
-		if(numberOfItemsDemanded < possibleNumberOfItems){
-			return numberOfItemsDemanded;
+		if(numberOfItemsDemanded < possibleNumberOfItems){ // If the number of items demanded is less than the possible items that can be made, we can fulfull the whole order
+			return numberOfItemsDemanded;                  // and we return number of items demanded.
 		}else{
-			return possibleNumberOfItems;
+			return possibleNumberOfItems; // If not we cant fill entire order so the amount fulfilled is the possible number of items that can be made.
 		}
 	}
 		
 
+    /**
+     * Getter method for chosenOptionsPrice.
+     * @return int[] of the chosen options prices.
+     */
     public int[] getChosenOptionsPrice() {
         return chosenOptionsPrice;
     }
 
+    /**
+     * Getter method for chosenOptions.
+     * @return int[][] of the chosenOptions.
+     */
     public int[][] getChosenOptions() {
         return chosenOptions;
     }
 	
+    /**
+     * Getter method for the category.
+     * @return String for the category requested.
+     */
     public String getCategory() {
         return category;
     }
 	
-
+    /**
+     * Getter method for type.
+     * @return String of the requested type.
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * Getter method for size.
+     * @return int of the size.
+     */
     public int getSize() {
         return size;
     }
 
+    /**
+     * Getter method for the numberOfItemsDemanded.
+     * @return int of the number of items originaly requested.
+     */
     public int getNumberOfItemsDemanded() {
         return numberOfItemsDemanded;
     }
 
+    /**
+     * Getter method for possibleNumberOfItems.
+     * @return int of the possible amount of items that can be made.
+     */
     public int getPossibleNumberOfItems() {
         return possibleNumberOfItems;
     }
 
-
+    /**
+     * Getter method for chosenID.
+     * @return A String array of the chosen IDs.
+     */
     public String[] getChosenID() {
         return chosenID;
     }
@@ -567,5 +605,54 @@ public String ManuSuggest(){
          
         }
     }
+
+    // Below are setters for all the member vars, purely for testing purposes.
+    public void setCategory(String category){
+        this.category = category;
+    }
+    public void setType(String type){
+        this.type = type;
+    }
+    public void setSize(int size){
+        this.size = size;
+    }
+    public void setnumberOfEntries(int num){
+        this.numberOfEntries = num;
+    }
+    public void setPartialOrder(Boolean partial){
+        this.partialOrder = partial;
+    }
+    public void setUsernameMySQL(String username){
+        this.usernameMySQL = username;
+    }
+    public void setPasswordMySQL(String password){
+        this.passwordMySQL = password;
+    }
+    public void setData(char[][] data){
+        this.data = data;
+    }
+    public void setPriceData(int[] prices){
+        this.priceData = prices;
+    }
+    public void setDataID(String[] dataID){
+        this.dataID = dataID;
+    }
+    public void setNumberOfItemsDemanded(int number){
+        this.numberOfItemsDemanded = number;
+    }
+    public void setPossibleNumberOfItems(int number){
+        this.possibleNumberOfItems = number;
+    }
+    public void setChosenOptions(int[][] items){
+        this.chosenOptions = items;
+    }
+    public void setChosenOptionsPrice(int[] prices){
+        this.chosenOptionsPrice = prices;
+    }
+    public void setChosenID(String[] chosenIDs){
+        this.chosenID = chosenIDs;
+    }
+
+
 }//end of class declaration
 

@@ -1,9 +1,9 @@
 /**
  @author Colin Christophe <a href="mailto:colin.christophe@ucalgary.ca">colin.christophe@ucalgary.ca</a>
-         Nick Knapton <a href="mailto:nick.knapton@ucalgary.ca">nick.knapton@ucalgary.ca</a>
+         Nicholas Knapton <a href="mailto:nicholas.knapton@ucalgary.ca">nicholas.knapton@ucalgary.ca</a>
          Brian Kramer <a href="mailto:brian.kramer@ucalgary.ca">brian.kramer@ucalgary.ca</a>
          Jacob Artuso <a href="mailto:jacob.artuso@ucalgary.ca">jacob.artuso@ucalgary.ca</a>
- @version       1.5
+ @version       1.3
  @since         1.0
  */
 package edu.ucalgary.ensf409;
@@ -38,7 +38,17 @@ public class UnitTests {
         this.resetTable();
         Request trial = null;
         try{
-              trial = new Request("Chair", "Mesh", 1, false, USERNAME, PASSWORD);
+              trial = new Request();
+              trial.setCategory("chair");
+              trial.setType("Mesh");
+              trial.setNumberOfItemsDemanded(1);
+              trial.setPartialOrder(false);
+              trial.setUsernameMySQL(USERNAME);
+              trial.setPasswordMySQL(PASSWORD);
+              trial.setSize("chair");
+              trial.getDatabase();
+              trial.storeData();
+              trial.totalItemsThatCanBeMade();
         }catch(Exception e){
 
         }
@@ -244,6 +254,20 @@ public class UnitTests {
       }catch(Exception er){
             e = er;
       }
+      assertTrue("Error was not thrown", e != null);
+  }
+
+  @Test
+  public void testCorrectSuggestedManufacturers(){
+      this.resetTable();
+      Request trial = null;
+      Exception e = null;
+      try{
+          trial = new Request("chair", "mesh", 70, false, USERNAME, PASSWORD);
+      }catch(Exception er){
+
+      }
+      String ans = trial.ManuSuggest();
       assertTrue("Error was not thrown", e != null);
   }
 
