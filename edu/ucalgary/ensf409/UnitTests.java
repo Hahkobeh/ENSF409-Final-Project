@@ -51,7 +51,7 @@ public class UnitTests {
       Request trial = null;
       String ans = null;
    //create a String
-      String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
+      String correct = "Order cannot be fulfilled with current inventory. 0 could be made." +
                        " Suggested Manufacturers for chairs are: \n" +
                        "Office Furnishings\nChairs R Us\nFurniture Goods\nFine Office Supplies\n";
       try{
@@ -85,7 +85,7 @@ public class UnitTests {
       Request trial = null;
       String ans = null;
    //Create a String
-      String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
+      String correct = "Order cannot be fulfilled with current inventory. 0 could be made." +
                        " Suggested Manufacturers for desks are: \n" +
                        "Academic Desks\nOffice Furnishings\nFurniture Goods\nFine Office Supplies\n";
       try{
@@ -119,7 +119,7 @@ public class UnitTests {
       Request trial = null;
       String ans = null;
    //Create a String
-      String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
+      String correct = "Order cannot be fulfilled with current inventory. 0 could be made." +
                        " Suggested Manufacturers for lamps are: \n" +
                        "Office Furnishings\nFurniture Goods\nFine Office Supplies\n";
       try{
@@ -153,7 +153,7 @@ public class UnitTests {
       Request trial = null;
       String ans = null;
    //create a String
-      String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
+      String correct = "Order cannot be fulfilled with current inventory. 0 could be made." +
                        " Suggested Manufacturers for filings are: \n" +
                        "Office Furnishings\nFurniture Goods\nFine Office Supplies\n";
       try{
