@@ -466,8 +466,8 @@ public class UnitTests {
   }
 
   @Test
- //Constructor created with 6 arguments
-  //use getdtaBaseForValue(category, ID) with two arguments to see if item is in database 
+ //Constructor created with 7 arguments
+  //use getdataBaseForValue(category, ID) with two arguments to see if item is in database 
   public void testDataBaseIsUpdatedAfterSuccessOrder(){
       this.resetTable();
       Request trial = null;
@@ -476,11 +476,15 @@ public class UnitTests {
       }catch(Exception er){
 
       }
-      assertTrue("DataBase not succesfully updated.",(!(this.checkDataBaseForValue("chair", "C0942")) && !(this.checkDataBaseForValue("chair", "C9890"))));
+      //retrieve booleans
+      boolean firstCheck = this.checkDataBaseForValue("chair", "C0942");
+      boolean secondCheck = this.checkDataBaseForValue("chair", "C9890");
+      //confirm that both firstCheck and secondCheck are false
+      assertTrue("DataBase not succesfully updated.",(!firstCheck && !secondCheck));
   }
 
   @Test
- //Constructor created with 6 arguments
+ //Constructor created with 7 arguments
   //use new File().exists uses an argument to confirm the existence of an orderform 
   public void testFileisMade(){
         this.resetTable();
@@ -491,12 +495,16 @@ public class UnitTests {
 
         }
         OrderForm trialOrder = new OrderForm(trial); // orderform
-        assertTrue("An order form wasnt made.", new File("orderform.txt").exists()); // check if orderform creates file 
+        // retrieve boolean
+        boolean check = new File("orderform.txt").exists();
+        // make sure that check is true
+        assertTrue("An order form wasnt made.", check); // check if orderform creates file 
   }
  
   @Test 
-  //Constructor created with 6 arguments
-  //use getNumberOfItemsDemanded() and getAmountFilled() to get values for amount of items asked for and filled
+  //Constructor created with 7 arguments
+  //use getNumberOfItemsDemanded() to retrieve a value
+  //use getAmountFilled() to retrieve a value
   public void testFullOrderIsFilled(){
       this.resetTable();
       Request trial = null;
@@ -507,11 +515,15 @@ public class UnitTests {
       } 
         // full order
         OrderForm trialOrder = new OrderForm(trial); // orderform
-        assertTrue(trial.getNumberOfItemsDemanded() == trial.getAmountFilled()); //if full order is filled
+        //retrieve ints
+        int amount = trial.getAmountFilled();
+        int demanded = trial.getNumberOfItemsDemanded();
+        // check that amount and demanded are the same
+        assertTrue(demanded == amount); //if full order is filled
     }
 
   @Test
- //Constructor created with 6 arguments
+ //Constructor created with 7 arguments
  //use new File().exists uses an argument to confirm the existence of an orderform
   public void testPartialOrderisFilled(){
       this.resetTable();
@@ -522,12 +534,15 @@ public class UnitTests {
       } catch (Exception e) {
            
       }
-      assertTrue("No orderform for a partial order was made.", new File("orderform.txt").exists()); // If a partial order was filled it should make a orderform
+       // retrieve boolean
+       boolean check = new File("orderform.txt").exists();
+       // make sure that check is true
+      assertTrue("No orderform for a partial order was made.", check); // If a partial order was filled it should make a orderform
   }
    @Test
-  //Constructor created with 6 arguments
-  //use getCategory() to return value
+  //Constructor created with 7 arguments
  //use getChosenID() to get values
+ //getcategory() to retrieve values
   public void testItemsDeletedSuccessfully(){
     this.resetTable();
     Request trial = null;
@@ -549,7 +564,7 @@ public class UnitTests {
   }
 
   @Test 
- //Constructor created with 6 arguments
+ //Constructor created with 7 arguments
  
   public void testOrderEmpty(){
       this.resetTable();
@@ -559,8 +574,10 @@ public class UnitTests {
           trial = new Request("chair", "mesh", 0, false, USERNAME, PASSWORD, "test");
 
       }catch(Exception er){
+            //set e to the exception thrown
             e = er;
       }
+      //check that e is not null
       assertTrue("Error was not thrown", e != null);
   }
 
