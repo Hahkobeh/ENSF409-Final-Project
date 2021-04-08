@@ -9,6 +9,30 @@
 package edu.ucalgary.ensf409;
 
 // Just holds main
+
+
+/**         README
+ * 
+ *   ## To Compile on Windows
+ *   Assuming in working directory
+ *   ```
+ *   javac -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/Inventory.java
+ *   ```
+ *   ## To Run on Windows
+ *   Assuming in working directory
+ *   ```
+ *   java -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/Inventory
+ *   ```
+ * 
+ *   ## How to use
+ *   Input Category, Type and how many items you want into the provided text fields. Then if you would like a partial order to be filled,
+ *   select the checkbox. Finally press "Request". If successful, a new window will pop up with your order and upon closing a file named
+ *   "orderform.txt" will be created. This contains the neccissary information for your order. If not successful a window will pop up saying
+ *   so and depending on if you selected partial order or not the order may be fillled.
+ *   
+ *   Instructions on running unit tests are in UnitTests.java
+ */
+
 public class Inventory {
     public static void main (String [] args){
         UserInterface ui = new UserInterface();

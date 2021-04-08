@@ -22,8 +22,8 @@ public class UserInterface {
 
     // Username and password for the database to be connected to.
 
-    private static String USERNAME="Nick";
-    private static String PASSWORD="password";
+    private static String USERNAME="scm";
+    private static String PASSWORD="ensf409";
 
     private JFrame frame;
 
