@@ -57,7 +57,7 @@ public class Request{
         this.passwordMySQL = passwordMySQL;
         setSize(this.category);
         getDatabase(); // Connect to database.
-        storeData(); // Pulls data from database into variables.
+        storeData(); // Pulls data from database (Y/N values) into a 2D array.
         totalItemsThatCanBeMade(); // Calculates the total number of items that can be made.
 
 
