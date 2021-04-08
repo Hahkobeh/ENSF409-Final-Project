@@ -22,6 +22,8 @@ import java.util.*;
 
 /**         README
  * 
+ *   Note: database username is "scm" and password is "ensf409", and the URL is "jdbc:mysql://localhost/inventory" as per the requirements.
+ * 
  *   ## To Compile Tests on Window
  *   Assuming in working directory
  *   ```
@@ -35,8 +37,8 @@ import java.util.*;
  */
 public class UnitTests {
 
- private static String PASSWORD = "password";
-  private static String USERNAME = "Nick";
+ private static String PASSWORD = "ensf409";
+  private static String USERNAME = "scm";
  
 
       /**
