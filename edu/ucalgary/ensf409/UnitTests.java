@@ -337,14 +337,19 @@ public class UnitTests {
         }catch(Exception e){
 
         }
-        assertTrue("Incorrect number of items", trial.getPossibleNumberOfItems() == 1);
+    //Retrieve int
+   int check = trial.getPossibleNumberOfItems();
+   //check that the calues are the same
+        assertTrue("Incorrect number of items", check == 1);
   }
   
   @Test
-   //Constructor created with 6 arguments
-  //use getChosenID() to retreive value
+  //constructor with 7 arguments
+ //getChosenID() to retrieve values
+  
   public void testCorrectItems(){
         this.resetTable();
+   //create two arrays and add lines to each
         String[] answer = {"D0890","D8675"};
         String[] answer2 = {"D8675","D0890"};
         Request trial = null;
@@ -353,11 +358,14 @@ public class UnitTests {
         }catch(Exception e){
 
         }
-        assertTrue("Incorrect combination of items", (Arrays.equals(trial.getChosenID(), answer2) || Arrays.equals(trial.getChosenID(),answer)));
+   //retrieve String array
+   String[] ans = trial.getChosenID();
+   //checks that ans is the same as answer or answer2
+        assertTrue("Incorrect combination of items", (Arrays.equals(ans, answer2) || Arrays.equals(ans,answer)));
   }
 
   @Test
-  //Constructor created with 6 arguments
+  //Constructor created with 7 arguments
   //use getPrice() to retreive value
   public void testCorrectPrice(){
       this.resetTable();
@@ -367,11 +375,14 @@ public class UnitTests {
       }catch(Exception e){
 
       }
-      assertTrue("Incorrect price for items", trial.getPrice() == 60);
+   //Retrieve int
+   int check = trial.getPrice();
+   //check that the values are the same
+      assertTrue("Incorrect price for items", check == 60);
   }
 
   @Test
- //Constructor created with 6 arguments
+ //Constructor created with 7 arguments
   //use getPossibleNumberOfItems() to retreive value
   public void testCorrectItems4(){
         this.resetTable();
@@ -381,11 +392,14 @@ public class UnitTests {
         }catch(Exception e){
 
         }
-        assertTrue("Incorrect combination of items", trial.getPossibleNumberOfItems() == 3);
+   //Retrieve int
+   int check = trial.getPossibleNumberOfItems();
+   //Check the ints to make sure they are the same
+        assertTrue("Incorrect combination of items", check == 3);
   }
 
   @Test
- //Constructor created with 6 arguments
+ //Constructor created with 7 arguments
   public void testInvalidInputTypeNotInTable(){
       this.resetTable();
       Request trial = null;
@@ -393,13 +407,15 @@ public class UnitTests {
       try{
             trial = new Request("Chair", "NotARealType", 2, true, USERNAME, PASSWORD, "test");
       }catch(Exception er){
-            e = er;
+       //set e to the exception that was thrown
+       e = er;
       }
+   //check to make sure an e isn't null
       assertTrue("Error was not thrown",e != null);
   }
 
   @Test
- //Constructor created with 6 arguments
+ //Constructor created with 7 arguments
   public void testInvalidInputCategoryNotInTable(){
       this.resetTable();
       Request trial = null;
@@ -407,13 +423,14 @@ public class UnitTests {
       try{
             trial = new Request("NotAChair", "Mesh", 2, true, USERNAME, PASSWORD, "test");
       }catch(Exception er){
-            e = er;
+            e = er; //set e to the exception that was thrown
       }
+     //check to make sure an e isn't null
       assertTrue("Error was not thrown",e != null);
   }
 
   @Test
- //Constructor created with 6 arguments
+ //Constructor created with 7 arguments
   //use getPrice() to retreive value
   public void testWierdCasingOnCategory(){
       this.resetTable();
@@ -422,9 +439,12 @@ public class UnitTests {
       try{
             trial = new Request("ChAiR", "Mesh", 1, true, USERNAME, PASSWORD, "test");
       }catch(Exception er){
-            e = er;
+            e = er; //set e to the exception that was thrown
       }
-      assertTrue("Error was not thrown",trial.getPrice() == 150 && e == null);
+   //retrieve int
+   int check = trial.getPrice();
+   //make sure that the ints are the same and the e isn't null
+      assertTrue("Error was not thrown", check == 150 && e == null);
   }
 
   @Test
@@ -437,9 +457,12 @@ public class UnitTests {
       try{
             trial = new Request("chair", "mEsH", 1, true, USERNAME, PASSWORD, "test");
       }catch(Exception er){
-            e = er;
+            e = er; //set e to the exception that was thrown
       }
-      assertTrue("Error was not thrown",trial.getPrice() == 150 && e == null);
+    //retrieve int
+   int check = trial.getPrice();
+   //make sure that the ints are the same and the e isn't null
+      assertTrue("Error was not thrown", check == 150 && e == null);
   }
 
   @Test
