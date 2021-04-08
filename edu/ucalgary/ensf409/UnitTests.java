@@ -26,7 +26,7 @@ import java.util.*;
 public class UnitTests {
 
  private static String PASSWORD = "password";
-  private static String USERNAME = "User1";
+  private static String USERNAME = "Nick";
  
 
       /**
@@ -38,10 +38,19 @@ public class UnitTests {
 
 
   @Test
+ //Constructor created with 0 arguments
+ //setCategory() with one argument
+ //setType() with one argument
+ //setNumberOfItemsDemanded() with one argument
+ //setUsernameMySQL() with one argument
+ //setPasswordMySQL() with one argument
+ //getDatabase() to connect database 
+ //ManuSuggest() to retrieve value of out, which is the suggestion
   public void testManuSuggestChairs(){
       this.resetTable();
       Request trial = null;
       String ans = null;
+   //create a String
       String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
                        " Suggested Manufacturers for chairs are: \n" +
                        "Office Furnishings\nChairs R Us\nFurniture Goods\nFine Office Supplies\n";
@@ -53,18 +62,29 @@ public class UnitTests {
             trial.setUsernameMySQL(USERNAME);
             trial.setPasswordMySQL(PASSWORD);
             trial.getDatabase();
+       //retrieve String 
             ans = trial.ManuSuggest();
       }catch(Exception er){
 
       }
+   //see if the Strings are the same
       assertTrue("The incorrect manufacturers were given", correct.equals(ans));
   }
 
   @Test
+ //Constructor created with 0 arguments
+ //setCategory() with one argument
+ //setType() with one argument
+ //setNumberOfItemsDemanded() with one argument
+ //setUsernameMySQL() with one argument
+ //setPasswordMySQL() with one argument
+ //getDatabase() to connect database 
+ //ManuSuggest() to retrieve value of out, which is the suggestion
   public void testManuSuggestDesk(){
       this.resetTable();
       Request trial = null;
       String ans = null;
+   //Create a String
       String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
                        " Suggested Manufacturers for desks are: \n" +
                        "Academic Desks\nOffice Furnishings\nFurniture Goods\nFine Office Supplies\n";
@@ -76,18 +96,29 @@ public class UnitTests {
             trial.setUsernameMySQL(USERNAME);
             trial.setPasswordMySQL(PASSWORD);
             trial.getDatabase();
+       //Retrieve String
             ans = trial.ManuSuggest();
       }catch(Exception er){
 
       }
+   //See if Strings are the same
       assertTrue("The incorrect manufacturers were given", correct.equals(ans));
   }
 
   @Test
+ //Constructor created with 0 arguments
+ //setCategory() with one argument
+ //setType() with one argument
+ //setNumberOfItemsDemanded() with one argument
+ //setUsernameMySQL() with one argument
+ //setPasswordMySQL() with one argument
+ //getDatabase() to connect database 
+ //ManuSuggest() to retrieve value of out, which is the suggestion
   public void testManuSuggestLamp(){
       this.resetTable();
       Request trial = null;
       String ans = null;
+   //Create a String
       String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
                        " Suggested Manufacturers for lamps are: \n" +
                        "Office Furnishings\nFurniture Goods\nFine Office Supplies\n";
@@ -99,18 +130,29 @@ public class UnitTests {
             trial.setUsernameMySQL(USERNAME);
             trial.setPasswordMySQL(PASSWORD);
             trial.getDatabase();
+           //Retrieve String
             ans = trial.ManuSuggest();
       }catch(Exception er){
 
       }
+   //See if Strings are the same
       assertTrue("The incorrect manufacturers were given", correct.equals(ans));
   }
 
   @Test
+  //Constructor created with 0 arguments
+ //setCategory() with one argument
+ //setType() with one argument
+ //setNumberOfItemsDemanded() with one argument
+ //setUsernameMySQL() with one argument
+ //setPasswordMySQL() with one argument
+ //getDatabase() to connect database 
+ //ManuSuggest() to retrieve value of out, which is the suggestion
   public void testManuSuggestFiling(){
       this.resetTable();
       Request trial = null;
       String ans = null;
+   //create a String
       String correct = "0 could be made. Order cannot be fulfilled with current inventory." +
                        " Suggested Manufacturers for filings are: \n" +
                        "Office Furnishings\nFurniture Goods\nFine Office Supplies\n";
@@ -122,17 +164,31 @@ public class UnitTests {
             trial.setUsernameMySQL(USERNAME);
             trial.setPasswordMySQL(PASSWORD);
             trial.getDatabase();
+           //Retrieve String
             ans = trial.ManuSuggest();
       }catch(Exception er){
 
       }
+   //See if Strings ae the same
       assertTrue("The incorrect manufacturers were given", correct.equals(ans));
   }
 
   @Test
+ //Constructor created with 0 arguments
+ //setCategory() with one argument
+ //setType() with one argument
+ //setNumberOfItemsDemanded() with one argument
+ //setUsernameMySQL() with one argument
+ //setPasswordMySQL() with one argument
+ //getDatabase() to connect database
+ //remove() with zero arguments
+ //checkDataBaseForValue() with two arguments to retrive value
+  //checkDataBaseForValue() with two arguments to retrive value
+  //checkDataBaseForValue() with two arguments to retrive value
   public void testRemoveFilings(){
       this.resetTable();
       Request trial = null; 
+   //Create and array and add the lines
       String[] testIDs = {"L132","L208","L096"}; 
       try{
             trial = new Request();
@@ -145,18 +201,30 @@ public class UnitTests {
       }catch(Exception er){
 
       }
-
+     // retrieve boolean values 
       boolean test1 = this.checkDataBaseForValue("filing", "L132");
       boolean test2 = this.checkDataBaseForValue("filing", "L208");
       boolean test3 = this.checkDataBaseForValue("filing", "L096");
-
+      //check that the booleans test1, test2, test3 are all false
       assertTrue("DataBase was incorrectly updated after remove() was called", (!test1 && !test2 && !test3));
   }
 
   @Test
+  //Constructor created with 0 arguments
+ //setCategory() with one argument
+ //setType() with one argument
+ //setNumberOfItemsDemanded() with one argument
+ //setUsernameMySQL() with one argument
+ //setPasswordMySQL() with one argument
+ //getDatabase() to connect database
+ //remove() with zero arguments
+ //checkDataBaseForValue() with two arguments to retrive value
+  //checkDataBaseForValue() with two arguments to retrive value
+  //checkDataBaseForValue() with two arguments to retrive value
   public void testRemoveDesks(){
       this.resetTable();
       Request trial = null; 
+      //Create and array and add the lines
       String[] testIDs = {"D3820","D1927","D1030"}; 
       try{
             trial = new Request();
@@ -169,15 +237,19 @@ public class UnitTests {
       }catch(Exception er){
 
       }
-
+     // retrieve boolean values 
       boolean test1 = this.checkDataBaseForValue("desk", "D3820");
       boolean test2 = this.checkDataBaseForValue("desk", "D1927");
       boolean test3 = this.checkDataBaseForValue("desk", "D1030");
-
+    //check that the booleans test1, test2, test3 are all false
       assertTrue("DataBase was incorrectly updated after remove() was called", (!test1 && !test2 && !test3));
   }
 
   @Test
+   //Constructor created with 0 arguments
+  //factorial() with one argument to retrieve value
+ //factorial() with one argument to retrieve value
+ //factorial() with one argument to retrieve value
   public void testFactorial(){
       Request trial = null; 
       try{
@@ -185,18 +257,25 @@ public class UnitTests {
       }catch(Exception er){
 
       }
+      //set ints to the retrieved values
       int test1 = trial.factorial(5);
       int test2 = trial.factorial(9);
       int test3 = trial.factorial(2);
-
+      // check that values are the same as the factorial value
       assertTrue("Incorrect factorial for test1", test1 == 120);
       assertTrue("Incorrect factorial for test2", test2 == 362880);
       assertTrue("Incorrect factorial for test3", test3 == 2);
   }
 
   @Test
+ //Consructor created with zero arguments
+ //setSize() with one argument
+ //setData() with one argument
+ //totalItemsThatCanBeMade
+ //use getPossibleNumberOfItems() to retrieve values
   public void testTotalItemsThatCanBeMade(){
       Request trial = null; 
+   //crerate a double array and add the elements
       char[][] testArray = {{'Y','N','N'},
                            {'Y','Y','Y'},
                            {'N','Y','Y'},
@@ -210,7 +289,10 @@ public class UnitTests {
       }catch(Exception er){
 
       }
-      assertTrue("The incorrect amount of items were calculated.", trial.getPossibleNumberOfItems() == 3);
+   // retrieve int
+   int check = trial.getPossibleNumberOfItems();
+   //check that that values are the same
+      assertTrue("The incorrect amount of items were calculated.", check == 3);
   }
 
 
@@ -225,8 +307,18 @@ public class UnitTests {
 
 
   @Test
-  //Constructor created with 6 arguments
-  //use getPossibleNumberOfItems() to retreive value
+   //Constructor created with 0 arguments
+ //setCategory() with one argument
+ //setType() with one argument
+ //setNumberOfItemsDemanded() with one argument
+ //setPartialOrder() with one argument
+ //setUsernameMySQL() with one argument
+ //setPasswordMySQL() with one argument
+ //setSize() with one argument
+ //getDatabase() to connect database
+ //storeData() to retrieve database
+ //totalItemsThatCanBeMade() 
+ //getPossibleNumberOfItems() to retrieve values
   public void testCorrectNumberOfItems(){
         this.resetTable();
         Request trial = null;
