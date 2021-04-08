@@ -9,6 +9,24 @@
 package edu.ucalgary.ensf409;
 
 // Just holds main
+
+
+/**         README
+ * 
+ *   ## To Compile on Windows
+ *   Assuming in working directory
+ *   ```
+ *   javac -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/Inventory.java
+ *   ```
+ *   ## To Run on Windows
+ *   Assuming in working directory
+ *   ```
+ *   java -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/Inventory
+ *   ```
+ *   
+ *   Instructions on running unit tests are in UnitTests.java
+ */
+
 public class Inventory {
     public static void main (String [] args){
         UserInterface ui = new UserInterface();

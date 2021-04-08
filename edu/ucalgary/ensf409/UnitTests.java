@@ -20,8 +20,18 @@ import java.sql.SQLException;
 import java.util.*;
 
 
-/**
- * Unit tests for the Inventory Manager Program. Ensure before running
+/**         README
+ * 
+ *   ## To Compile Tests on Window
+ *   Assuming in working directory
+ *   ```
+ *   javac -cp .;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar;lib/mysql-connector-java-8.0.23.jar;edu/ucalgary/ensf409 edu/ucalgary/ensf409/*.java
+ *   ```
+ *   ## To Run Tests on Windows
+ *   Assuming in working directory
+ *   ```
+ *   java -cp .;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar;lib/mysql-connector-java-8.0.23.jar org.junit.runner.JUnitCore edu/ucalgary/ensf409/UnitTests
+ *   ```
  */
 public class UnitTests {
 
