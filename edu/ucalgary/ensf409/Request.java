@@ -685,7 +685,7 @@ public String ManuSuggest(){
     }
 
     /**
-     *  This Constructor is purely for testing purposes, It is the same as the standard constructor but stripped of dialog boxes popping up to make testing easier and
+     *  This Constructor is purely for testing purposes, It is the exact same as the standard constructor but stripped of dialog boxes popping up to make testing easier and
      *  more efficient.
      * @param category
      * @param type

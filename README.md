@@ -1,28 +1,23 @@
 # ENSF409-Final-Project
-<br>
-Document as you go
-
-CHANGE db USERNAME AND PASSWORD BEFORE HANDING IN!
-
+Note: database username is "scm" and password is "ensf409", and the URL is "jdbc:mysql://localhost/inventory" as per the requirements.
+If you need to change, the password and username variables are at the top of 
+UnitTests.java and UserInterface.java
 <br>
 
-After creating every class write a unit test in the UnitTests.java file.
-
+ The Unit tests have been designed to work with the original database given (before it got updated with the typo for prices on a few items),
+ if you change the tests, make sure you put the correct values into whats expected. 
 <br>
 
-## Discussions:
-https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1339806/View?filters=unread
-https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1337111/View
-https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1336397/View
-https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1336998/View
-https://d2l.ucalgary.ca/d2l/le/356747/discussions/threads/1333416/View
-
-<br>
+ The tests all start with reseting the table with the original table (see methoid resetTable() at the bottom of UnitTests.java). So be aware that if you use a different database IT WILL BE CHANGED!
+ This is because when any unit test starts (that uses the db) it connects and resets the table to the original! So please if you change the
+ tests, put values and expected answers that are allowed in the original provided table!
 
 ## Folder Structure:
-* Use the package edu.ucalgary.ensf409 for all .java files.
+* All .java files in .edu/ucalgary/ensf409.
 * UML Diagram in root.
-* All library packages etc. to go in ./lib.
+* Video in root.
+* All library packages etc. are in ./lib.
+* Original db used for UnitTests in root.
 
 ## To Compile on Windows
 Assuming in working directory
