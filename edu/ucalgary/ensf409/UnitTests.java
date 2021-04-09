@@ -23,6 +23,12 @@ import java.util.*;
 /**         README
  * 
  *   Note: database username is "scm" and password is "ensf409", and the URL is "jdbc:mysql://localhost/inventory" as per the requirements.
+ *   The Unit tests have been designed to work with the original database given (before it got updated with the typo for prices on a few items),
+ *   if you change the tests, make sure you put the correct values into whats expected. We have included the sql file we used.
+ * 
+ *   The tests all start with reseting the table with the original table (see methoid resetTable() at the bottom). So be aware that if you use a different database IT WILL BE CHANGED!
+ *   This is because when any unit test starts (that uses the db) it connects and resets the table to the original! So please if you change the
+ *   tests, put values and expected answers that are allowed in the original provided table!
  * 
  *   ## To Compile Tests on Window
  *   Assuming in working directory
@@ -37,9 +43,8 @@ import java.util.*;
  */
 public class UnitTests {
 
- private static String PASSWORD = "ensf409";
   private static String USERNAME = "scm";
- 
+  private static String PASSWORD = "ensf409";
 
       /**
        * 
@@ -352,7 +357,7 @@ public class UnitTests {
     //Retrieve int
    int check = trial.getPossibleNumberOfItems();
    //check that the calues are the same
-        assertTrue("Incorrect number of items", check == 1);
+        assertTrue("Incorrect number of possible items calculated", check == 1);
   }
   
   @Test
@@ -455,8 +460,8 @@ public class UnitTests {
       }
    //retrieve int
    int check = trial.getPrice();
-   //make sure that the ints are the same and the e isn't null
-      assertTrue("Error was not thrown", check == 150 && e == null);
+   //make sure that the ints are the same and the e is null
+      assertTrue("Error was not thrown", (check == 150 && e == null));
   }
 
   @Test
@@ -473,8 +478,8 @@ public class UnitTests {
       }
     //retrieve int
    int check = trial.getPrice();
-   //make sure that the ints are the same and the e isn't null
-      assertTrue("Error was not thrown", check == 150 && e == null);
+   //make sure that the ints are the same and the e is null
+      assertTrue("Error was not thrown", (check == 150 && e == null));
   }
 
   @Test
@@ -531,8 +536,8 @@ public class UnitTests {
         int amount = trial.getAmountFilled();
         int demanded = trial.getNumberOfItemsDemanded();
         // check that amount and demanded are the same
-        assertTrue(demanded == amount); //if full order is filled
-    }
+        assertTrue("The whole order wasnt filled.", demanded == amount); //if full order is filled
+}
 
   @Test
  //Constructor created with 7 arguments

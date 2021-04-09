@@ -8,8 +8,6 @@
  */
 package edu.ucalgary.ensf409;
 
-// Just holds main
-
 
 /**         README
  * 
@@ -33,8 +31,10 @@ package edu.ucalgary.ensf409;
  *   Instructions on running unit tests are in UnitTests.java
  */
 
+
+// Just holds main
 public class Inventory {
     public static void main (String [] args){
-        UserInterface ui = new UserInterface();
+        UserInterface ui = new UserInterface(); //Builds the UI
     }
 }
