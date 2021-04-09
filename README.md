@@ -11,6 +11,10 @@ UnitTests.java and UserInterface.java
  The tests all start with reseting the table with the original table (see methoid resetTable() at the bottom of UnitTests.java). So be aware that if you use a different database IT WILL BE CHANGED!
  This is because when any unit test starts (that uses the db) it connects and resets the table to the original! So please if you change the
  tests, put values and expected answers that are allowed in the original provided table!
+ <br>
+ 
+ So please, final warning, when you run the UnitTests, your db will be changed to the original supplied db (also attached)! This is not the case for the application, it can run on any database (any valid db as per project requirements).
+ 
 
 ## Folder Structure:
 * All .java files in .edu/ucalgary/ensf409.
@@ -37,5 +41,5 @@ javac -cp .;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar;lib/mysql-connector-j
 ## To Run Tests on Windows
 Assuming in working directory
 ```
-java -cp .;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar;lib/mysql-connector-java-8.0.23.jar org.junit.runner.JUnitCore edu/ucalgary/ensf409/UnitTests
+java -cp .;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar;lib/mysql-connector-java-8.0.23.jar org.junit.runner.JUnitCore edu.ucalgary.ensf409.UnitTests
 ```
