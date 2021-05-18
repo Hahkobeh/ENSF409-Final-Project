@@ -5,9 +5,9 @@ I was responsible for the main algorithm that reads from the database and determ
 
 Group Members:
 
-Jacob Artuso
-Nicholas Knapton
-Brian Kramer
+Jacob Artuso\
+Nicholas Knapton\
+Brian Kramer\
 Colin Christophe
 
 
