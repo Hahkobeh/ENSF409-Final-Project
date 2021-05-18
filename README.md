@@ -1,4 +1,17 @@
 # ENSF409-Final-Project
+Final Project for java class, we had to implement a inventory management system whereby furniture components are reused in order to fill orders. Inventory is stored in a MySQL database.
+I was responsible for the main algorithm that reads from the database and determines which components should be chosen in order to minimize price.
+
+
+Group Members:
+
+Jacob Artuso
+Nicholas Knapton
+Brian Kramer
+Colin Christophe
+
+
+# Info
 Note: database username is "scm" and password is "ensf409", and the URL is "jdbc:mysql://localhost/inventory" as per the requirements.
 If you need to change, the password and username variables are at the top of 
 UnitTests.java and UserInterface.java
